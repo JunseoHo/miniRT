@@ -6,19 +6,23 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:19:13 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 20:16:21 by jho              ###   ########.fr       */
+/*   Updated: 2023/12/29 21:03:44 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-void	mrt_parse_color_content(int *c, char *s)
+char	*mrt_parse_color_content(int *c, char *s)
 {
+	*c = 0;
 	while (mrt_isdigit(*s))
 	{
 		*c = (*c) * 10 + (*s - '0');
 		++s;
 	}
+	if (c > 255)
+		return (NULL);
+	return (s);
 }
 
 t_color	*mrt_parse_color(char *s)
@@ -28,15 +32,16 @@ t_color	*mrt_parse_color(char *s)
 	c = mrt_color_malloc();
 	if (c == NULL)
 		return (NULL);
-	while (*s >= '0' && *s <= '9')
-	{
-		c->r = (c->r) * 10 + (*s - '0');
-		++s;
-		if (c->r > 255)
-			return (mrt_color_free(c));
-	}
-	if (*s != ',')
-		return (mrt_color_free(c));
+	s = mrt_parse_color_content(&(c->r), s);
+	if (s == NULL || *s != ',')
+		return (mrt_free_color(c));
 	++s;
-	return (0);
+	s = mrt_parse_color_content(&(c->g), s);
+	if (s == NULL || *s != ',')
+		return (mrt_free_color(c));
+	++s;
+	s = mrt_parse_color_content(&(c->b), s);
+	if (s == NULL || *s != '\0')
+		return (mrt_free_color(c));
+	return (c);
 }
