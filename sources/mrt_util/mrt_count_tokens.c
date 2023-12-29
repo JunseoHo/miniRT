@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_parse_color.c                                  :+:      :+:    :+:   */
+/*   mrt_count_tokens.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 16:19:13 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 20:16:21 by jho              ###   ########.fr       */
+/*   Created: 2023/12/29 18:32:27 by jho               #+#    #+#             */
+/*   Updated: 2023/12/29 18:35:05 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-void	mrt_parse_color_content(int *c, char *s)
+int	mrt_count_tokens(char **tokens)
 {
-	while (mrt_isdigit(*s))
-	{
-		*c = (*c) * 10 + (*s - '0');
-		++s;
-	}
-}
+	int	count;
 
-t_color	*mrt_parse_color(char *s)
-{
-	t_color	*c;
-
-	c = mrt_color_malloc();
-	if (c == NULL)
-		return (NULL);
-	while (*s >= '0' && *s <= '9')
-	{
-		c->r = (c->r) * 10 + (*s - '0');
-		++s;
-		if (c->r > 255)
-			return (mrt_color_free(c));
-	}
-	if (*s != ',')
-		return (mrt_color_free(c));
-	++s;
-	return (0);
+	count = 0;
+	if (tokens == NULL)
+		return (count);
+	while (*(tokens + count) != NULL)
+		++count;
+	return (count);
 }
