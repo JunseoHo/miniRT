@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 15:30:31 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 16:02:25 by jho              ###   ########.fr       */
+/*   Updated: 2023/12/29 18:06:54 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_rt	*mrt_parse_content(int fd)
 			free(tokens);
 			return (mrt_rt_free(rt));
 		}
-		free(tokens); // implement free function
+		mrt_free_tokens(tokens);
 	}
 	return (rt);
 }
