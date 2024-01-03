@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 13:57:25 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 08:35:18 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:45:04 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_rt	*mrt_parse(int argc, char *argv[])
 {
-	int	fd;
+	t_rt	*rt;
+	int		fd;
 
 	if (argc != 2)
 		return (NULL);
@@ -22,6 +23,9 @@ t_rt	*mrt_parse(int argc, char *argv[])
 		return (NULL);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		mrt_exit("File open failed.");
-	return (mrt_parse_file(fd));
+		mrt_exit("file open failed.");
+	rt = mrt_parse_file(fd);
+	if (close(fd) == -1)
+		mrt_exit("file close failed.");
+	return (rt);
 }

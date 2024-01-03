@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 19:58:01 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 20:00:12 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:45:47 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_color	*mrt_color_malloc(void)
 
 	c = malloc(sizeof(t_color));
 	if (c == NULL)
-		return (NULL);
+		mrt_exit("malloc failed.");
 	c->r = 0;
 	c->g = 0;
 	c->b = 0;

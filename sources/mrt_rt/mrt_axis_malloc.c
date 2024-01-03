@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:05:31 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 21:07:18 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:45:51 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_axis	*mrt_axis_malloc(void)
 
 	axis = malloc(sizeof(t_axis));
 	if (axis == NULL)
-		return (axis);
+		mrt_exit("malloc failed.");
 	axis->x = 0;
 	axis->y = 0;
 	axis->z = 0;

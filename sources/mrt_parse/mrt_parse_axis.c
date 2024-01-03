@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:38:49 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:14:23 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 10:10:44 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ char	*mrt_parse_axis_content(float *a, char *s)
 			dec *= 0.1;
 		}	
 	}
-	if (*a > -1000 || *a < 1000)
-		return (NULL);
+	*a *= sign;
 	return (s);
 }
 
@@ -56,6 +55,8 @@ t_axis	*mrt_parse_axis(char *s)
 		return (mrt_axis_free(axis));
 	++s;
 	s = mrt_parse_axis_content(&(axis->z), s);
+	if (*s == '\n')
+		++s;
 	if (s == NULL || *s != '\0')
 		return (mrt_axis_free(axis));
 	return (axis);

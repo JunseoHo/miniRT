@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:22:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:17:06 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 10:02:52 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <stdio.h>
+# include <mlx.h>
 # include "get_next_line.h"
 
 typedef struct s_axis
@@ -91,6 +92,7 @@ t_axis	*mrt_axis_free(t_axis *axis);
 t_axis	*mrt_axis_malloc(void);
 t_color	*mrt_color_free(t_color *c);
 t_color	*mrt_color_malloc(void);
+void	mrt_print_rt(t_rt *rt);
 t_rt	*mrt_rt_free(t_rt *rt);
 t_rt	*mrt_rt_malloc(void);
 // mrt_util

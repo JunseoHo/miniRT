@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 15:30:31 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:17:20 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:59:29 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int	mrt_parse_object(t_rt *rt, char **tokens)
 {
 	int	stat;
-
-	if (mrt_strcmp(tokens[0], "A"))
+	
+	if (!mrt_strcmp(tokens[0], "A"))
 		stat = mrt_parse_amb(rt, tokens);
-	else if (mrt_strcmp(tokens[0], "C"))
+	else if (!mrt_strcmp(tokens[0], "C"))
 		stat = mrt_parse_cam(rt, tokens);
-	else if (mrt_strcmp(tokens[0], "L"))
+	else if (!mrt_strcmp(tokens[0], "L"))
 		stat = mrt_parse_lit(rt, tokens);
 	//else if (mrt_strcmp(tokens[0], "sp"))
 	//	stat = mrt_parse_sp(rt, tokens);
@@ -47,8 +47,6 @@ t_rt	*mrt_parse_file(int fd)
 			break ;
 		tokens = mrt_split(line, ' ');
 		free(line);
-		if (tokens == NULL)
-			mrt_exit("malloc failed.");
 		if (!mrt_parse_object(rt, tokens))
 		{
 			free(tokens);

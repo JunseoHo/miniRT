@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:03:54 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 18:05:52 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:59:18 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	mrt_free_tokens(char **tokens)
 {
+	int index;
+
 	if (tokens == NULL)
 		return ;
-	while (*tokens != NULL)
+	index = 0;
+	while (*(tokens + index) != NULL)
 	{
-		free(*tokens);
-		++tokens;
+		free(*(tokens + index));
+		++index;
 	}
 	free(tokens);
 }
