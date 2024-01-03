@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_rt_malloc.c                                    :+:      :+:    :+:   */
+/*   mrt_verify_file_name.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 15:32:14 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:17:32 by jho              ###   ########.fr       */
+/*   Created: 2024/01/03 08:31:59 by jho               #+#    #+#             */
+/*   Updated: 2024/01/03 08:35:20 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-t_rt	*mrt_rt_malloc(void)
+int	mrt_verify_file_name(char *name)
 {
-	t_rt	*rt;
+	int	len;
 
-	rt = malloc(sizeof(t_rt));
-	if (rt == NULL)
-		mrt_exit("malloc failed.");
-	rt->amb = NULL;
-	rt->cam = NULL;
-	rt->lit = NULL;
-	rt->geo = NULL;
-	return (rt);
+	len = mrt_strlen(name);
+	if (len < 4)
+		return (0);
+	if (name[len - 3] != '.' || name[len - 2] != 'r' || name[len - 1] != 't')
+		return (0);
+	return (1);
 }

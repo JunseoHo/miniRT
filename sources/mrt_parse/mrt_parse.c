@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 13:57:25 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 15:30:09 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 08:35:18 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ t_rt	*mrt_parse(int argc, char *argv[])
 
 	if (argc != 2)
 		return (NULL);
+	if (!mrt_verify_file_name(argv[1]))
+		return (NULL);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		return (NULL);
-	return (mrt_parse_content(fd));
+		mrt_exit("File open failed.");
+	return (mrt_parse_file(fd));
 }

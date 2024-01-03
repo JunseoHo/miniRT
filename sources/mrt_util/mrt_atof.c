@@ -6,23 +6,17 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:06:21 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 19:56:48 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:10:38 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*mrt_atof_int(char *s, float *result, float min, float max)
-{
-	while (*s >= '0' && *s < '9')
-		*result = (*result) * 10 + (*(s++) - '0');
-	
-}
-
-int	mrt_atof(char *s, float *result, float min, float max)
+float	mrt_atof(char *s)
 {
 	float	decimal;
+	float	result;
 	int		sign;
 
-	*result = 0;
+	result = 0;
 	decimal = 0.1;
 	sign = 1;
 	if (*s == '-')
@@ -31,13 +25,13 @@ int	mrt_atof(char *s, float *result, float min, float max)
 		++s;
 	}
 	while (*s >= '0' && *s < '9')
-		*result = (*result) * 10 + (*(s++) - '0');
+		result = (result) * 10 + (*(s++) - '0');
 	if (*s == '.')
 	{
 		++s;
 		while (*s >= '0' && *s < '9')
 		{
-			*result = (*result) + ((*(s++) - '0') * decimal);
+			result = (result) + ((*(s++) - '0') * decimal);
 			decimal *= 0.1;
 			++s;
 		}

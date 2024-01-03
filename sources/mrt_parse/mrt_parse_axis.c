@@ -6,13 +6,13 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:38:49 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 21:19:33 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:14:23 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-t_axis	*mrt_parse_axis_content(float *a, char *s)
+char	*mrt_parse_axis_content(float *a, char *s)
 {
 	int		sign;
 	float	dec;
@@ -49,14 +49,14 @@ t_axis	*mrt_parse_axis(char *s)
 		return (NULL);
 	s = mrt_parse_axis_content(&(axis->x), s);
 	if (s == NULL || *s != ',')
-		return (mrt_free_axis(axis));
+		return (mrt_axis_free(axis));
 	++s;
 	s = mrt_parse_axis_content(&(axis->y), s);
 	if (s == NULL || *s != ',')
-		return (mrt_free_axis(axis));
+		return (mrt_axis_free(axis));
 	++s;
 	s = mrt_parse_axis_content(&(axis->z), s);
 	if (s == NULL || *s != '\0')
-		return (mrt_free_axis(axis));
+		return (mrt_axis_free(axis));
 	return (axis);
 }

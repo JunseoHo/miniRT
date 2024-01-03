@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_rt_malloc.c                                    :+:      :+:    :+:   */
+/*   mrt_parse_lit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 15:32:14 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:17:32 by jho              ###   ########.fr       */
+/*   Created: 2024/01/03 08:47:48 by jho               #+#    #+#             */
+/*   Updated: 2024/01/03 09:16:54 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-t_rt	*mrt_rt_malloc(void)
+int	mrt_parse_lit(t_rt *rt, char **tokens)
 {
-	t_rt	*rt;
-
-	rt = malloc(sizeof(t_rt));
-	if (rt == NULL)
+	if (rt->lit != NULL)
+		return (0);
+	rt->lit = malloc(sizeof(t_lit));
+	if (rt->lit == NULL)
 		mrt_exit("malloc failed.");
-	rt->amb = NULL;
-	rt->cam = NULL;
-	rt->lit = NULL;
-	rt->geo = NULL;
-	return (rt);
+	rt->lit->pos = mrt_parse_axis(tokens[1]);
+	rt->lit->br = mrt_atof(tokens[2]);
+	return (1);
 }

@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_rt_malloc.c                                    :+:      :+:    :+:   */
+/*   mrt_strlcpy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 15:32:14 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:17:32 by jho              ###   ########.fr       */
+/*   Created: 2024/01/03 09:03:48 by jho               #+#    #+#             */
+/*   Updated: 2024/01/03 09:18:07 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-t_rt	*mrt_rt_malloc(void)
+size_t	mrt_strlcpy(char *dst, char *src, size_t dstsize)
 {
-	t_rt	*rt;
+	size_t	i;
 
-	rt = malloc(sizeof(t_rt));
-	if (rt == NULL)
-		mrt_exit("malloc failed.");
-	rt->amb = NULL;
-	rt->cam = NULL;
-	rt->lit = NULL;
-	rt->geo = NULL;
-	return (rt);
+	i = 0;
+	if (dstsize == 0)
+		return (mrt_strlen(src));
+	while (src[i] && (i + 1 < dstsize))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (mrt_strlen(src));
 }

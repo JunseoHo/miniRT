@@ -6,16 +6,21 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:19:18 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 13:53:44 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:08:14 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mrt.h";
+#include "../../includes/mrt.h"
 
-int	main(int argc, char *argv)
+int	main(int argc, char *argv[])
 {
 	t_rt	*rt;
 
 	rt = mrt_parse(argc, argv);
+	if (rt == NULL)
+	{
+		printf("Error\n");
+		return (1);
+	}
 	return (0);
 }

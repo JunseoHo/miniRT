@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:02:42 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 16:21:25 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:12:38 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int	mrt_parse_amb(t_rt *rt, char **tokens)
 		return (0);
 	rt->amb->rat = mrt_atof(tokens[1]);
 	rt->amb->c = mrt_parse_color(tokens[2]);
-	return (rt);
+	return (1);
 }

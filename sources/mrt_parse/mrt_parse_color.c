@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:19:13 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 21:03:44 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 09:15:02 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ char	*mrt_parse_color_content(int *c, char *s)
 		*c = (*c) * 10 + (*s - '0');
 		++s;
 	}
-	if (c > 255)
-		return (NULL);
 	return (s);
 }
 
@@ -34,14 +32,14 @@ t_color	*mrt_parse_color(char *s)
 		return (NULL);
 	s = mrt_parse_color_content(&(c->r), s);
 	if (s == NULL || *s != ',')
-		return (mrt_free_color(c));
+		return (mrt_color_free(c));
 	++s;
 	s = mrt_parse_color_content(&(c->g), s);
 	if (s == NULL || *s != ',')
-		return (mrt_free_color(c));
+		return (mrt_color_free(c));
 	++s;
 	s = mrt_parse_color_content(&(c->b), s);
 	if (s == NULL || *s != '\0')
-		return (mrt_free_color(c));
+		return (mrt_color_free(c));
 	return (c);
 }
