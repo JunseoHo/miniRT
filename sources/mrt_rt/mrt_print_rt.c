@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 09:59:48 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 10:12:03 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 10:46:05 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,49 @@ void	mrt_print_lit(t_lit *lit)
 	printf("Brightness : %f\n", lit->br);
 }
 
+void	mrt_print_geo(t_geo *geo)
+{
+	if (geo == NULL)
+		return ;
+	while (geo != NULL)
+	{
+		if (geo->type == SP)
+		{
+			printf("[Sphere]\n");
+			printf("Position : %f, %f, %f\n", geo->pos->x, geo->pos->y, geo->pos->z);
+			printf("D : %f\n", geo->d);
+			printf("color_r : %d\n", geo->c->r);
+			printf("color_g : %d\n", geo->c->g);
+			printf("color_b : %d\n", geo->c->b);
+		}
+		else if (geo->type == PL)
+		{
+			printf("[Plane]\n");
+			printf("Position : %f, %f, %f\n", geo->pos->x, geo->pos->y, geo->pos->z);
+			printf("Orientation : %f, %f, %f\n", geo->ori->x, geo->ori->y, geo->ori->z);
+			printf("color_r : %d\n", geo->c->r);
+			printf("color_g : %d\n", geo->c->g);
+			printf("color_b : %d\n", geo->c->b);
+		}
+		else if (geo->type == CY)
+		{
+			printf("[Cylinder]\n");
+			printf("Position : %f, %f, %f\n", geo->pos->x, geo->pos->y, geo->pos->z);
+			printf("Orientation : %f, %f, %f\n", geo->ori->x, geo->ori->y, geo->ori->z);
+			printf("D : %f\n", geo->d);
+			printf("H : %f\n", geo->h);
+			printf("color_r : %d\n", geo->c->r);
+			printf("color_g : %d\n", geo->c->g);
+			printf("color_b : %d\n", geo->c->b);
+		}
+		geo = geo->next;
+	}
+}
+
 void	mrt_print_rt(t_rt *rt)
 {
 	mrt_print_amb(rt->amb);
 	mrt_print_cam(rt->cam);
 	mrt_print_lit(rt->lit);
+	mrt_print_geo(rt->geo);
 }

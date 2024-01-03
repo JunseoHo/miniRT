@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:22:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 10:02:52 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 10:44:02 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ typedef enum e_geo_type
 
 typedef struct s_geo
 {
-	t_geo_type		*type;
+	t_geo_type		type;
 	t_axis			*pos;
 	t_axis			*ori;
 	float			d;
 	float			h;
-	t_color			c;
+	t_color			*c;
 	struct s_geo	*next;
 }	t_geo;
 
@@ -83,8 +83,11 @@ int		mrt_parse_amb(t_rt *rt, char **tokens);
 t_axis	*mrt_parse_axis(char *s);
 int		mrt_parse_cam(t_rt *rt, char **tokens);
 t_color	*mrt_parse_color(char *s);
+int		mrt_parse_cy(t_rt *rt, char **tokens);
 t_rt	*mrt_parse_file(int fd);
 int		mrt_parse_lit(t_rt *rt, char **tokens);
+int		mrt_parse_pl(t_rt *rt, char **tokens);
+int		mrt_parse_sp(t_rt *rt, char **tokens);
 t_rt	*mrt_parse(int argc, char *argv[]);
 int		mrt_verify_file_name(char *name);
 // mrt_rt
@@ -92,7 +95,9 @@ t_axis	*mrt_axis_free(t_axis *axis);
 t_axis	*mrt_axis_malloc(void);
 t_color	*mrt_color_free(t_color *c);
 t_color	*mrt_color_malloc(void);
+t_geo	*mrt_geo_malloc(t_geo_type type);
 void	mrt_print_rt(t_rt *rt);
+void	mrt_rt_add_geo(t_rt *rt, t_geo *geo);
 t_rt	*mrt_rt_free(t_rt *rt);
 t_rt	*mrt_rt_malloc(void);
 // mrt_util

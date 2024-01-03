@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 15:30:31 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:59:29 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/03 10:40:12 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	mrt_parse_object(t_rt *rt, char **tokens)
 		stat = mrt_parse_cam(rt, tokens);
 	else if (!mrt_strcmp(tokens[0], "L"))
 		stat = mrt_parse_lit(rt, tokens);
-	//else if (mrt_strcmp(tokens[0], "sp"))
-	//	stat = mrt_parse_sp(rt, tokens);
-	//else if (mrt_strcmp(tokens[0], "pl"))
-	//	stat = mrt_parse_pl(rt, tokens);
-	//else if (mrt_strcmp(tokens[0], "cy"))
-	//	stat = mrt_parse_cy(rt, tokens);
+	else if (!mrt_strcmp(tokens[0], "sp"))
+		stat = mrt_parse_sp(rt, tokens);
+	else if (!mrt_strcmp(tokens[0], "pl"))
+		stat = mrt_parse_pl(rt, tokens);
+	else if (!mrt_strcmp(tokens[0], "cy"))
+		stat = mrt_parse_cy(rt, tokens);
 	else
 		stat = 0;
 	return (stat);
