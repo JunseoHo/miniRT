@@ -20,6 +20,8 @@ bool	mrt_init_amb(t_amb *amb, char **tokens)
 		return (false);
 	b_stat = (mrt_init_float(&(amb->rat), tokens[1])
 			&& mrt_init_color(&(amb->c), tokens[2]));
+	if (mrt_verify_float_range(amb->rat, 0.0, 1.0) == false)
+		return (false);
 	amb->b_init = true;
 	return (b_stat);
 }

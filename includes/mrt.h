@@ -106,4 +106,6 @@ char	**mrt_split(char *s, char c);
 int		mrt_strcmp(char *s1, char *s2);
 size_t	mrt_strlcpy(char *dst, char *src, size_t dstsize);
 int		mrt_strlen(char *s);
+bool	mrt_verify_float_range(float f, float min, float max);
+
 #endif

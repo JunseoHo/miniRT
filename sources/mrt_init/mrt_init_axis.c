@@ -43,7 +43,6 @@ static char	*mrt_init_axis_value(float *result, char *s)
 bool	mrt_init_axis(t_axis *axis, char *s)
 {
 	s = mrt_init_axis_value(&(axis->x), s);
-	printf("%s\n", s);
 	if (s == NULL || *(s++) != ',')
 		return (false);
 	s = mrt_init_axis_value(&(axis->y), s);

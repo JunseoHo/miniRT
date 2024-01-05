@@ -22,6 +22,8 @@ bool	mrt_init_pl(t_geo **geo_list, char **tokens)
 	b_stat = (mrt_init_axis(&(geo->pos), tokens[1])
 			&& mrt_init_axis(&(geo->ori), tokens[2])
 			&& mrt_init_color(&(geo->c), tokens[3]));
+	if ((mrt_verify_float_range(geo->ori.x, -1, 1) == false) || (mrt_verify_float_range(geo->ori.y, -1, 1) == false) || (mrt_verify_float_range(geo->ori.z, -1, 1) == false))
+		return (false);
 	mrt_geo_add_last(geo_list, geo);
 	return (b_stat);
 }

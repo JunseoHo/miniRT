@@ -23,6 +23,8 @@ bool	mrt_init_cy(t_geo **geo_list, char **tokens)
 			&& mrt_init_float(&(geo->d), tokens[3])
 			&& mrt_init_float(&(geo->h), tokens[4])
 			&& mrt_init_color(&(geo->c), tokens[5]));
+	if ((mrt_verify_float_range(geo->ori.x, -1, 1) == false) || (mrt_verify_float_range(geo->ori.y, -1, 1) == false) || (mrt_verify_float_range(geo->ori.z, -1, 1) == false))
+		return (false);
 	mrt_geo_add_last(geo_list, geo);
 	return (b_stat);
 }
