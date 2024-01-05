@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 09:02:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:47:29 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/05 10:50:40 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*mrt_result_malloc(char *str, char c, char **result, int idx)
 		len++;
 	result[idx] = (char *)malloc(sizeof(char) * (len + 1));
 	if (result[idx] == NULL)
-		mrt_exit("malloc failed.");
+		mrt_exit("malloc failed.", errno);
 	mrt_strlcpy(result[idx], str, len + 1);
 	return (result[idx]);
 }
@@ -45,7 +45,7 @@ static char	**mrt_result_double_malloc(char *str, char c)
 	}
 	result = (char **)malloc(sizeof(char *) * (cnt + 1));
 	if (result == NULL)
-		mrt_exit("malloc failed.");
+		mrt_exit("malloc failed.", errno);
 	return (result);
 }
 

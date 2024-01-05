@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_axis_free.c                                    :+:      :+:    :+:   */
+/*   mrt_init_sp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 21:06:36 by jho               #+#    #+#             */
-/*   Updated: 2023/12/29 21:07:15 by jho              ###   ########.fr       */
+/*   Created: 2024/01/05 10:57:00 by jho               #+#    #+#             */
+/*   Updated: 2024/01/05 14:56:02 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-t_axis	*mrt_axis_free(t_axis *axis)
+bool	mrt_init_sp(t_geo **geo_list, char **tokens)
 {
-	if (axis != NULL)
-		free(axis);
-	return (NULL);
+	t_geo	*geo;
+	bool	b_stat;
+
+	geo = mrt_geo_malloc(SP);
+	b_stat = (mrt_init_axis(&(geo->pos), tokens[1])
+			&& mrt_init_float(&(geo->d), tokens[2])
+			&& mrt_init_color(&(geo->c), tokens[3]));
+	mrt_geo_add_last(geo_list, geo);
+	return (b_stat);
 }

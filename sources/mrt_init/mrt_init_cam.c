@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_color_malloc.c                                 :+:      :+:    :+:   */
+/*   mrt_init_cam.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 19:58:01 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:45:47 by jho              ###   ########.fr       */
+/*   Created: 2024/01/05 10:28:40 by jho               #+#    #+#             */
+/*   Updated: 2024/01/05 14:47:10 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-t_color	*mrt_color_malloc(void)
+bool	mrt_init_cam(t_cam *cam, char **tokens)
 {
-	t_color	*c;
+	bool	b_stat;
 
-	c = malloc(sizeof(t_color));
-	if (c == NULL)
-		mrt_exit("malloc failed.");
-	c->r = 0;
-	c->g = 0;
-	c->b = 0;
-	return (c);
+	if (cam->b_init || tokens[4] != NULL)
+		return (false);
+	b_stat = (mrt_init_axis(&(cam->pos), tokens[1])
+			&& mrt_init_axis(&(cam->ori), tokens[2])
+			&& mrt_init_float(&(cam->fov), tokens[3]));
+	cam->b_init = true;
+	return (b_stat);
 }

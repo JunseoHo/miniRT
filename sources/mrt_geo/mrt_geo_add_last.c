@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_free_tokens.c                                  :+:      :+:    :+:   */
+/*   mrt_geo_add_last.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 18:03:54 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:59:18 by jho              ###   ########.fr       */
+/*   Created: 2024/01/05 11:12:26 by jho               #+#    #+#             */
+/*   Updated: 2024/01/05 14:30:48 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-void	mrt_free_tokens(char **tokens)
+void	mrt_geo_add_last(t_geo **list, t_geo *geo)
 {
-	int index;
+	t_geo	*last;
 
-	if (tokens == NULL)
+	if (list == NULL)
 		return ;
-	index = 0;
-	while (*(tokens + index) != NULL)
+	if (*list == NULL)
+		*list = geo;
+	else
 	{
-		free(*(tokens + index));
-		++index;
+		last = *list;
+		while (last->next != NULL)
+			last = last->next;
+		last->next = geo;
 	}
-	free(tokens);
 }

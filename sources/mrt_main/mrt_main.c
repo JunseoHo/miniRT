@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:19:18 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 10:03:04 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/05 11:58:27 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 int	main(int argc, char *argv[])
 {
-	t_rt	*rt;
+	t_rt	rt;
 
-	rt = mrt_parse(argc, argv);
-	if (rt == NULL)
+	if (!mrt_init(&rt, argc, argv))
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	mrt_print_rt(rt);
+	mrt_print(rt);
 	return (0);
 }

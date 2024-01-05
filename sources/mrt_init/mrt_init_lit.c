@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_skip_numeric.c                                 :+:      :+:    :+:   */
+/*   mrt_init_lit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 20:08:43 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:17:54 by jho              ###   ########.fr       */
+/*   Created: 2024/01/05 10:37:51 by jho               #+#    #+#             */
+/*   Updated: 2024/01/05 14:48:13 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-char	*mrt_skip_numeric(char *s)
-{	
-	int	dec_pt;
+bool	mrt_init_lit(t_lit *lit, char **tokens)
+{
+	bool	b_stat;
 
-	if (s == NULL)
-		return (NULL);
-	dec_pt = 0;
-	while (mrt_isdigit(*s))
-		++s;
-	if (*s == '.' && mrt_isdigit(*(s + 1)))
-	{
-		++s;
-		while (*s >= '0' && *s <= '9')
-			++s;
-	}
-	return (s);
+	if (lit->b_init || tokens[4] != NULL)
+		return (false);
+	b_stat = (mrt_init_axis(&(lit->pos), tokens[1])
+			&& mrt_init_float(&(lit->br), tokens[2])
+			&& mrt_init_color(&(lit->c), tokens[3]));
+	lit->b_init = true;
+	return (b_stat);
 }
