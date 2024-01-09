@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:22:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/05 14:38:25 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/09 09:46:59 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <mlx.h>
+# include <math.h>
 # include "get_next_line.h"
+# define WIDTH 500
 
 typedef struct s_axis
 {
@@ -81,7 +83,15 @@ typedef struct s_rt
 	t_cam	cam;
 	t_lit	lit;
 	t_geo	*geo;
+	float	dist;
 }	t_rt;
+
+typedef struct s_vec
+{
+	float	x;
+	float	y;
+	float	z;
+}	t_vec;
 
 // mrt_main
 void	mrt_print(t_rt rt);
