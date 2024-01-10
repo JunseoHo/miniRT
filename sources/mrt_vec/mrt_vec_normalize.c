@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_main.c                                         :+:      :+:    :+:   */
+/*   mrt_vec_normalize.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 12:19:18 by jho               #+#    #+#             */
-/*   Updated: 2024/01/10 10:10:37 by jho              ###   ########.fr       */
+/*   Created: 2024/01/10 17:00:07 by jho               #+#    #+#             */
+/*   Updated: 2024/01/10 17:04:12 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-int	main(int argc, char *argv[])
+t_vec	*mrt_vec_normalize(t_vec vec)
 {
-	t_rt	rt;
+	t_vec	*norm;
+	float	magnitude;
 
-	if (!mrt_init(&rt, argc, argv))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	mrt_print(rt);
-	mrt_rt(&rt);
-	mrt_print(rt);
-	return (0);
+	norm = malloc(sizeof(t_vec));
+	if (norm == NULL)
+		mrt_exit("malloc failed.", errno);
+	magnitude = mrt_vec_magnitude(vec);
+	norm->x = vec.x / magnitude;
+	norm->y = vec.y / magnitude;
+	norm->z = vec.z / magnitude;
+	return (norm);
 }

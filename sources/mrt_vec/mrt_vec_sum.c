@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_main.c                                         :+:      :+:    :+:   */
+/*   mrt_vec_sum.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 12:19:18 by jho               #+#    #+#             */
-/*   Updated: 2024/01/10 10:10:37 by jho              ###   ########.fr       */
+/*   Created: 2024/01/10 16:49:19 by jho               #+#    #+#             */
+/*   Updated: 2024/01/10 16:51:52 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-int	main(int argc, char *argv[])
+t_vec	*mrt_vec_sum(t_vec u, t_vec v)
 {
-	t_rt	rt;
+	t_vec	*sum;
 
-	if (!mrt_init(&rt, argc, argv))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	mrt_print(rt);
-	mrt_rt(&rt);
-	mrt_print(rt);
-	return (0);
+	sum = malloc(sizeof(t_vec));
+	if (sum == NULL)
+		mrt_exit("malloc failed.", errno);
+	sum->x = u.x + v.x;
+	sum->y = u.y + v.y;
+	sum->z = u.z + v.z;
+	return (sum);
 }

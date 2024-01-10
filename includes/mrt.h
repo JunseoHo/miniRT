@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:22:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/09 09:46:59 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/10 17:07:58 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,11 @@ typedef struct s_vec
 
 // mrt_main
 void	mrt_print(t_rt rt);
+
 // mrt_geo
 void	mrt_geo_add_last(t_geo **list, t_geo *geo);
 t_geo	*mrt_geo_malloc(t_geo_type type);
+
 // mrt_init
 bool	mrt_init_amb(t_amb *amb, char **tokens);
 bool	mrt_init_axis(t_axis *axis, char *s);
@@ -110,6 +112,11 @@ bool	mrt_init_pl(t_geo **geo_list, char **tokens);
 bool	mrt_init_rt(t_rt *rt, int fd);
 bool	mrt_init_sp(t_geo **geo_list, char **tokens);
 bool	mrt_init(t_rt *rt, int argc, char **argv);
+// mrt_rt
+void	mrt_translate(t_rt *rt);
+void	mrt_rt_view_transform(t_rt *rt);
+void	mrt_rt(t_rt *rt);
+
 // mrt_util
 void	mrt_exit(char *message, int exit_status);
 char	**mrt_split(char *s, char c);
@@ -118,4 +125,13 @@ size_t	mrt_strlcpy(char *dst, char *src, size_t dstsize);
 int		mrt_strlen(char *s);
 bool	mrt_verify_float_range(float f, float min, float max);
 
+// mrt_vec
+t_rt	*mrt_vec_cross_product(t_vec vec, float scalar);
+float	mrt_vec_dot_product(t_vec u, t_vec v);
+void	mrt_vec_init(t_vec *vec, float x, float y, float z);
+float	mrt_vec_magnitude(t_vec vec);
+t_vec	*mrt_vec_normalize(t_vec vec);
+t_rt	*mrt_vec_scalar_product(t_vec vec, float scalar);
+t_vec	*mrt_vec_sub(t_vec u, t_vec v);
+t_vec	*mrt_vec_sum(t_vec u, t_vec v);
 #endif

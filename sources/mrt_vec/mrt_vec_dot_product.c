@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_rt_dir.c                                       :+:      :+:    :+:   */
+/*   mrt_vec_dot_product.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 09:37:43 by jho               #+#    #+#             */
-/*   Updated: 2024/01/09 09:40:04 by jho              ###   ########.fr       */
+/*   Created: 2024/01/10 16:56:12 by jho               #+#    #+#             */
+/*   Updated: 2024/01/10 16:57:39 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-t_vec	*mrt_rt_dir(t_cam cam, int x, int y)
+float	mrt_vec_dot_product(t_vec u, t_vec v)
 {
-	t_vec	*vec;
-
-	vec = malloc(sizeof(t_vec));
-	if (vec == NULL)
-		mrt_exit("malloc failed.", errno);
-	
+	return ((u.x * v.x) + (u.y * v.y) + (u.z * v.z));
 }
