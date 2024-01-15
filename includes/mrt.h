@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:22:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/10 17:07:58 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/15 11:52:43 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include <mlx.h>
 # include <math.h>
 # include "get_next_line.h"
-# define WIDTH 500
+# define FOCAL_DISTANCE 10.0f
+# define VIEWPORT_LENGTH 200
 
 typedef struct s_axis
 {
@@ -125,13 +126,13 @@ size_t	mrt_strlcpy(char *dst, char *src, size_t dstsize);
 int		mrt_strlen(char *s);
 bool	mrt_verify_float_range(float f, float min, float max);
 
-// mrt_vec
-t_rt	*mrt_vec_cross_product(t_vec vec, float scalar);
+t_vec	*mrt_vec_cross_product(t_vec u, t_vec v);
 float	mrt_vec_dot_product(t_vec u, t_vec v);
 void	mrt_vec_init(t_vec *vec, float x, float y, float z);
 float	mrt_vec_magnitude(t_vec vec);
-t_vec	*mrt_vec_normalize(t_vec vec);
-t_rt	*mrt_vec_scalar_product(t_vec vec, float scalar);
+t_vec	mrt_vec_normalize(t_vec vec);
+void	mrt_vec_print(char *name, t_vec vec);
+t_vec	mrt_vec_scalar_product(t_vec vec, float scalar);
 t_vec	*mrt_vec_sub(t_vec u, t_vec v);
-t_vec	*mrt_vec_sum(t_vec u, t_vec v);
+t_vec	mrt_vec_sum(t_vec u, t_vec v);
 #endif

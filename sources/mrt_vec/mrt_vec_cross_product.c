@@ -6,13 +6,13 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:57:54 by jho               #+#    #+#             */
-/*   Updated: 2024/01/10 17:07:10 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/15 10:04:38 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mrt.h"
 
-t_rt	*mrt_vec_cross_product(t_vec u, t_vec v)
+t_vec	*mrt_vec_cross_product(t_vec u, t_vec v)
 {
 	t_vec	*cross;
 

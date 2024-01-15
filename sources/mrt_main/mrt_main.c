@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:19:18 by jho               #+#    #+#             */
-/*   Updated: 2024/01/10 10:10:37 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/15 10:03:12 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	main(int argc, char *argv[])
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	mrt_print(rt);
 	mrt_rt(&rt);
-	mrt_print(rt);
 	return (0);
 }
