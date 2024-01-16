@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 09:19:39 by jho               #+#    #+#             */
-/*   Updated: 2024/01/15 12:52:52 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/16 10:52:59 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,15 @@ void	mrt_rt_translate_geo(t_rt *rt)
 
 bool	mrt_rt_verify(t_geo *geo, t_vec ray)
 {
-	 // 광선을 구의 중심에서 출발하도록 조정
-    ray.x -= geo->pos.x;
-    ray.y -= geo->pos.y;
-    ray.z -= geo->pos.z;
+	ray = mrt_vec_scalar_product(ray, 100.0f);
 
-    // 광선을 100배로 확장
-    ray = mrt_vec_scalar_product(ray, 100.0f);
-
-    // 구와의 교차 여부 확인
+	
     float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
     float b = 2 * (ray.x * geo->pos.x + ray.y * geo->pos.y + ray.z * geo->pos.z);
     float c = geo->pos.x * geo->pos.x + geo->pos.y * geo->pos.y + geo->pos.z * geo->pos.z - geo->d * geo->d;
 
     float discriminant = b * b - 4 * a * c;
-
+	
     return (discriminant >= 0);
 }
 
@@ -59,9 +53,10 @@ void	mrt_rt(t_rt *rt)
 
 	mrt_vec_init(&camera_at, rt->cam.ori.x, rt->cam.ori.y, rt->cam.ori.z);
 	mrt_vec_init(&camera_up, 0, 1, 0);
+	rt->cam.fov = 90;
 	viewport_horizon = mrt_vec_cross_product(camera_at, camera_up);
 	viewport_vertical = mrt_vec_cross_product(camera_at, *viewport_horizon);
-	focal_distance = atan((M_PI / 180) * (rt->cam.fov / 2)) * (VIEWPORT_LENGTH / 2);
+	focal_distance = (1.0f / tan((M_PI / 180.0f) * (rt->cam.fov / 2))) * (0.5f * VIEWPORT_LENGTH);
 	ray = mrt_vec_scalar_product(camera_at, focal_distance);
 	ray = mrt_vec_sum(ray, mrt_vec_scalar_product(mrt_vec_normalize(*viewport_horizon), -0.5f * VIEWPORT_LENGTH));
 	ray = mrt_vec_sum(ray, mrt_vec_scalar_product(mrt_vec_normalize(*viewport_vertical), -0.5f * VIEWPORT_LENGTH));
@@ -79,14 +74,13 @@ void	mrt_rt(t_rt *rt)
 		{
 			ray = mrt_vec_sum(ray, mrt_vec_normalize(*viewport_vertical));
 			if (mrt_rt_verify(rt->geo, ray))
-				printf("+");
+				rt->buffer[index_vertical][index_horizontal] = (255 << 16);
 			else
-				printf(".");
-			//mrt_vec_print("Ray", ray);
+				rt->buffer[index_vertical][index_horizontal] = (0);
 		}
-		printf("\n");
 		ray = mrt_vec_sum(ray, mrt_vec_scalar_product(mrt_vec_normalize(*viewport_vertical), (-1) * (VIEWPORT_LENGTH)));
 	}
 	free(viewport_horizon);
 	free(viewport_vertical);
+	mrt_rt_show(rt);
 }

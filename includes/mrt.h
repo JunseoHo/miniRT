@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:22:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/15 11:52:43 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/16 10:43:32 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <math.h>
 # include "get_next_line.h"
 # define FOCAL_DISTANCE 10.0f
-# define VIEWPORT_LENGTH 200
+# define VIEWPORT_LENGTH 1000
 
 typedef struct s_axis
 {
@@ -85,6 +85,8 @@ typedef struct s_rt
 	t_lit	lit;
 	t_geo	*geo;
 	float	dist;
+	int		buffer[1000][1000];
+
 }	t_rt;
 
 typedef struct s_vec
@@ -114,8 +116,7 @@ bool	mrt_init_rt(t_rt *rt, int fd);
 bool	mrt_init_sp(t_geo **geo_list, char **tokens);
 bool	mrt_init(t_rt *rt, int argc, char **argv);
 // mrt_rt
-void	mrt_translate(t_rt *rt);
-void	mrt_rt_view_transform(t_rt *rt);
+void	mrt_rt_show(t_rt *rt);
 void	mrt_rt(t_rt *rt);
 
 // mrt_util
