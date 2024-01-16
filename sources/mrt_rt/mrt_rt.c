@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 09:19:39 by jho               #+#    #+#             */
-/*   Updated: 2024/01/16 10:52:59 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/16 12:17:05 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,21 @@ void	mrt_rt_translate_geo(t_rt *rt)
 
 bool	mrt_rt_verify(t_geo *geo, t_vec ray)
 {
-	ray = mrt_vec_scalar_product(ray, 100.0f);
+	t_vec	pos;
+	t_vec	origin;
+	t_vec	*oc;
+	t_vec	dir;
 
-	
-    float a = ray.x * ray.x + ray.y * ray.y + ray.z * ray.z;
-    float b = 2 * (ray.x * geo->pos.x + ray.y * geo->pos.y + ray.z * geo->pos.z);
-    float c = geo->pos.x * geo->pos.x + geo->pos.y * geo->pos.y + geo->pos.z * geo->pos.z - geo->d * geo->d;
+	mrt_vec_init(&pos, geo->pos.x, geo->pos.y, geo->pos.z);
+	mrt_vec_init(&origin, 0, 0, 0);
+	dir = mrt_vec_normalize(ray);
+	oc = mrt_vec_sub(origin, pos);
+	float a = mrt_vec_dot_product(dir, dir);
+	float b = 2 * mrt_vec_dot_product(*oc, dir);
+	float c = mrt_vec_dot_product(*oc, *oc) - geo->d * geo->d;
 
-    float discriminant = b * b - 4 * a * c;
-	
-    return (discriminant >= 0);
+	float discriminant = b * b - 4 * a * c;
+	return (discriminant > 0);
 }
 
 void	mrt_rt(t_rt *rt)
@@ -74,7 +79,10 @@ void	mrt_rt(t_rt *rt)
 		{
 			ray = mrt_vec_sum(ray, mrt_vec_normalize(*viewport_vertical));
 			if (mrt_rt_verify(rt->geo, ray))
+			{
+				mrt_vec_print("Ray", ray);
 				rt->buffer[index_vertical][index_horizontal] = (255 << 16);
+			}
 			else
 				rt->buffer[index_vertical][index_horizontal] = (0);
 		}
