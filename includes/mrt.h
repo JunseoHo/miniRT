@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:22:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/16 10:43:32 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/17 11:41:30 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <math.h>
 # include "get_next_line.h"
 # define FOCAL_DISTANCE 10.0f
-# define VIEWPORT_LENGTH 1000
+# define VIEWPORT_WIDTH 1000
 
 typedef struct s_axis
 {
