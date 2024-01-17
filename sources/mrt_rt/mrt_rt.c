@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 09:19:39 by jho               #+#    #+#             */
-/*   Updated: 2024/01/17 12:17:02 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/17 18:19:42 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,16 @@ t_vec	mrt_vec_subtract(t_vec u, t_vec v)
 	return sub;
 }
 
-bool	mrt_rt_hit_sphere(t_geo *geo, t_vec ray, t_vec origin_to_center)
+double	mrt_rt_hit_sphere(t_geo *geo, t_vec ray, t_vec origin_to_center)
 {
 	float a = mrt_vec_dot_product(ray, ray);
 	float b = 2.0 * mrt_vec_dot_product(origin_to_center, ray);
 	float c = mrt_vec_dot_product(origin_to_center, origin_to_center) - pow(geo->d, 2);
 	float discriminant = pow(b, 2) - (4 * a * c);
-	return (discriminant >= 0);
+	if (discriminant < 0)
+		return -1.0f;
+	else
+		return (-b - sqrt(discriminant) / (2.0 * a));
 }
 
 void	mrt_rt(t_rt *rt)
@@ -69,14 +72,14 @@ void	mrt_rt(t_rt *rt)
 	int image_height = image_width / aspect_ratio;
 	double viewport_height = 2.0;
 	double viewport_width = viewport_height * (image_width / image_height);
-	t_vec	camera_at;
+	t_vec	camera_eye;
 	t_vec	viewport_horizontal;
 	t_vec	viewport_vertical;
 	t_vec	pixel_delta_horizontal;
 	t_vec	pixel_delta_vertical;
 	t_vec	viewport_upper_left;
 	t_vec	focal_length;
-	mrt_vec_init(&camera_at, rt->cam.pos.x, rt->cam.pos.y, rt->cam.pos.z);
+	mrt_vec_init(&camera_eye, rt->cam.pos.x, rt->cam.pos.y, rt->cam.pos.z);
 	mrt_vec_init(&viewport_horizontal, viewport_width, 0, 0);
 	mrt_vec_init(&viewport_vertical, 0, -viewport_height, 0);
 	mrt_vec_init(&focal_length, 0, 0, 1);
@@ -84,7 +87,7 @@ void	mrt_rt(t_rt *rt)
 	pixel_delta_vertical = viewport_vertical;
 	pixel_delta_horizontal = mrt_vec_scalar_product(pixel_delta_horizontal, 1 / (float)image_width);
 	pixel_delta_vertical = mrt_vec_scalar_product(pixel_delta_vertical, 1 / (float)image_height);
-	viewport_upper_left = camera_at;
+	viewport_upper_left = camera_eye;
 	viewport_upper_left = mrt_vec_subtract(viewport_upper_left, focal_length);
 	viewport_upper_left = mrt_vec_subtract(viewport_upper_left, mrt_vec_scalar_product(viewport_horizontal, 0.5));
 	viewport_upper_left = mrt_vec_subtract(viewport_upper_left, mrt_vec_scalar_product(viewport_vertical, 0.5));
@@ -92,7 +95,6 @@ void	mrt_rt(t_rt *rt)
 	pixel_upper_left = mrt_vec_sum(pixel_upper_left, mrt_vec_scalar_product(pixel_delta_horizontal, 0.5));
 	pixel_upper_left = mrt_vec_sum(pixel_upper_left, mrt_vec_scalar_product(pixel_delta_vertical, 0.5));
 	
-
 
 	int	index_width = 0;
 	int	index_height = 0;
@@ -107,11 +109,16 @@ void	mrt_rt(t_rt *rt)
 			pixel_center = pixel_upper_left;
 			pixel_center = mrt_vec_sum(pixel_center, mrt_vec_scalar_product(pixel_delta_horizontal,(float) index_width));
 			pixel_center = mrt_vec_sum(pixel_center, mrt_vec_scalar_product(pixel_delta_vertical,(float) index_height));
-			if (mrt_rt_hit_sphere(rt->geo, pixel_center, mrt_vec_subtract(camera_at, sphere_center)))
+			double discriminant = mrt_rt_hit_sphere(rt->geo, pixel_center, mrt_vec_subtract(camera_eye, sphere_center));
+			if (discriminant > 0.0)
 			{
-				int r = rt->geo->c.r;
-				int g = rt->geo->c.g;
-				int b = rt->geo->c.b;
+				t_vec ray_at = mrt_vec_sum(camera_eye, mrt_vec_scalar_product(pixel_center, discriminant));
+				t_vec camera_at;
+				mrt_vec_init(&camera_at, 0, 0, -1);
+				t_vec N = mrt_vec_normalize(mrt_vec_subtract(ray_at, camera_at));
+				int r = (N.x + 1) * 0.5 * 255;
+				int g = (N.y + 1) * 0.5 * 255;
+				int b = (N.z + 1) * 0.5 * 255;
 				rt->buffer[index_height][index_width] = (r << 16) | (g << 8) | b;
 			}
 			else
