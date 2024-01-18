@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:59:23 by jho               #+#    #+#             */
-/*   Updated: 2024/01/18 17:16:52 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/18 17:50:41 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,24 @@
 
 bool	mrt_parse_amb(t_amb *amb, char *line)
 {
+	char	*token;
+
+	token = mrt_token(line, 1);
+	if (token == NULL)
+		return (false);
+	if (mrt_parse_double(&(amb->ratio), token))
+	{
+		free(token);
+		return (false);
+	}
+	token = mrt_token(line, 2);
+	if (token == NULL)
+		return (false);
+	if (mrt_parse_color(&(amb->color), token))
+	{
+		free(token);
+		return (false);
+	}
 	return (true);
 }
 

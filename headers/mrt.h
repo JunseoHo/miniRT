@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/18 17:15:57 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/18 17:49:15 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ bool	mrt_parse(t_mrt *mrt, char *line);
 bool	mrt_parse_amb(t_amb *amb, char *line);
 bool	mrt_parse_cam(t_cam *cam, char *line);
 bool	mrt_parse_cylinder(t_obj *obj, char *line);
+bool	mrt_parse_double(double *d, char *token);
 bool	mrt_parse_light(t_light *light, char *line);
 bool	mrt_parse_plane(t_obj *obj, char *line);
 bool	mrt_parse_sphere(t_obj *obj, char *line);
