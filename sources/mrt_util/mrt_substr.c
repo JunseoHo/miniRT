@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_util.c                                         :+:      :+:    :+:   */
+/*   mrt_substr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 15:04:32 by jho               #+#    #+#             */
-/*   Updated: 2024/01/18 17:05:56 by jho              ###   ########.fr       */
+/*   Created: 2024/01/18 16:31:53 by jho               #+#    #+#             */
+/*   Updated: 2024/01/18 16:57:44 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-size_t	mrt_strlen(char *s)
+char	*mrt_substr(char *s, size_t begin, size_t end)
 {
-	size_t	len;
+	char	*substr;
+	size_t	index;
 
-	len = 0;
-	while (*(s + len) != '\0')
-		++len;
-	return (len);
-}
-
-int	mrt_strcmp(char *s1, char *s2)
-{
-	while (*s1 == *(s2++))
+	substr = malloc(sizeof(char) * (end - begin + 1));
+	if (substr == NULL)
+		mrt_except("Malloc failed.", errno);
+	index = 0;
+	while (begin < end)
 	{
-		if (*(s1++) == '\0')
-			return (0);
+		substr[index] = s[begin];
+		++index;
+		++begin;
 	}
-	return (*s1 - *(s2 - 1));
+	substr[index] = '\0';
+	return (substr);
 }

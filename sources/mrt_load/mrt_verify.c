@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_util.c                                         :+:      :+:    :+:   */
+/*   mrt_verify.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 15:04:32 by jho               #+#    #+#             */
-/*   Updated: 2024/01/18 17:05:56 by jho              ###   ########.fr       */
+/*   Created: 2024/01/18 15:13:28 by jho               #+#    #+#             */
+/*   Updated: 2024/01/18 16:00:35 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-size_t	mrt_strlen(char *s)
+bool	mrt_verify_extension(char *filename)
 {
 	size_t	len;
 
-	len = 0;
-	while (*(s + len) != '\0')
-		++len;
-	return (len);
-}
-
-int	mrt_strcmp(char *s1, char *s2)
-{
-	while (*s1 == *(s2++))
-	{
-		if (*(s1++) == '\0')
-			return (0);
-	}
-	return (*s1 - *(s2 - 1));
+	len = mrt_strlen(filename);
+	return (len > 3
+		&& filename[len - 3] == '.'
+		&& filename[len - 2] == 'r'
+		&& filename[len - 1] == 't');
 }

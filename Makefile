@@ -6,7 +6,7 @@
 #    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/18 15:23:59 by jho              ###   ########.fr        #
+#    Updated: 2024/01/18 17:16:11 by jho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,12 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)get_next_line/get_next_line_utils.c \
 			$(SOURCES)main/main.c \
 			$(SOURCES)mrt_load/mrt_load.c \
-			$(SOURCES)mrt_load/mrt_verifications.c \
+			$(SOURCES)mrt_load/mrt_parse_1.c \
+			$(SOURCES)mrt_load/mrt_parse_2.c \
+			$(SOURCES)mrt_load/mrt_verify.c \
 			$(SOURCES)mrt_util/mrt_except.c \
+			$(SOURCES)mrt_util/mrt_substr.c \
+			$(SOURCES)mrt_util/mrt_token.c \
 			$(SOURCES)mrt_util/mrt_util.c \
 			$(SOURCES)vector/vec_init.c \
 			$(SOURCES)vector/vec_operations_1.c \
