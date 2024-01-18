@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   mrt_verifications.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:18:59 by jho               #+#    #+#             */
-/*   Updated: 2024/01/18 14:42:14 by jho              ###   ########.fr       */
+/*   Created: 2024/01/18 15:13:28 by jho               #+#    #+#             */
+/*   Updated: 2024/01/18 15:15:57 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
-# include <math.h>
+#include "../../headers/mrt.h"
 
-typedef struct s_vec
+bool	mrt_verify_extension(char *filename)
 {
-	double	x;
-	double	y;
-	double	z;
-}	t_vec;
+	size_t	len;
 
-t_vec	vec_add(t_vec u, t_vec v);
-t_vec	vec_cross(t_vec u, t_vec v);
-double	vec_dot(t_vec u, t_vec v);
-void	vec_init(t_vec *vec, double x, double y, double z);
-double	vec_len(t_vec u);
-t_vec	vec_norm(t_vec u);
-t_vec	vec_scale(t_vec u, double k);
-t_vec	vec_sub(t_vec u, t_vec v);
-#endif
+	len = mrt_strlen(filename);
+	return (len > 3
+		&& filename[len - 3] == '.'
+		&& filename[len - 2] == 'r'
+		&& filename[len - 1] == 't');
+}

@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:18:59 by jho               #+#    #+#             */
-/*   Updated: 2024/01/18 14:42:14 by jho              ###   ########.fr       */
+/*   Created: 2024/01/18 14:40:19 by jho               #+#    #+#             */
+/*   Updated: 2024/01/18 15:26:05 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
-# include <math.h>
+#include "../../headers/mrt.h"
 
-typedef struct s_vec
+int	main(int argc, char **argv)
 {
-	double	x;
-	double	y;
-	double	z;
-}	t_vec;
+	t_mrt	mrt;
 
-t_vec	vec_add(t_vec u, t_vec v);
-t_vec	vec_cross(t_vec u, t_vec v);
-double	vec_dot(t_vec u, t_vec v);
-void	vec_init(t_vec *vec, double x, double y, double z);
-double	vec_len(t_vec u);
-t_vec	vec_norm(t_vec u);
-t_vec	vec_scale(t_vec u, double k);
-t_vec	vec_sub(t_vec u, t_vec v);
-#endif
+	if (!mrt_load(&mrt, argc, argv))
+		mrt_except("Error", 1);
+	return (0);
+}

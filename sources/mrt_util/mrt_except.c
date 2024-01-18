@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   mrt_except.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:18:59 by jho               #+#    #+#             */
-/*   Updated: 2024/01/18 14:42:14 by jho              ###   ########.fr       */
+/*   Created: 2024/01/18 15:01:51 by jho               #+#    #+#             */
+/*   Updated: 2024/01/18 15:26:25 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
-# include <math.h>
+#include "../../headers/mrt.h"
 
-typedef struct s_vec
+void	mrt_except(char *message, int exit_code)
 {
-	double	x;
-	double	y;
-	double	z;
-}	t_vec;
-
-t_vec	vec_add(t_vec u, t_vec v);
-t_vec	vec_cross(t_vec u, t_vec v);
-double	vec_dot(t_vec u, t_vec v);
-void	vec_init(t_vec *vec, double x, double y, double z);
-double	vec_len(t_vec u);
-t_vec	vec_norm(t_vec u);
-t_vec	vec_scale(t_vec u, double k);
-t_vec	vec_sub(t_vec u, t_vec v);
-#endif
+	write(2, message, mrt_strlen(message));
+	write(2, "\n", 1);
+	exit(exit_code);
+}
