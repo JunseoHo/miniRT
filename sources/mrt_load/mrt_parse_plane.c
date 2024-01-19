@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mrt_parse_plane.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:40:19 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 13:05:04 by jho              ###   ########.fr       */
+/*   Created: 2024/01/19 14:10:49 by jho               #+#    #+#             */
+/*   Updated: 2024/01/19 14:53:12 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-int	main(int argc, char **argv)
+bool	mrt_parse_plane(t_obj **obj, char *line)
 {
-	t_mrt	mrt;
-
-	if (!mrt_load(&mrt, argc, argv))
-		mrt_except("Error", 1);
-	mrt_print(mrt);
-	return (0);
+	return (true);
 }

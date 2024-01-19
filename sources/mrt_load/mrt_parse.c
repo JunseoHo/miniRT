@@ -1,54 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_parse_1.c                                      :+:      :+:    :+:   */
+/*   mrt_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:59:23 by jho               #+#    #+#             */
-/*   Updated: 2024/01/18 17:50:41 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/19 14:52:19 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
-
-bool	mrt_parse_amb(t_amb *amb, char *line)
-{
-	char	*token;
-
-	token = mrt_token(line, 1);
-	if (token == NULL)
-		return (false);
-	if (mrt_parse_double(&(amb->ratio), token))
-	{
-		free(token);
-		return (false);
-	}
-	token = mrt_token(line, 2);
-	if (token == NULL)
-		return (false);
-	if (mrt_parse_color(&(amb->color), token))
-	{
-		free(token);
-		return (false);
-	}
-	return (true);
-}
-
-bool	mrt_parse_cam(t_cam *cam, char *line)
-{
-	return (true);
-}
-
-bool	mrt_parse_light(t_light *light, char *line)
-{
-	return (true);
-}
-
-bool	mrt_parse_sphere(t_obj *obj, char *line)
-{
-	return (true);
-}
 
 bool	mrt_parse(t_mrt *mrt, char *line)
 {
@@ -59,18 +21,18 @@ bool	mrt_parse(t_mrt *mrt, char *line)
 	if (token == NULL)
 		return (false);
 	b_parse_success = false;
-	if (mrt_strcmp(token, "A"))
+	if (mrt_strcmp(token, "A") == 0)
 		b_parse_success = mrt_parse_amb(&(mrt->amb), line);
-	else if (mrt_strcmp(token, "C"))
+	else if (mrt_strcmp(token, "C") == 0)
 		b_parse_success = mrt_parse_cam(&(mrt->cam), line);
-	else if (mrt_strcmp(token, "L"))
+	else if (mrt_strcmp(token, "L") == 0)
 		b_parse_success = mrt_parse_light(&(mrt->light), line);
-	else if (mrt_strcmp(token, "sp"))
-		b_parse_success = mrt_parse_sphere(mrt->objs, line);
-	else if (mrt_strcmp(token, "pl"))
-		b_parse_success = mrt_parse_plane(mrt->objs, line);
-	else if (mrt_strcmp(token, "cy"))
-		b_parse_success = mrt_parse_cylinder(mrt->objs, line);
+	else if (mrt_strcmp(token, "sp") == 0)
+		b_parse_success = mrt_parse_sphere(&(mrt->objs), line);
+	else if (mrt_strcmp(token, "pl") == 0)
+		b_parse_success = mrt_parse_plane(&(mrt->objs), line);
+	else if (mrt_strcmp(token, "cy") == 0)
+		b_parse_success = mrt_parse_cylinder(&(mrt->objs), line);
 	free(token);
 	return (b_parse_success);
 }

@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_load.c                                         :+:      :+:    :+:   */
+/*   mrt_parse_amb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 15:09:29 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 13:23:39 by jho              ###   ########.fr       */
+/*   Created: 2024/01/19 14:07:45 by jho               #+#    #+#             */
+/*   Updated: 2024/01/19 14:31:04 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-bool	mrt_load(t_mrt *mrt, int argc, char **argv)
+bool	mrt_parse_amb(t_amb *amb, char *line)
 {
-	int		fd;
-	char	*line;
+	char	*token;
 	bool	b_parse_success;
 
-	if (argc != 2 || !mrt_verify_extension(argv[1]))
-		return (false);
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		mrt_except("File open error.", errno);
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		b_parse_success = mrt_parse(mrt, line);
-		free(line);
-		if (!b_parse_success)
-			break ;
-	}
-	if (close(fd) == -1)
-		mrt_except("File close error.", errno);
+	token = mrt_token(line, 1);
+	b_parse_success = mrt_parse_double(&(amb->ratio), token, '\0');
+	free(token);
+	token = mrt_token(line, 2);
+	b_parse_success &= mrt_parse_color(&(amb->color), token);
+	free(token);
 	return (b_parse_success);
 }
