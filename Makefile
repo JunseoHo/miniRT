@@ -6,7 +6,7 @@
 #    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/19 16:16:42 by jho              ###   ########.fr        #
+#    Updated: 2024/01/19 17:59:10 by jho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt_load/mrt_parse_vector.c \
 			$(SOURCES)mrt_load/mrt_parse.c \
 			$(SOURCES)mrt_load/mrt_verify.c \
+			$(SOURCES)mrt_rt/mrt_rt_render.c \
 			$(SOURCES)mrt_rt/mrt_rt.c \
 			$(SOURCES)mrt_rt/mrt_scene.c \
 			$(SOURCES)mrt_rt/mrt_viewport.c \

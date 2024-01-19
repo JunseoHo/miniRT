@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:06:14 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 16:23:21 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/19 18:01:56 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,4 @@ void	mrt_scene_init(t_scene *scene)
 		(scene->buffer)[index] = malloc(sizeof(int) * WIDTH);
 		++index;
 	}
-}
-
-void	mrt_scene_show(t_scene *scene)
-{
-	size_t	row;
-	size_t	col;
-
-	row = 0;
-	while (row < WIDTH)
-	{
-		col = 0;
-		while (col < WIDTH)
-		{
-			scene->loc = scene->addr
-				+ (col * scene->len + row * scene->bpp / 8);
-			*(unsigned int *)scene->loc = scene->buffer[col][row];
-			++col;
-		}
-		++row;
-	}
-	mlx_put_image_to_window(scene->ptr, scene->win, scene->img, 0, 0);
-	mlx_loop(scene->ptr);
 }

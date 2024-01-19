@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:02:01 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 16:25:32 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/19 18:02:25 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,4 @@ void	mrt_rt(t_mrt mrt)
 
 	mrt_scene_init(&scene);
 	mrt_rt_render(&scene, mrt);
-	mrt_scene_show(&scene);
 }

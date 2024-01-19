@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 16:23:34 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/19 18:02:02 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ typedef struct s_mrt
 	t_cam	cam;
 	t_light	light;
 	t_obj	*objs;
+	t_vec	viewport_center;
+	t_vec	viewport_horizontal;
+	t_vec	viewport_vertical;
+	t_vec	pixel_horizontal;
+	t_vec	pixel_vertical;
+	t_vec	viewport_lefttop;
 }	t_mrt;
 
 typedef struct s_scene
@@ -83,7 +89,6 @@ typedef struct s_scene
 }	t_scene;
 
 void	mrt_scene_init(t_scene *scene);
-void	mrt_scene_show(t_scene *scene);
 void	mrt_except(char *message, int exit_code);
 bool	mrt_load(t_mrt *mrt, int argc, char **argv);
 bool	mrt_parse_amb(t_amb *amb, char *line);
@@ -97,6 +102,7 @@ bool	mrt_parse_sphere(t_obj **obj, char *line);
 bool	mrt_parse_vector(t_vec *vec, char *token);
 bool	mrt_parse(t_mrt *mrt, char *line);
 void	mrt_print(t_mrt mrt);
+void	mrt_rt_render(t_scene *scene, t_mrt mrt);
 void	mrt_rt(t_mrt mrt);
 int		mrt_strcmp(char *s1, char *s2);
 size_t	mrt_strlen(char *s);
