@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:40:19 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 16:17:15 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/19 18:17:50 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	main(int argc, char **argv)
 {
 	t_mrt	mrt;
 
+	mrt.objs = NULL;
 	if (!mrt_load(&mrt, argc, argv))
 		mrt_except("Error", 1);
-	mrt_print(mrt);
 	mrt_rt(mrt);
 	return (0);
 }

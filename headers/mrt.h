@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 18:02:02 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/19 20:29:43 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <unistd.h>
 # include "get_next_line.h"
 # include "vector.h"
-# define WIDTH 1000
+# define SCENE_W 1000
+# define FOCAL_LEN 1.0
 
 typedef struct s_amb
 {
@@ -70,6 +71,7 @@ typedef struct s_mrt
 	t_vec	viewport_center;
 	t_vec	viewport_horizontal;
 	t_vec	viewport_vertical;
+	double	viewport_width;
 	t_vec	pixel_horizontal;
 	t_vec	pixel_vertical;
 	t_vec	viewport_lefttop;
@@ -110,6 +112,7 @@ char	*mrt_substr(char *s, size_t begin, size_t end);
 char	*mrt_token(char *line, size_t target_index);
 bool	mrt_verify_extension(char *filename);
 t_vec	mrt_viewport_center(t_cam cam);
-double	mrt_viewport_focal_len(size_t w, double fov);
+double	mrt_viewport_focal_len(double w, double fov);
+double	mrt_viewport_width(double fov);
 
 #endif
