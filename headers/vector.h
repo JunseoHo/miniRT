@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:18:59 by jho               #+#    #+#             */
-/*   Updated: 2024/01/18 14:42:14 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/19 15:37:31 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ double	vec_dot(t_vec u, t_vec v);
 void	vec_init(t_vec *vec, double x, double y, double z);
 double	vec_len(t_vec u);
 t_vec	vec_norm(t_vec u);
+void	vec_print(t_vec vec);
 t_vec	vec_scale(t_vec u, double k);
 t_vec	vec_sub(t_vec u, t_vec v);
 #endif

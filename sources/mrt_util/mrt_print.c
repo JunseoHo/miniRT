@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:58:35 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 15:22:08 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/19 15:23:35 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	mrt_print_objs(t_obj *objs)
 				objs->position.z);
 			printf("%-10s: %f\n", "Diameter", objs->diameter);
 			printf("%-10s: %d, %d, %d\n", "Color", (objs->color >> 16),
-		(objs->color >> 8) & 255, (objs->color) & 255);
+				(objs->color >> 8) & 255, (objs->color) & 255);
 		}
 		objs = objs->next;
 	}

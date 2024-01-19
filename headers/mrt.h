@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 15:13:37 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/19 16:23:34 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 # define MRT_H
 # include <errno.h>
 # include <fcntl.h>
+# include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include "get_next_line.h"
 # include "vector.h"
+# define WIDTH 1000
 
 typedef struct s_amb
 {
@@ -67,6 +69,21 @@ typedef struct s_mrt
 	t_obj	*objs;
 }	t_mrt;
 
+typedef struct s_scene
+{
+	void	*ptr;
+	void	*win;
+	int		bpp;
+	int		len;
+	void	*img;
+	int		endian;
+	char	*addr;
+	char	*loc;
+	int		**buffer;
+}	t_scene;
+
+void	mrt_scene_init(t_scene *scene);
+void	mrt_scene_show(t_scene *scene);
 void	mrt_except(char *message, int exit_code);
 bool	mrt_load(t_mrt *mrt, int argc, char **argv);
 bool	mrt_parse_amb(t_amb *amb, char *line);
@@ -80,10 +97,13 @@ bool	mrt_parse_sphere(t_obj **obj, char *line);
 bool	mrt_parse_vector(t_vec *vec, char *token);
 bool	mrt_parse(t_mrt *mrt, char *line);
 void	mrt_print(t_mrt mrt);
+void	mrt_rt(t_mrt mrt);
 int		mrt_strcmp(char *s1, char *s2);
 size_t	mrt_strlen(char *s);
 char	*mrt_substr(char *s, size_t begin, size_t end);
 char	*mrt_token(char *line, size_t target_index);
 bool	mrt_verify_extension(char *filename);
+t_vec	mrt_viewport_center(t_cam cam);
+double	mrt_viewport_focal_len(size_t w, double fov);
 
 #endif

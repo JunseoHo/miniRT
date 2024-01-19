@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mrt_viewport.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:40:19 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 16:17:15 by jho              ###   ########.fr       */
+/*   Created: 2024/01/19 16:15:27 by jho               #+#    #+#             */
+/*   Updated: 2024/01/19 16:15:55 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-int	main(int argc, char **argv)
+t_vec	mrt_viewport_center(t_cam cam)
 {
-	t_mrt	mrt;
+	double	focal_len;
 
-	if (!mrt_load(&mrt, argc, argv))
-		mrt_except("Error", 1);
-	mrt_print(mrt);
-	mrt_rt(mrt);
-	return (0);
+	focal_len = mrt_viewport_focal_len(WIDTH, cam.fov);
+	return (vec_add(cam.eye, vec_scale(vec_norm(cam.at), focal_len)));
+}
+
+double	mrt_viewport_focal_len(size_t w, double fov)
+{
+	return ((w / 2) * tan((fov / 2) * (M_PI / 180)));
 }

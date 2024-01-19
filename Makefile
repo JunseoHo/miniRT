@@ -6,7 +6,7 @@
 #    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/19 14:25:35 by jho              ###   ########.fr        #
+#    Updated: 2024/01/19 16:16:42 by jho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,9 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt_load/mrt_parse_vector.c \
 			$(SOURCES)mrt_load/mrt_parse.c \
 			$(SOURCES)mrt_load/mrt_verify.c \
+			$(SOURCES)mrt_rt/mrt_rt.c \
+			$(SOURCES)mrt_rt/mrt_scene.c \
+			$(SOURCES)mrt_rt/mrt_viewport.c \
 			$(SOURCES)mrt_util/mrt_except.c \
 			$(SOURCES)mrt_util/mrt_print.c \
 			$(SOURCES)mrt_util/mrt_substr.c \
@@ -39,7 +42,8 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt_util/mrt_util.c \
 			$(SOURCES)vector/vec_init.c \
 			$(SOURCES)vector/vec_operations_1.c \
-			$(SOURCES)vector/vec_operations_2.c
+			$(SOURCES)vector/vec_operations_2.c \
+			$(SOURCES)vector/vec_print.c
 MANDATORY_OBJS=$(MANDATORY_SRCS:%.c=%.o)
 
 %.o : %.c

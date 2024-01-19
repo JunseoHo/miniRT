@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vec_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:40:19 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 16:17:15 by jho              ###   ########.fr       */
+/*   Created: 2024/01/19 15:36:29 by jho               #+#    #+#             */
+/*   Updated: 2024/01/19 15:39:25 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/vector.h"
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+void	vec_print(t_vec vec)
 {
-	t_mrt	mrt;
-
-	if (!mrt_load(&mrt, argc, argv))
-		mrt_except("Error", 1);
-	mrt_print(mrt);
-	mrt_rt(mrt);
-	return (0);
+	printf("(%f, %f, %f)\n", vec.x, vec.y, vec.z);
 }

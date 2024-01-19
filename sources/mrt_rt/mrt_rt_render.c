@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mrt_rt_render.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:40:19 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 16:17:15 by jho              ###   ########.fr       */
+/*   Created: 2024/01/19 16:25:44 by jho               #+#    #+#             */
+/*   Updated: 2024/01/19 16:26:13 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../header/mrt.h"
 
-int	main(int argc, char **argv)
+void	mrt_rt_render(t_scene *scene, t_mrt mrt)
 {
-	t_mrt	mrt;
-
-	if (!mrt_load(&mrt, argc, argv))
-		mrt_except("Error", 1);
-	mrt_print(mrt);
-	mrt_rt(mrt);
-	return (0);
+	
 }
