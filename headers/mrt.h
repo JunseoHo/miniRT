@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 04:12:04 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 04:53:49 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define FOCAL_LEN 1.0
 # define DEFAULT_COLOR 0xFF0000
 # define BACKGROUND_COLOR 0x000000
+# define T_MIN 0
+# define T_MAX INFINITY
 
 typedef struct s_amb
 {
