@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 00:22:59 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 00:55:49 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft.h"
 # include "scene.h"
 # include "vector.h"
+# define FOCAL_LEN 1.0
 # define DEFAULT_COLOR 0xFF0000
 
 typedef struct s_amb
@@ -30,6 +31,8 @@ typedef struct s_cam
 	t_vec	eye;
 	t_vec	at;
 	t_vec	up;
+	t_vec	horizon;
+	t_vec	lefttop;
 	double	fov;
 }	t_cam;
 
@@ -66,10 +69,18 @@ typedef struct s_mrt
 	t_obj	*objs;
 }	t_mrt;
 
+typedef struct s_ray
+{
+	t_vec	origin;
+	t_vec	dir;
+}	t_ray;
+
 void	mrt_add_obj(t_mrt *mrt, t_obj *obj);
 int		mrt_color(int r, int g, int b);
 t_mrt	*mrt_destroy(t_mrt *mrt);
 t_mrt	*mrt_init(int argc, char **argv);
+t_vec	mrt_ray_at(t_ray ray, double t);
+t_ray	mrt_ray(t_vec origin, t_vec dir);
 void	mrt_raytrace(t_mrt *mrt, t_scene *scene);
 t_obj	*mrt_sphere(t_vec center, double diameter);
 
