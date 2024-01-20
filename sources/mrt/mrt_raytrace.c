@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_print.c                                        :+:      :+:    :+:   */
+/*   mrt_raytrace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 15:36:29 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:47 by jho              ###   ########.fr       */
+/*   Created: 2024/01/20 23:47:45 by jho               #+#    #+#             */
+/*   Updated: 2024/01/20 23:48:31 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/vector.h"
-#include <stdio.h>
+#include "../../headers/mrt.h"
 
-void	vec_print(t_vec vec)
+void	mrt_raytrace(t_mrt *mrt, t_scene *scene)
 {
-	printf("(%f, %f, %f)\n", vec.x, vec.y, vec.z);
+	mrt = NULL;
+	scene = NULL;
 }

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   scene_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:40:19 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 23:47:10 by jho              ###   ########.fr       */
+/*   Created: 2024/01/20 23:05:18 by jho               #+#    #+#             */
+/*   Updated: 2024/01/20 23:54:08 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/scene.h"
 
-int	main(int argc, char **argv)
+t_scene	*scene_init(char *name)
 {
-	t_mrt	*mrt;
 	t_scene	*scene;
 
-	mrt = mrt_init(argc, argv);
-	if (mrt == NULL)
-		ft_except("Error", 1);
-	scene = scene_init("miniRT");
-	mrt_raytrace(mrt, scene);
-	mrt_destroy(mrt);
-	scene_destroy(scene);
-	return (0);
+	scene = malloc(sizeof(t_scene));
+	if (scene == NULL)
+		return (NULL);
+	scene->ptr = mlx_init();
+	scene->win = mlx_new_window(scene->ptr, SCENE_WIDTH, SCENE_HEIGHT, name);
+	scene->img = mlx_new_image(scene->ptr, SCENE_WIDTH, SCENE_HEIGHT);
+	scene->addr = mlx_get_data_addr(scene->img,
+			&(scene->bpp), &(scene->len), &(scene->endian));
+	return (scene);
 }

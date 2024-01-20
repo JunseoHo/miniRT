@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_print.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 15:36:29 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:47 by jho              ###   ########.fr       */
+/*   Created: 2024/01/20 23:24:37 by jho               #+#    #+#             */
+/*   Updated: 2024/01/20 23:26:50 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/vector.h"
-#include <stdio.h>
+#include "../../headers/libft.h"
 
-void	vec_print(t_vec vec)
+size_t	ft_strlen(char *s)
 {
-	printf("(%f, %f, %f)\n", vec.x, vec.y, vec.z);
+	size_t	len;
+
+	len = 0;
+	while (*(s + len) != '\0')
+		++len;
+	return (len);
 }

@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_print.c                                        :+:      :+:    :+:   */
+/*   ft_except.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 15:36:29 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:47 by jho              ###   ########.fr       */
+/*   Created: 2024/01/18 15:01:51 by jho               #+#    #+#             */
+/*   Updated: 2024/01/20 23:56:30 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/vector.h"
-#include <stdio.h>
+#include "../../headers/libft.h"
 
-void	vec_print(t_vec vec)
+void	ft_except(char *msg, int stat)
 {
-	printf("(%f, %f, %f)\n", vec.x, vec.y, vec.z);
+	write(2, msg, ft_strlen(msg));
+	write(2, "\n", 1);
+	exit(stat);
 }

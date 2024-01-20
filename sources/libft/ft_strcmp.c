@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_print.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 15:36:29 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:47 by jho              ###   ########.fr       */
+/*   Created: 2024/01/20 23:31:50 by jho               #+#    #+#             */
+/*   Updated: 2024/01/20 23:32:04 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/vector.h"
-#include <stdio.h>
+#include "../../headers/libft.h"
 
-void	vec_print(t_vec vec)
+int	ft_strcmp(char *s1, char *s2)
 {
-	printf("(%f, %f, %f)\n", vec.x, vec.y, vec.z);
+	while (*s1 == *(s2++))
+	{
+		if (*(s1++) == '\0')
+			return (0);
+	}
+	return (*s1 - *(s2 - 1));
 }

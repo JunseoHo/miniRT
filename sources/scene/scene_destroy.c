@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_print.c                                        :+:      :+:    :+:   */
+/*   scene_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 15:36:29 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:47 by jho              ###   ########.fr       */
+/*   Created: 2024/01/20 23:18:58 by jho               #+#    #+#             */
+/*   Updated: 2024/01/20 23:19:31 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/vector.h"
-#include <stdio.h>
+#include "../../headers/scene.h"
 
-void	vec_print(t_vec vec)
+t_scene	*scene_destroy(t_scene *scene)
 {
-	printf("(%f, %f, %f)\n", vec.x, vec.y, vec.z);
+	free(scene);
+	return (NULL);
 }

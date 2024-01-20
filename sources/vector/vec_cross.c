@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_print.c                                        :+:      :+:    :+:   */
+/*   vec_cross.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 15:36:29 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:47 by jho              ###   ########.fr       */
+/*   Created: 2024/01/20 22:41:57 by jho               #+#    #+#             */
+/*   Updated: 2024/01/20 22:43:12 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/vector.h"
-#include <stdio.h>
 
-void	vec_print(t_vec vec)
+t_vec	vec_cross(t_vec u, t_vec v)
 {
-	printf("(%f, %f, %f)\n", vec.x, vec.y, vec.z);
+	return (vec(u.y * v.z - u.z * v.y,
+			u.z * v.x - u.x * v.z,
+			u.x * v.y - u.y * v.x));
 }

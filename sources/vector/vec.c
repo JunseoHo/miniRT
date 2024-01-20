@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_print.c                                        :+:      :+:    :+:   */
+/*   vec.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 15:36:29 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:47 by jho              ###   ########.fr       */
+/*   Created: 2024/01/18 14:32:02 by jho               #+#    #+#             */
+/*   Updated: 2024/01/20 22:43:22 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/vector.h"
-#include <stdio.h>
 
-void	vec_print(t_vec vec)
+t_vec	vec(double x, double y, double z)
 {
-	printf("(%f, %f, %f)\n", vec.x, vec.y, vec.z);
+	t_vec	vec;
+
+	vec.x = x;
+	vec.y = y;
+	vec.z = z;
+	return (vec);
 }

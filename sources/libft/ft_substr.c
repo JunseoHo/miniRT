@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_print.c                                        :+:      :+:    :+:   */
+/*   mrt_substr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 15:36:29 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:47 by jho              ###   ########.fr       */
+/*   Created: 2024/01/18 16:31:53 by jho               #+#    #+#             */
+/*   Updated: 2024/01/20 23:29:19 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/vector.h"
-#include <stdio.h>
+#include "../../headers/libft.h"
 
-void	vec_print(t_vec vec)
+char	*ft_substr(char *s, size_t begin, size_t end)
 {
-	printf("(%f, %f, %f)\n", vec.x, vec.y, vec.z);
+	char	*substr;
+	size_t	index;
+
+	substr = malloc(sizeof(char) * (end - begin + 1));
+	if (substr == NULL)
+		ft_except("Malloc failed.", errno);
+	index = 0;
+	while (begin < end)
+	{
+		substr[index] = s[begin];
+		++index;
+		++begin;
+	}
+	substr[index] = '\0';
+	return (substr);
 }

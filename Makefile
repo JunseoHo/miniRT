@@ -6,7 +6,7 @@
 #    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/19 20:30:59 by jho              ###   ########.fr        #
+#    Updated: 2024/01/20 23:55:22 by jho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,32 +19,27 @@ SOURCES=./sources/
 HEADERS=./headers/
 MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)get_next_line/get_next_line_utils.c \
+			$(SOURCES)libft/ft_except.c \
+			$(SOURCES)libft/ft_strcmp.c \
+			$(SOURCES)libft/ft_strlen.c \
+			$(SOURCES)libft/ft_substr.c \
+			$(SOURCES)libft/ft_token.c \
 			$(SOURCES)main/main.c \
-			$(SOURCES)mrt_load/mrt_load.c \
-			$(SOURCES)mrt_load/mrt_parse_amb.c \
-			$(SOURCES)mrt_load/mrt_parse_cam.c \
-			$(SOURCES)mrt_load/mrt_parse_color.c \
-			$(SOURCES)mrt_load/mrt_parse_cylinder.c \
-			$(SOURCES)mrt_load/mrt_parse_double.c \
-			$(SOURCES)mrt_load/mrt_parse_light.c \
-			$(SOURCES)mrt_load/mrt_parse_plane.c \
-			$(SOURCES)mrt_load/mrt_parse_sphere.c \
-			$(SOURCES)mrt_load/mrt_parse_vector.c \
-			$(SOURCES)mrt_load/mrt_parse.c \
-			$(SOURCES)mrt_load/mrt_verify.c \
-			$(SOURCES)mrt_rt/mrt_rt_render.c \
-			$(SOURCES)mrt_rt/mrt_rt.c \
-			$(SOURCES)mrt_rt/mrt_scene.c \
-			$(SOURCES)mrt_rt/mrt_viewport.c \
-			$(SOURCES)mrt_util/mrt_except.c \
-			$(SOURCES)mrt_util/mrt_print.c \
-			$(SOURCES)mrt_util/mrt_substr.c \
-			$(SOURCES)mrt_util/mrt_token.c \
-			$(SOURCES)mrt_util/mrt_util.c \
-			$(SOURCES)vector/vec_init.c \
-			$(SOURCES)vector/vec_operations_1.c \
-			$(SOURCES)vector/vec_operations_2.c \
-			$(SOURCES)vector/vec_print.c
+			$(SOURCES)mrt/mrt_destroy.c \
+			$(SOURCES)mrt/mrt_init.c \
+			$(SOURCES)mrt/mrt_raytrace.c \
+			$(SOURCES)scene/scene_destroy.c \
+			$(SOURCES)scene/scene_show.c \
+			$(SOURCES)scene/scene_init.c \
+			$(SOURCES)vector/vec_add.c \
+			$(SOURCES)vector/vec_cross.c \
+			$(SOURCES)vector/vec_dot.c \
+			$(SOURCES)vector/vec_len.c \
+			$(SOURCES)vector/vec_norm.c \
+			$(SOURCES)vector/vec_print.c \
+			$(SOURCES)vector/vec_scale.c \
+			$(SOURCES)vector/vec_sub.c \
+			$(SOURCES)vector/vec.c
 MANDATORY_OBJS=$(MANDATORY_SRCS:%.c=%.o)
 
 %.o : %.c
