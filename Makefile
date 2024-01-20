@@ -6,7 +6,7 @@
 #    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/20 23:55:22 by jho              ###   ########.fr        #
+#    Updated: 2024/01/21 00:33:13 by jho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,12 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)libft/ft_substr.c \
 			$(SOURCES)libft/ft_token.c \
 			$(SOURCES)main/main.c \
+			$(SOURCES)mrt/mrt_add_obj.c \
+			$(SOURCES)mrt/mrt_color.c \
 			$(SOURCES)mrt/mrt_destroy.c \
 			$(SOURCES)mrt/mrt_init.c \
 			$(SOURCES)mrt/mrt_raytrace.c \
+			$(SOURCES)mrt/mrt_sphere.c \
 			$(SOURCES)scene/scene_destroy.c \
 			$(SOURCES)scene/scene_show.c \
 			$(SOURCES)scene/scene_init.c \

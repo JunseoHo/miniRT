@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 23:54:32 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 00:22:59 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft.h"
 # include "scene.h"
 # include "vector.h"
+# define DEFAULT_COLOR 0xFF0000
 
 typedef struct s_amb
 {
@@ -32,12 +33,12 @@ typedef struct s_cam
 	double	fov;
 }	t_cam;
 
-typedef struct s_light
+typedef struct s_lit
 {
-	t_vec	position;
-	double	brightness;
+	t_vec	origin;
+	double	bright;
 	int		color;
-}	t_light;
+}	t_lit;
 
 typedef enum e_obj_type
 {
@@ -49,9 +50,9 @@ typedef enum e_obj_type
 typedef struct s_obj
 {
 	t_obj_type		type;
-	t_vec			position;
+	t_vec			origin;
 	t_vec			axis;
-	double			diameter;
+	double			radius;
 	double			height;
 	int				color;
 	struct s_obj	*next;
@@ -61,19 +62,15 @@ typedef struct s_mrt
 {
 	t_amb	amb;
 	t_cam	cam;
-	t_light	light;
+	t_lit	lit;
 	t_obj	*objs;
-	t_vec	viewport_center;
-	t_vec	viewport_horizontal;
-	t_vec	viewport_vertical;
-	double	viewport_width;
-	t_vec	pixel_horizontal;
-	t_vec	pixel_vertical;
-	t_vec	viewport_lefttop_dir;
 }	t_mrt;
 
+void	mrt_add_obj(t_mrt *mrt, t_obj *obj);
+int		mrt_color(int r, int g, int b);
 t_mrt	*mrt_destroy(t_mrt *mrt);
 t_mrt	*mrt_init(int argc, char **argv);
 void	mrt_raytrace(t_mrt *mrt, t_scene *scene);
+t_obj	*mrt_sphere(t_vec center, double diameter);
 
 #endif

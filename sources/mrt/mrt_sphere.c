@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
+/*   mrt_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 23:05:51 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 00:34:19 by jho              ###   ########.fr       */
+/*   Created: 2024/01/21 00:15:43 by jho               #+#    #+#             */
+/*   Updated: 2024/01/21 00:36:39 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
-# include <mlx.h>
-# include <stdlib.h>
-# define SCENE_WIDTH 1920
-# define SCENE_HEIGHT 1080
+#include "../../headers/mrt.h"
 
-typedef struct s_scene
+t_obj	*mrt_sphere(t_vec center, double diameter)
 {
-	void	*ptr;
-	void	*win;
-	int		bpp;
-	int		len;
-	void	*img;
-	int		endian;
-	char	*addr;
-	char	*loc;
-	int		buffer[SCENE_H][SCENE_WIDTH];
-}	t_scene;
+	t_obj	*sphere;
 
-t_scene	*scene_destroy(t_scene *scene);
-t_scene	*scene_init(char *name);
-void	scene_show(t_scene *scene);
-
-#endif
+	sphere = malloc(sizeof(t_obj));
+	if (sphere == NULL)
+		ft_except("Malloc failed.", errno);
+	sphere->type = SPHERE;
+	sphere->origin = center;
+	sphere->radius = diameter / 2;
+	sphere->color = DEFAULT_COLOR;
+	sphere->next = NULL;
+	return (sphere);
+}
