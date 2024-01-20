@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 04:53:49 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 05:18:06 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,18 @@ typedef struct s_ray
 	t_vec	dir;
 }	t_ray;
 
+typedef struct s_hit
+{
+	t_vec	origin;
+	t_vec	normal;
+	double	t;
+	bool	b_front;
+}	t_hit;
+
 void	mrt_add_obj(t_mrt *mrt, t_obj *obj);
 int		mrt_color(int r, int g, int b);
 t_mrt	*mrt_destroy(t_mrt *mrt);
-bool	mrt_hit_sphere(t_obj *sphere, t_ray ray);
+bool	mrt_hit_sphere(t_obj *sphere, t_ray ray, t_hit *hit);
 bool	mrt_hit(t_obj *obj, t_ray ray);
 t_mrt	*mrt_init(int argc, char **argv);
 t_vec	mrt_ray_at(t_ray ray, double t);

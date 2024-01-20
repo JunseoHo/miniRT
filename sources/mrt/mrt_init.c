@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 04:54:58 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 05:26:10 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_mrt	*mrt_init(int argc, char **argv)
 	mrt->amb.ratio = 0.2;
 	mrt->amb.color = mrt_color(255, 255, 255);
 	mrt->cam.eye = vec(0, 0, 0);
-	mrt->cam.at = vec(0, 0, 0);
+	mrt->cam.at = vec(0, 0, -1);
 	mrt->cam.up = vec(0, 1, 0);
-	mrt->cam.fov = 70;
+	mrt->cam.fov = 90;
 	mrt->cam.len = tan((mrt->cam.fov / 2) * (M_PI / 180)) * FOCAL_LEN * 2;
 	mrt->cam.horizontal = vec_cross(mrt->cam.at, mrt->cam.up);
 	mrt->cam.horizontal = vec_scale(vec_norm(mrt->cam.horizontal), mrt->cam.len);
@@ -46,6 +46,9 @@ t_mrt	*mrt_init(int argc, char **argv)
 	mrt->lit.color = mrt_color(10, 0, 255);
 	mrt_add_obj(mrt, mrt_sphere(vec(7, 0, -20.6), 12.6));
 	mrt_add_obj(mrt, mrt_sphere(vec(-7, 0, -20.6), 12.6));
+	mrt_add_obj(mrt, mrt_sphere(vec(0, -500, 0), 990));
+	mrt->objs->next->next->color = 0x3CB371;
+	// if you modify this section, you gay. sugo.
 	/*
 	 *	This section is for test only.
 	 */

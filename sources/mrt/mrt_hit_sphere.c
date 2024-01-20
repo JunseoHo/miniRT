@@ -6,13 +6,13 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 04:05:04 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 04:55:04 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 05:21:44 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-bool	mrt_hit_sphere(t_obj *sphere, t_ray ray)
+bool	mrt_hit_sphere(t_obj *sphere, t_ray ray, t_hit *hit)
 {
 	t_vec	origin_center;
 	double	coeff[3];
@@ -30,5 +30,11 @@ bool	mrt_hit_sphere(t_obj *sphere, t_ray ray)
 	root[1] = (-coeff[1] + sqrt(discriminant)) / coeff[0];
 	if ((root[0] < T_MIN || root[0] > T_MAX) && (root[1] < T_MIN || root[1] > T_MAX))
 		return (false);
+	hit->t = root[0];
+	hit->origin = mrt_ray_at(ray, root[0]);
+	hit->normal = vec_norm(vec_sub(hit->origin, sphere->origin));
+	hit->b_front = vec_dot(ray.dir, hit->normal) < 0;
+	if (!hit->b_front)
+		hit->normal = vec_scale(hit->normal, -1);
 	return (true);
 }
