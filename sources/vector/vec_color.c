@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_hit.c                                          :+:      :+:    :+:   */
+/*   vec_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 04:01:32 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 05:34:49 by jho              ###   ########.fr       */
+/*   Created: 2024/01/21 05:54:03 by jho               #+#    #+#             */
+/*   Updated: 2024/01/21 06:23:29 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/vector.h"
 
-bool	mrt_hit(t_obj *obj, t_ray ray, t_hit *hit)
+int	vec_color(t_vec u)
 {
-	if (obj->type == SPHERE)
-		return (mrt_hit_sphere(obj, ray, hit));
-	else if (obj->type == PLANE)
-		printf("Hit plane.\n"); /* Not implement. */
-	else if (obj->type == CYLINDER)
-		printf("Hit cylinder.\n"); /* Not implement. */
-	return (false);
+	int	color;
+
+	if (u.x > 1.0)
+		u.x = 1.0;
+	if (u.y > 1.0)
+		u.y = 1.0;
+	if (u.z > 1.0)
+		u.z = 1.0;
+	color = (int)(u.x * 255);
+	color <<= 8;
+	color |= (int)(u.y * 255);
+	color <<= 8;
+	color |= (int)(u.z * 255);
+	return (color);
 }

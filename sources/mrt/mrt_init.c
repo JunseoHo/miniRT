@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 05:26:10 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 06:25:06 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_mrt	*mrt_init(int argc, char **argv)
 	mrt_add_obj(mrt, mrt_sphere(vec(7, 0, -20.6), 12.6));
 	mrt_add_obj(mrt, mrt_sphere(vec(-7, 0, -20.6), 12.6));
 	mrt_add_obj(mrt, mrt_sphere(vec(0, -500, 0), 990));
-	mrt->objs->next->next->color = 0x3CB371;
+	mrt->objs->next->next->albedo = mrt_color(60, 179, 113);
 	// if you modify this section, you gay. sugo.
 	/*
 	 *	This section is for test only.

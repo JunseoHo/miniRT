@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 04:05:04 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 05:21:44 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 05:47:40 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ bool	mrt_hit_sphere(t_obj *sphere, t_ray ray, t_hit *hit)
 	hit->b_front = vec_dot(ray.dir, hit->normal) < 0;
 	if (!hit->b_front)
 		hit->normal = vec_scale(hit->normal, -1);
+	hit->albedo = sphere->albedo;
 	return (true);
 }

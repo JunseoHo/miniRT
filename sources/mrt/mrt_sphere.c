@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:15:43 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 00:36:39 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 05:51:08 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_obj	*mrt_sphere(t_vec center, double diameter)
 	sphere->type = SPHERE;
 	sphere->origin = center;
 	sphere->radius = diameter / 2;
-	sphere->color = DEFAULT_COLOR;
+	sphere->albedo = mrt_color(255, 0, 0);
 	sphere->next = NULL;
 	return (sphere);
 }

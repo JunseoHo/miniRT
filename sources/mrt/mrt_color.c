@@ -6,13 +6,13 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:01:59 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 00:03:08 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 05:50:29 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-int	mrt_color(int r, int g, int b)
+t_vec	mrt_color(int r, int g, int b)
 {
-	return ((r << 16) | (g << 8) | b);
+	return (vec((double)r / 255, (double)g / 255, (double)b / 255));
 }
