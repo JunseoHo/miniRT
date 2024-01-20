@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_ray.c                                          :+:      :+:    :+:   */
+/*   mrt_hit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 00:45:14 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 04:08:42 by jho              ###   ########.fr       */
+/*   Created: 2024/01/21 04:01:32 by jho               #+#    #+#             */
+/*   Updated: 2024/01/21 04:28:47 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-t_ray	mrt_ray(t_vec origin, t_vec dir)
+bool	mrt_hit(t_obj *obj, t_ray ray)
 {
-	t_ray	ray;
-
-	ray.origin = origin;
-	ray.dir = vec_norm(dir);
-	return (ray);
+	if (obj->type == SPHERE)
+		return (mrt_hit_sphere(obj, ray));
+	else if (obj->type == PLANE)
+		printf("Hit plane.\n"); /* Not implement. */
+	else if (obj->type == CYLINDER)
+		printf("Hit cylinder.\n"); /* Not implement. */
+	return (false);
 }

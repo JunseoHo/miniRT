@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:05:51 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 00:34:19 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 04:29:10 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SCENE_H
 # include <mlx.h>
 # include <stdlib.h>
-# define SCENE_WIDTH 1920
-# define SCENE_HEIGHT 1080
+# define SCENE_WIDTH 1000
+# define SCENE_HEIGHT 1000
 
 typedef struct s_scene
 {

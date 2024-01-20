@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 00:55:00 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/21 04:25:47 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,22 @@ t_mrt	*mrt_init(int argc, char **argv)
 	mrt->cam.at = vec(0, 0, -1);
 	mrt->cam.up = vec(0, 1, 0);
 	mrt->cam.fov = 90;
-	mrt->cam.side_len = tan((mrt->cam.fov /  2) / (M_PI / 180));
+	mrt->cam.len = tan((mrt->cam.fov / 2) * (M_PI / 180)) * FOCAL_LEN * 2;
+	mrt->cam.horizontal = vec_cross(mrt->cam.at, mrt->cam.up);
+	mrt->cam.horizontal = vec_scale(vec_norm(mrt->cam.horizontal), mrt->cam.len);
+	mrt->cam.vertical = vec_cross(mrt->cam.at, mrt->cam.horizontal);
+	mrt->cam.vertical = vec_scale(vec_norm(mrt->cam.vertical), -mrt->cam.len);
+	mrt->cam.leftbottom = vec_add(mrt->cam.eye,
+			vec_scale(vec_norm(mrt->cam.at), FOCAL_LEN));
+	mrt->cam.leftbottom = vec_sub(mrt->cam.leftbottom,
+			vec_scale(mrt->cam.horizontal, 0.5));
+	mrt->cam.leftbottom = vec_sub(mrt->cam.leftbottom,
+			vec_scale(mrt->cam.vertical, 0.5));
 	mrt->lit.origin = vec(-40, 0, 50);
 	mrt->lit.bright = 0.6;
 	mrt->lit.color = mrt_color(10, 0, 255);
-	mrt_add_obj(mrt, mrt_sphere(vec(15, 0, -20.6), 12.6));
-	mrt_add_obj(mrt, mrt_sphere(vec(-15, 15, -20.6), 12.6));
+	mrt_add_obj(mrt, mrt_sphere(vec(0, 0, -20.6), 12.6));
+	//mrt_add_obj(mrt, mrt_sphere(vec(-15, 15, -20.6), 12.6));
 	/*
 	 *	This section is for test only.
 	 */
