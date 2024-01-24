@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 05:53:13 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/24 20:04:41 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,12 @@ typedef struct s_hit
 void	mrt_add_obj(t_mrt *mrt, t_obj *obj);
 t_vec	mrt_color(int r, int g, int b);
 t_mrt	*mrt_destroy(t_mrt *mrt);
+bool	mrt_hit_plane(t_obj *sphere, t_ray ray, t_hit *hit);
 bool	mrt_hit_sphere(t_obj *sphere, t_ray ray, t_hit *hit);
 bool	mrt_hit(t_obj *obj, t_ray ray, t_hit *hit);
 t_mrt	*mrt_init(int argc, char **argv);
 t_vec	mrt_phong(t_mrt *mrt, t_ray ray, t_hit *hit);
+t_obj	*mrt_plane(t_vec center, t_vec normal);
 t_vec	mrt_ray_at(t_ray ray, double t);
 t_ray	mrt_ray(t_vec origin, t_vec dir);
 t_vec	mrt_raycast(t_mrt *mrt, t_ray ray);

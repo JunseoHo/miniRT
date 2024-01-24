@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_raycast.c                                      :+:      :+:    :+:   */
+/*   mrt_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 03:30:32 by jho               #+#    #+#             */
-/*   Updated: 2024/01/24 20:05:08 by jho              ###   ########.fr       */
+/*   Created: 2024/01/24 20:02:44 by jho               #+#    #+#             */
+/*   Updated: 2024/01/24 20:06:28 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-t_vec	mrt_raycast(t_mrt *mrt, t_ray ray)
+t_obj	*mrt_plane(t_vec center, t_vec normal)
 {
-	t_obj	*objs;
-	t_hit	hit;
-	t_hit	hit_nearest;
-	double	t_nearest;
-
-	objs = mrt->objs;
-	hit_nearest.t = INFINITY;
-	while (objs != NULL)
-	{
-		if (mrt_hit(objs, ray, &hit) && hit.t < hit_nearest.t)
-			hit_nearest = hit;
-		objs = objs->next;
-	}
-	if (hit_nearest.t != INFINITY)
-		return (mrt_phong(mrt, ray, &hit_nearest));
-	return (mrt_color(0, 0, 0));
+	t_obj	*plane;
+	
+	plane = malloc(sizeof(t_obj));
+	if (plane == NULL)
+		ft_except("Malloc failed.", errno);
+	plane->type = PLANE;
+	plane->origin = center;
+	plane->axis = normal;
+	plane->albedo = mrt_color(255, 0, 0);
+	plane->next = NULL;
+	return (plane);
 }

@@ -6,7 +6,7 @@
 #    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/21 05:59:21 by jho              ###   ########.fr        #
+#    Updated: 2024/01/24 20:04:57 by jho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,12 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt/mrt_add_obj.c \
 			$(SOURCES)mrt/mrt_color.c \
 			$(SOURCES)mrt/mrt_destroy.c \
+			$(SOURCES)mrt/mrt_hit_plane.c \
 			$(SOURCES)mrt/mrt_hit_sphere.c \
 			$(SOURCES)mrt/mrt_hit.c \
 			$(SOURCES)mrt/mrt_init.c \
 			$(SOURCES)mrt/mrt_phong.c \
+			$(SOURCES)mrt/mrt_plane.c \
 			$(SOURCES)mrt/mrt_ray_at.c \
 			$(SOURCES)mrt/mrt_ray.c \
 			$(SOURCES)mrt/mrt_raycast.c \
