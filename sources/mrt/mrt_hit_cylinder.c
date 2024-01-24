@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_hit.c                                          :+:      :+:    :+:   */
+/*   mrt_hit_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 04:01:32 by jho               #+#    #+#             */
-/*   Updated: 2024/01/24 20:43:42 by jho              ###   ########.fr       */
+/*   Created: 2024/01/24 20:42:25 by jho               #+#    #+#             */
+/*   Updated: 2024/01/24 20:54:23 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-bool	mrt_hit(t_obj *obj, t_ray ray, t_hit *hit)
+bool	mrt_hit_cylinder(t_obj *cylinder, t_ray ray, t_hit *hit)
 {
-	if (obj->type == SPHERE)
-		return (mrt_hit_sphere(obj, ray, hit));
-	else if (obj->type == PLANE)
-		return (mrt_hit_plane(obj, ray, hit));
-	else if (obj->type == CYLINDER)
-		return (mrt_hit_cylinder(obj, ray, hit));
+	/*
+		Point P(x, y, z)
+		Center C(a, b, c)
+		(x-a)^2 + (y-b)^2 = r^2
+		-0.5h + c <= z <= 0.5h + c
+
+		(P - C)(P - C) - (z - c)^2 - r^2 = 0
+		-0.5h + c <= z <= 0.5h + c
+	
+	*/
 	return (false);
 }
+
