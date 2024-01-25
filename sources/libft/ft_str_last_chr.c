@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_parse_amb.c                                    :+:      :+:    :+:   */
+/*   ft_str_last_chr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 13:41:48 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/25 16:44:35 by sejkim2          ###   ########.fr       */
+/*   Created: 2024/01/25 16:56:38 by sejkim2           #+#    #+#             */
+/*   Updated: 2024/01/25 17:06:48 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/libft.h"
 
-bool	mrt_parse_amb(t_amb *amb, char *line)
+char	*ft_str_last_chr(char *s, int c)
 {
-	char	*token;
-	bool	b_parse_success;
+	size_t	i;
+	size_t	len;
+	char	*p;
+	char	*result;
 
-	token = ft_token(line, 1);
-	b_parse_success = mrt_parse_double(&(amb->ratio), token, '\0');
-	free(token);
-	token = ft_token(line, 2);
-	b_parse_success &= mrt_parse_color(&(amb->color), token);
-	free(token);
-	return (b_parse_success);
+	p = (char *)s;
+	result = 0;
+	i = 0;
+	len = ft_strlen(s);
+	while (i <= len)
+	{
+		if (*(p + i) == (char)c)
+			result = p + i;
+		i++;
+	}
+	return (result);
 }

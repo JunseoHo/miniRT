@@ -6,7 +6,7 @@
 #    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/25 15:56:34 by sejkim2          ###   ########.fr        #
+#    Updated: 2024/01/25 17:07:00 by sejkim2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)libft/ft_substr.c \
 			$(SOURCES)libft/ft_token.c \
 			$(SOURCES)libft/ft_isdigit.c \
+			$(SOURCES)libft/ft_str_first_chr.c \
+			$(SOURCES)libft/ft_str_last_chr.c \
 			$(SOURCES)main/main.c \
 			$(SOURCES)mrt/mrt_init.c \
 			$(SOURCES)mrt/mrt_file_parse.c \

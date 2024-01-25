@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/25 15:56:45 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/25 16:19:51 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ typedef struct s_amb
 
 typedef struct s_cam
 {
-	t_vec	eye;
-	t_vec	at;
-	t_vec	up;
+	t_vec	eye;	//view point
+	t_vec	at;		//3d norm ori_vector
+	t_vec	up;		// 0 1 0 default
 	double	len;
 	t_vec	horizontal;
 	t_vec	vertical;
