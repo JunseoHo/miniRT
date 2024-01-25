@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:26:14 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 23:52:59 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/25 14:07:54 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 
 void	ft_except(char *msg, int stat);
+int		ft_isdigit(int c);
 int		ft_strcmp(char *s1, char *s2);
 size_t	ft_strlen(char *s);
 char	*ft_substr(char *s, size_t begin, size_t end);

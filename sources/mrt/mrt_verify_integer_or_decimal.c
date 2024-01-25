@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_init.c                                         :+:      :+:    :+:   */
+/*   mrt_verify_integer_or_decimal.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/25 15:22:08 by sejkim2          ###   ########.fr       */
+/*   Created: 2024/01/25 14:24:23 by sejkim2           #+#    #+#             */
+/*   Updated: 2024/01/25 15:14:20 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-t_mrt	*mrt_init(int argc, char **argv)
+bool	verify_integer_or_decimal(char *num)
 {
-	t_mrt	*mrt;
+	size_t		i;
+	size_t		num_len;
+	int			decimal_flag;
 
-	mrt = malloc(sizeof(t_mrt));
-	if (mrt == NULL)
-		ft_except("Malloc failed.", errno);
-	mrt->objs = NULL;
-	mrt_file_parse(mrt, argc, argv);
-	/* Not implemented. */
-	/*
-	 *	This section is for test only.
-	 */
-	// if you modify this section, you gay. sugo.
-	/*
-	 *	This section is for test only.
-	 */
-	return (mrt);
+	i = 0;
+	num_len = ft_strlen(num);
+	decimal_flag = 0;
+	if (num[0] == '+' || num[0] == '-')
+		i++;
+	while (i < num_len)
+	{
+		if (ft_isdigit(num[i]) == 0)
+		{
+			if (decimal_flag == 0 && num[i] == '.')
+				decimal_flag = 1;
+			else
+				return (false);
+		}
+		i++;
+	}
+	return (true);
 }

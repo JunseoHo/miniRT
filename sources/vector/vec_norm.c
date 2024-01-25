@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_norm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 22:44:33 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 22:45:22 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/25 11:42:29 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_vec	vec_norm(t_vec u)
 {
 	double	len;
-	t_vec	w;
 
 	len = vec_len(u);
 	return (vec(u.x / len, u.y / len, u.z / len));

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_init.c                                         :+:      :+:    :+:   */
+/*   mrt_parse_cam.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/25 15:22:08 by sejkim2          ###   ########.fr       */
+/*   Created: 2024/01/25 15:54:28 by sejkim2           #+#    #+#             */
+/*   Updated: 2024/01/25 15:55:51 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-t_mrt	*mrt_init(int argc, char **argv)
+bool	mrt_parse_cam(t_cam *cam, char *line)
 {
-	t_mrt	*mrt;
+	char	*token;
+	bool	b_parse_success;	
 
-	mrt = malloc(sizeof(t_mrt));
-	if (mrt == NULL)
-		ft_except("Malloc failed.", errno);
-	mrt->objs = NULL;
-	mrt_file_parse(mrt, argc, argv);
-	/* Not implemented. */
-	/*
-	 *	This section is for test only.
-	 */
-	// if you modify this section, you gay. sugo.
-	/*
-	 *	This section is for test only.
-	 */
-	return (mrt);
+	token = mrt_token(line, 1);
+	b_parse_success = mrt_parse_vector(&(cam->eye), token);
+	free(token);
+	token = mrt_token(line, 2);
+	b_parse_success &= mrt_parse_vector(&(cam->at), token);
+	free(token);
+	token = mrt_token(line, 3);
+	b_parse_success &= mrt_parse_double(&(cam->fov), token, '\0');
+	free(token);
+	return (b_parse_success);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parse_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:09:23 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 14:21:19 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/25 14:49:39 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool	mrt_parse_primary_color(int *color, char *token, int *index)
 	*color <<= 8;
 	*color |= primary_color;
 	return (true);
-}
+} 
 
 bool	mrt_parse_color(int *color, char *token)
 {

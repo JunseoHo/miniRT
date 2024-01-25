@@ -3,17 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
+#    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/24 20:43:58 by jho              ###   ########.fr        #
+#    Updated: 2024/01/25 15:56:34 by sejkim2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
-# CFLAGS=-Wall -Wextra -Werror
-CFLAGS=
-MLXFLAGS=-Lmlx -lmlx -framework OpenGL -framework Appkit
+CFLAGS=-Wall -Wextra -Werror
 NAME=miniRT
 SOURCES=./sources/
 HEADERS=./headers/
@@ -24,25 +22,16 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)libft/ft_strlen.c \
 			$(SOURCES)libft/ft_substr.c \
 			$(SOURCES)libft/ft_token.c \
+			$(SOURCES)libft/ft_isdigit.c \
 			$(SOURCES)main/main.c \
-			$(SOURCES)mrt/mrt_add_obj.c \
-			$(SOURCES)mrt/mrt_color.c \
-			$(SOURCES)mrt/mrt_destroy.c \
-			$(SOURCES)mrt/mrt_hit_cylinder.c \
-			$(SOURCES)mrt/mrt_hit_plane.c \
-			$(SOURCES)mrt/mrt_hit_sphere.c \
-			$(SOURCES)mrt/mrt_hit.c \
 			$(SOURCES)mrt/mrt_init.c \
-			$(SOURCES)mrt/mrt_phong.c \
-			$(SOURCES)mrt/mrt_plane.c \
-			$(SOURCES)mrt/mrt_ray_at.c \
-			$(SOURCES)mrt/mrt_ray.c \
-			$(SOURCES)mrt/mrt_raycast.c \
-			$(SOURCES)mrt/mrt_raytrace.c \
-			$(SOURCES)mrt/mrt_sphere.c \
-			$(SOURCES)scene/scene_destroy.c \
-			$(SOURCES)scene/scene_show.c \
-			$(SOURCES)scene/scene_init.c \
+			$(SOURCES)mrt/mrt_file_parse.c \
+			$(SOURCES)mrt/mrt_parse_line.c \
+			$(SOURCES)mrt/mrt_parse_amb.c \
+			$(SOURCES)mrt/mrt_parse_double.c \
+			$(SOURCES)mrt/mrt_verify_integer_or_decimal.c \
+			$(SOURCES)mrt/mrt_parse_color.c \
+			$(SOURCES)mrt/mrt_parse_cam.c \
 			$(SOURCES)vector/vec_add.c \
 			$(SOURCES)vector/vec_color.c \
 			$(SOURCES)vector/vec_cross.c \
@@ -61,7 +50,7 @@ MANDATORY_OBJS=$(MANDATORY_SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(MANDATORY_OBJS) $(HEADERS)
-	$(CC) $(CFLAGS) $(MANDATORY_OBJS) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(MANDATORY_OBJS) -o $(NAME)
 
 clean:
 	rm -Rf $(MANDATORY_OBJS)

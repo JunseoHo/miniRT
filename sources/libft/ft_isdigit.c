@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_ray.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 00:45:14 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 04:08:42 by jho              ###   ########.fr       */
+/*   Created: 2024/01/25 14:07:04 by sejkim2           #+#    #+#             */
+/*   Updated: 2024/01/25 14:07:29 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/libft.h"
 
-t_ray	mrt_ray(t_vec origin, t_vec dir)
+int	ft_isdigit(int c)
 {
-	t_ray	ray;
-
-	ray.origin = origin;
-	ray.dir = vec_norm(dir);
-	return (ray);
+	return (c >= '0' && c <= '9');
 }
