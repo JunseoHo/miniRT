@@ -6,7 +6,7 @@
 #    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/24 20:43:58 by jho              ###   ########.fr        #
+#    Updated: 2024/01/25 13:38:04 by jho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)main/main.c \
 			$(SOURCES)mrt/mrt_add_obj.c \
 			$(SOURCES)mrt/mrt_color.c \
+			$(SOURCES)mrt/mrt_cylinder.c \
 			$(SOURCES)mrt/mrt_destroy.c \
 			$(SOURCES)mrt/mrt_hit_cylinder.c \
 			$(SOURCES)mrt/mrt_hit_plane.c \
