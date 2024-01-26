@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:03:39 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/26 17:48:24 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/26 18:14:07 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	mrt_parse_sphere(t_obj **objs, char *line)
 	sphere->type = SPHERE;
 	sphere->next = NULL;
 	token = ft_token(line, 1);
-	b_parse_success = mrt_parse_vector(&(sphere->axis), token);
+	b_parse_success = mrt_parse_vector(&(sphere->origin), token);
 	free(token);
 	token = ft_token(line, 2);
 	b_parse_success &= mrt_parse_double(&(sphere->radius), token, '\0');
