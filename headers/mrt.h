@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/26 14:23:47 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/26 17:59:29 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_cam
 {
 	t_vec	eye;	//view point
 	t_vec	at;		//3d norm ori_vector
-	t_vec	up;		// 0 1 0 default
+	t_vec	up;		// default : 0 1 0
 	double	len;
 	t_vec	horizontal;
 	t_vec	vertical;
@@ -58,7 +58,7 @@ typedef struct s_obj
 	t_obj_type		type;
 	t_vec			origin;
 	t_vec			axis;
-	double			radius;		//반지름으로 수정됨
+	double			radius;		//modify : diameter->radius
 	double			height;
 	t_vec			albedo;
 	struct s_obj	*next;
@@ -100,6 +100,7 @@ bool	mrt_parse_vector(t_vec *vec, char *token);
 bool	mrt_parse_light(t_lit *lit, char *line);
 void	mrt_parse_add_obj(t_obj **objs, t_obj *obj);
 bool	mrt_parse_sphere(t_obj **objs, char *line);
-
+bool	mrt_parse_plane(t_obj **objs, char *line);
+bool	mrt_parse_cylinder(t_obj **objs, char *line);
 
 #endif

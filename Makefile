@@ -6,7 +6,7 @@
 #    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/26 14:23:40 by sejkim2          ###   ########.fr        #
+#    Updated: 2024/01/26 17:59:21 by sejkim2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt/mrt_parse_light.c \
 			$(SOURCES)mrt/mrt_parse_add_obj.c \
 			$(SOURCES)mrt/mrt_parse_sphere.c \
+			$(SOURCES)mrt/mrt_parse_plane.c \
+			$(SOURCES)mrt/mrt_parse_cylinder.c \
 			$(SOURCES)vector/vec_add.c \
 			$(SOURCES)vector/vec_color.c \
 			$(SOURCES)vector/vec_cross.c \
