@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_parse_cam.c                                    :+:      :+:    :+:   */
+/*   mrt_parse_light.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 15:54:28 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/26 12:43:57 by sejkim2          ###   ########.fr       */
+/*   Created: 2024/01/26 12:29:42 by sejkim2           #+#    #+#             */
+/*   Updated: 2024/01/26 13:58:25 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-bool	mrt_parse_cam(t_cam *cam, char *line)
+// L -40,0,30 0.7 255,255,220
+
+bool	mrt_parse_light(t_lit *lit, char *line)
 {
 	char	*token;
-	bool	b_parse_success;	
+	bool	b_parse_success;
 
 	token = ft_token(line, 1);
-	b_parse_success = mrt_parse_vector(&(cam->eye), token);
+	b_parse_success = mrt_parse_vector(&(lit->origin), token);
 	free(token);
 	token = ft_token(line, 2);
-	b_parse_success &= mrt_parse_vector(&(cam->at), token);
+	b_parse_success &= mrt_parse_double(&(lit->bright), token, '\0');
 	free(token);
 	token = ft_token(line, 3);
-	b_parse_success &= mrt_parse_double(&(cam->fov), token, '\0');
+	b_parse_success &= mrt_parse_color(&(lit->color), token);
 	free(token);
-	cam->up = vec(0, 1, 0);
-	return (b_parse_success);
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 14:20:28 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/25 16:46:47 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/26 13:14:11 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	mrt_parse_double(double *d, char *token, char end)
 
 	if (token == NULL)
 		return (false);
-	if (verify_integer_or_decimal(token) == false)
+	if (verify_integer_or_decimal(token, end) == false)
 		return (false);
 	*d = 0;
 	sign = 1;
