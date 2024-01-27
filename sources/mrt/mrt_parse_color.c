@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 14:27:40 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/26 17:48:21 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/27 14:13:49 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ bool	mrt_parse_color(t_vec *color, char *token)
 	int		index;
 
 	index = 0;
+	color->x = 0;
+	color->y = 0;
+	color->z = 0;
 	if (atod(&(color->x), &index, token) == false)
 		return (false);
 	if (token[index++] != ',')
@@ -38,5 +41,8 @@ bool	mrt_parse_color(t_vec *color, char *token)
 		return (false);
 	if (atod(&(color->z), &index, token) == false)
 		return (false);
+	color->x /= 255;
+	color->y /= 255;
+	color->z /= 255;
 	return (true);
 }
