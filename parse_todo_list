@@ -1,0 +1,8 @@
+exception
+1. file extension check	-> o
+2. memory free -> manage with exit();
+3. decimal error
+4. 중복된 심볼, 오브젝트가 없는 경우
+5. parse_double
+6. parse_color
+7. light -> list
