@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/27 12:10:19 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/27 13:36:00 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include "get_next_line.h"
 # include "libft.h"
+# include "scene.h"
 # include "vector.h"
 # define FOCAL_LEN 1.0
 # define T_MIN 1e-6
@@ -109,5 +110,12 @@ void	mrt_parse_add_obj(t_obj **objs, t_obj *obj);
 bool	mrt_parse_sphere(t_obj **objs, char *line);
 bool	mrt_parse_plane(t_obj **objs, char *line);
 bool	mrt_parse_cylinder(t_obj **objs, char *line);
+t_vec	mrt_phong(t_mrt *mrt, t_ray ray, t_hit *hit);
+t_obj	*mrt_plane(t_vec center, t_vec normal);
+t_vec	mrt_ray_at(t_ray ray, double t);
+t_ray	mrt_ray(t_vec origin, t_vec dir);
+t_vec	mrt_raycast(t_mrt *mrt, t_ray ray);
+void	mrt_raytrace(t_mrt *mrt, t_scene *scene);
+t_obj	*mrt_sphere(t_vec center, double diameter);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:11:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/25 14:25:20 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/27 13:37:34 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,3 @@ char	*ft_token(char *line, size_t target_index)
 		++index;
 	}
 }
-
-// static bool	verify_number(char *num)
-// {
-// 	int		i;
-// 	size_t	num_len;
-
-// 	i = 0;
-// 	while (i < num_len)
-// 	{
-// 		if (ft_isdigit(num[i]) == 0)
-// 			return (false);
-// 		i++;
-// 	}
-// 	return (true);
-// }
