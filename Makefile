@@ -6,12 +6,13 @@
 #    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/27 12:09:43 by jho              ###   ########.fr        #
+#    Updated: 2024/01/27 12:47:35 by sejkim2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
 CFLAGS=-Wall -Wextra -Werror
+MLXFLAGS=-Lmlx -lmlx -framework OpenGL -framework Appkit
 NAME=miniRT
 SOURCES=./sources/
 HEADERS=./headers/
@@ -66,7 +67,7 @@ MANDATORY_OBJS=$(MANDATORY_SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(MANDATORY_OBJS) $(HEADERS)
-	$(CC) $(CFLAGS) $(MANDATORY_OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(MANDATORY_OBJS) $(MLXFLAGS) -o $(NAME)
 
 clean:
 	rm -Rf $(MANDATORY_OBJS)
