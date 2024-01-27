@@ -6,7 +6,7 @@
 #    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/26 17:59:21 by sejkim2          ###   ########.fr        #
+#    Updated: 2024/01/27 12:09:43 by jho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,14 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)libft/ft_str_first_chr.c \
 			$(SOURCES)libft/ft_str_last_chr.c \
 			$(SOURCES)main/main.c \
+			$(SOURCES)mrt/mrt_add_obj.c \
+			$(SOURCES)mrt/mrt_color.c \
+			$(SOURCES)mrt/mrt_cylinder.c \
+			$(SOURCES)mrt/mrt_destroy.c \
+			$(SOURCES)mrt/mrt_hit_cylinder.c \
+			$(SOURCES)mrt/mrt_hit_plane.c \
+			$(SOURCES)mrt/mrt_hit_sphere.c \
+			$(SOURCES)mrt/mrt_hit.c \
 			$(SOURCES)mrt/mrt_init.c \
 			$(SOURCES)mrt/mrt_file_parse.c \
 			$(SOURCES)mrt/mrt_parse_line.c \

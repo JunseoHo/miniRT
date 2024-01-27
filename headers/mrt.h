@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/26 17:59:29 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/27 12:10:19 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,14 @@ typedef struct s_hit
 	t_vec	albedo;
 }	t_hit;
 
-//parse
+void	mrt_add_obj(t_mrt *mrt, t_obj *obj);
+t_vec	mrt_color(int r, int g, int b);
+t_obj	*mrt_cylinder(t_vec center, t_vec axis, double diameter, double height);
+t_mrt	*mrt_destroy(t_mrt *mrt);
+bool	mrt_hit_cylinder(t_obj *sphere, t_ray ray, t_hit *hit);
+bool	mrt_hit_plane(t_obj *sphere, t_ray ray, t_hit *hit);
+bool	mrt_hit_sphere(t_obj *sphere, t_ray ray, t_hit *hit);
+bool	mrt_hit(t_obj *obj, t_ray ray, t_hit *hit);
 t_mrt	*mrt_init(int argc, char **argv);
 bool	mrt_file_parse(t_mrt *mrt, int argc, char **argv);
 bool	mrt_parse_line(t_mrt *mrt, char *line);
