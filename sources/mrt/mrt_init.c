@@ -12,6 +12,14 @@
 
 #include "../../headers/mrt.h"
 
+static	bool	check_count_amb_and_cam_and_lit(t_mrt *mrt)
+{
+	if (mrt->amb.count_amb != 1 || mrt->cam.count_cam != 1 || mrt->lit.count_lit == 0)
+		return (false);
+	else
+		return (true);
+}
+
 t_mrt	*mrt_init(int argc, char **argv)
 {
 	t_mrt	*mrt;
@@ -20,7 +28,14 @@ t_mrt	*mrt_init(int argc, char **argv)
 	if (mrt == NULL)
 		ft_except("Malloc failed.", errno);
 	mrt->objs = NULL;
+	mrt->amb.count_amb = 0;
+	mrt->cam.count_cam = 0;
+	mrt->lit.count_lit = 0;
 	if (mrt_file_parse(mrt, argc, argv) == false)
+		return (NULL);
+	if (verify_value_range(mrt) == false)
+		return (NULL);
+	if (check_count_amb_and_cam_and_lit(mrt) == false)
 		return (NULL);
 	/* Not implemented. */
 	/*

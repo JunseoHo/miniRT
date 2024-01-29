@@ -21,6 +21,7 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)get_next_line/get_next_line_utils.c \
 			$(SOURCES)libft/ft_except.c \
 			$(SOURCES)libft/ft_strcmp.c \
+			$(SOURCES)libft/ft_strlcpy.c \
 			$(SOURCES)libft/ft_strlen.c \
 			$(SOURCES)libft/ft_substr.c \
 			$(SOURCES)libft/ft_token.c \
@@ -50,6 +51,7 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt/mrt_parse_sphere.c \
 			$(SOURCES)mrt/mrt_parse_plane.c \
 			$(SOURCES)mrt/mrt_parse_cylinder.c \
+			$(SOURCES)mrt/mrt_verify_value_range.c \
 			$(SOURCES)mrt/mrt_phong.c \
 			$(SOURCES)mrt/mrt_plane.c \
 			$(SOURCES)mrt/mrt_ray_at.c \

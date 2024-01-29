@@ -25,5 +25,6 @@ bool	mrt_parse_amb(t_amb *amb, char *line)
 	if (b_parse_success)
 		amb->color = mrt_color(amb->color.x, amb->color.y, amb->color.z);
 	free(token);
+	amb->count_amb++;
 	return (b_parse_success);
 }

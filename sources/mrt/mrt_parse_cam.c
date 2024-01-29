@@ -27,5 +27,6 @@ bool	mrt_parse_cam(t_cam *cam, char *line)
 	b_parse_success &= mrt_parse_double(&(cam->fov), token, '\0');
 	free(token);
 	cam->up = vec(0, 1, 0);
+	cam->count_cam++;
 	return (b_parse_success);
 }

@@ -23,6 +23,7 @@ char	*ft_str_first_chr(char *s, int c);
 int		ft_strcmp(char *s1, char *s2);
 size_t	ft_strlen(char *s);
 char	*ft_str_last_chr(char *s, int c);
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
 char	*ft_substr(char *s, size_t begin, size_t end);
 char	*ft_token(char *line, size_t target_index);
 

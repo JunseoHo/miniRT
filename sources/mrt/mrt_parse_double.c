@@ -19,7 +19,7 @@ bool	mrt_parse_double(double *d, char *token, char end)
 
 	if (token == NULL)
 		return (false);
-	if (verify_integer_or_decimal(token, end) == false)
+	if (verify_integer_or_decimal(&token, end) == false)
 		return (false);
 	*d = 0;
 	sign = 1;

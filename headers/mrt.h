@@ -24,12 +24,14 @@
 
 typedef struct s_amb
 {
+	unsigned	int	count_amb;
 	double	ratio;
 	t_vec	color;
 }	t_amb;
 
 typedef struct s_cam
 {
+	unsigned	int	count_cam;
 	t_vec	eye;	//view point
 	t_vec	at;		//3d norm ori_vector
 	t_vec	up;		// default : 0 1 0
@@ -42,6 +44,7 @@ typedef struct s_cam
 
 typedef struct s_lit
 {
+	unsigned	int	count_lit;
 	t_vec	origin;
 	double	bright;
 	t_vec	color;
@@ -101,7 +104,7 @@ bool	mrt_file_parse(t_mrt *mrt, int argc, char **argv);
 bool	mrt_parse_line(t_mrt *mrt, char *line);
 bool	mrt_parse_amb(t_amb *amb, char *line);
 bool	mrt_parse_double(double *d, char *token, char end);
-bool	verify_integer_or_decimal(char *num, char end);
+bool	verify_integer_or_decimal(char **num, char end);
 bool	mrt_parse_color(t_vec *color, char *token);
 bool	mrt_parse_cam(t_cam *cam, char *line);
 bool	mrt_parse_vector(t_vec *vec, char *token);
@@ -110,6 +113,7 @@ void	mrt_parse_add_obj(t_obj **objs, t_obj *obj);
 bool	mrt_parse_sphere(t_obj **objs, char *line);
 bool	mrt_parse_plane(t_obj **objs, char *line);
 bool	mrt_parse_cylinder(t_obj **objs, char *line);
+bool	verify_value_range(t_mrt *mrt);
 t_vec	mrt_phong(t_mrt *mrt, t_ray ray, t_hit *hit);
 t_obj	*mrt_plane(t_vec center, t_vec normal);
 t_vec	mrt_ray_at(t_ray ray, double t);

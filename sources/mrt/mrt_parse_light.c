@@ -26,5 +26,6 @@ bool	mrt_parse_light(t_lit *lit, char *line)
 	token = ft_token(line, 3);
 	b_parse_success &= mrt_parse_color(&(lit->color), token);
 	free(token);
+	lit->count_lit++;
 	return (true);
 }
