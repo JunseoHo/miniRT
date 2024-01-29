@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/25 15:21:27 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/29 10:38:08 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_mrt	*mrt_init(int argc, char **argv)
 	mrt->lit.origin = vec(-40, 40, 0);
 	mrt->lit.bright = 0.8;
 	mrt->lit.color = mrt_color(255, 255, 255);
-	mrt_add_obj(mrt, mrt_cylinder(vec(0, 0, -20.6), vec(0, 1, 0), 14.2, 21.42));
+	mrt_add_obj(mrt, mrt_cylinder(vec(0, 0, -20.6), vec(0, 1, 0), 15.2, 9.42));
 	//mrt_add_obj(mrt, mrt_sphere(vec(2, 0, -5.6), 1.6));
 	//mrt->objs->albedo = mrt_color(0, 255, 255);
 	//mrt_add_obj(mrt, mrt_sphere(vec(7, 0, -20.6), 12.6));
