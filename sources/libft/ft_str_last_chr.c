@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_last_chr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:56:38 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/25 17:06:48 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:01:41 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/libft.h"
 
-char	*ft_str_last_chr(char *s, int c)
+char	*ft_strrchr(char *s, int c)
 {
 	size_t	i;
 	size_t	len;

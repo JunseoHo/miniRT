@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 04:05:04 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 05:47:40 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:08:37 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	mrt_hit_sphere(t_obj *sphere, t_ray ray, t_hit *hit)
 	root[1] = (-coeff[1] + sqrt(discriminant)) / coeff[0];
 	if ((root[0] < T_MIN || root[0] > T_MAX) && (root[1] < T_MIN || root[1] > T_MAX))
 		return (false);
-	hit->t = root[0];
+	hit->len = root[0];
 	hit->origin = mrt_ray_at(ray, root[0]);
 	hit->normal = vec_norm(vec_sub(hit->origin, sphere->origin));
 	hit->b_front = vec_dot(ray.dir, hit->normal) < 0;

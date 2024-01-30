@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:08:51 by jho               #+#    #+#             */
-/*   Updated: 2024/01/19 18:17:11 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:05:58 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	mrt_parse_sphere(t_obj **objs, char *line)
 	sphere = malloc(sizeof(t_obj));
 	if (sphere == NULL)
 		mrt_except("Malloc failed.", errno);
-	sphere->type = SPHERE;
+	sphere->type = SP;
 	sphere->next = NULL;
 	token = mrt_token(line, 1);
 	b_parse_success = mrt_parse_vector(&(sphere->position), token);

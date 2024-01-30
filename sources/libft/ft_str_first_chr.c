@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_first_chr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:52:22 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/25 17:06:37 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:01:30 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/libft.h"
 
-char	*ft_str_first_chr(char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	char	*p;
 	size_t	i;

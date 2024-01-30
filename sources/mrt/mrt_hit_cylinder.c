@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:42:25 by jho               #+#    #+#             */
-/*   Updated: 2024/01/29 12:15:46 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:08:37 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ bool	mrt_hit_cylinder_side(t_obj *cy, t_ray ray, t_hit *hit)
 		return (false);
 	if (!mrt_hit_cylinder_check_height(cy, mrt_ray_at(ray, t)))
 		return (false);
-	hit->t = (-coeff[1] - sqrt(determinant)) / 2 * coeff[0];
-	hit->origin = mrt_ray_at(ray, hit->t);
+	hit->len = (-coeff[1] - sqrt(determinant)) / 2 * coeff[0];
+	hit->origin = mrt_ray_at(ray, hit->len);
 	hit->normal = vec_norm(vec_sub(hit->origin, cy->origin));
 	hit->b_front = vec_dot(ray.dir, hit->normal) < 0;
 	if (!hit->b_front)

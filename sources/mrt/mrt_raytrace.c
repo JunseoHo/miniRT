@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:47:45 by jho               #+#    #+#             */
-/*   Updated: 2024/01/24 18:27:45 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:04:36 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	mrt_raytrace(t_mrt *mrt, t_scene *scene)
 		while (++col < SCENE_WIDTH)
 		{
 			dir = mrt->cam.leftbottom;
-			dir = vec_add(dir, vec_scale(mrt->cam.horizontal,
+			dir = vec_add(dir, vec_scale(mrt->cam.row_vec,
 						(double)col / (SCENE_WIDTH - 1)));
-			dir = vec_add(dir, vec_scale(mrt->cam.vertical,
+			dir = vec_add(dir, vec_scale(mrt->cam.col_vec,
 						(double)row / (SCENE_HEIGHT - 1)));
 			ray = mrt_ray(mrt->cam.eye, dir);
 			img_offset[0] = (SCENE_HEIGHT - row - 1) * scene->len;

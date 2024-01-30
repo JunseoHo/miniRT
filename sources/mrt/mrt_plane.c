@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:02:44 by jho               #+#    #+#             */
-/*   Updated: 2024/01/24 20:06:28 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:06:02 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_obj	*mrt_plane(t_vec center, t_vec normal)
 	plane = malloc(sizeof(t_obj));
 	if (plane == NULL)
 		ft_except("Malloc failed.", errno);
-	plane->type = PLANE;
+	plane->type = PL;
 	plane->origin = center;
 	plane->axis = normal;
 	plane->albedo = mrt_color(255, 0, 0);

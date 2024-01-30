@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:15:43 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 05:51:08 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:05:58 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_obj	*mrt_sphere(t_vec center, double diameter)
 	sphere = malloc(sizeof(t_obj));
 	if (sphere == NULL)
 		ft_except("Malloc failed.", errno);
-	sphere->type = SPHERE;
+	sphere->type = SP;
 	sphere->origin = center;
 	sphere->radius = diameter / 2;
 	sphere->albedo = mrt_color(255, 0, 0);

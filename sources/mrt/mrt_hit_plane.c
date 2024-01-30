@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 19:39:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/24 20:08:53 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:08:37 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	mrt_hit_plane(t_obj *pl, t_ray ray, t_hit *hit)
 	t = numerator / denominator;
 	if (t < 0)
 		return (false);
-	hit->t = t;
+	hit->len = t;
 	hit->origin = mrt_ray_at(ray, t);
 	hit->normal = pl->axis;
 	hit->albedo = pl->albedo;

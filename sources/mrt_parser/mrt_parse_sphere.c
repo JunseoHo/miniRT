@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parse_sphere.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:03:39 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/26 18:14:07 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:05:58 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	mrt_parse_sphere(t_obj **objs, char *line)
 	sphere = malloc(sizeof(t_obj));
 	if (sphere == NULL)
 		ft_except("Malloc failed.", errno);
-	sphere->type = SPHERE;
+	sphere->type = SP;
 	sphere->next = NULL;
 	token = ft_token(line, 1);
 	b_parse_success = mrt_parse_vector(&(sphere->origin), token);

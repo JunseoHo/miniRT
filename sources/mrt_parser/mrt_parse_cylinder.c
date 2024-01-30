@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parse_cylinder.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:55:33 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/26 17:59:42 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:06:09 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	mrt_parse_cylinder(t_obj **objs, char *line)
 	sphere = malloc(sizeof(t_obj));
 	if (sphere == NULL)
 		ft_except("Malloc failed.", errno);
-	sphere->type = CYLINDER;
+	sphere->type = CY;
 	sphere->next = NULL;
 	token = ft_token(line, 1);
 	b_parse_success = mrt_parse_vector(&(sphere->origin), token);

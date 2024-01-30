@@ -19,6 +19,6 @@ bool	verify_value_range(t_mrt *mrt)
     b_parse_success &= verify_range(mrt->cam.at.z, -1, 1);
     b_parse_success &= verify_range(mrt->cam.fov, 0, 180);
 
-    b_parse_success &= verify_range(mrt->lit.bright, 0.0, 1.0);
+    b_parse_success &= verify_range(mrt->lit.brightness, 0.0, 1.0);
     return (b_parse_success);
 }

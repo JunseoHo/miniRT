@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parse_amb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 13:41:48 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/27 14:12:30 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:02:30 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ bool	mrt_parse_amb(t_amb *amb, char *line)
 	char	*token;
 	bool	b_parse_success;
 
+	
 	token = ft_token(line, 1);
 	b_parse_success = mrt_parse_double(&(amb->ratio), token, '\0');
 	free(token);

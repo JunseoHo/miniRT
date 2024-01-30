@@ -6,13 +6,13 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 09:06:11 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:06:21 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:00:27 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/get_next_line.h"
 
-void	remove_node(t_fd_node **head, int fd)
+void	gnl_remove_node(t_fd_node **head, int fd)
 {
 	t_fd_node	*temp;
 
@@ -41,7 +41,7 @@ void	remove_node(t_fd_node **head, int fd)
 	}
 }
 
-size_t	ft_gnl_strlen(const char *str)
+size_t	gnl_strlen(const char *str)
 {
 	size_t	len;
 
@@ -53,7 +53,7 @@ size_t	ft_gnl_strlen(const char *str)
 	return (len);
 }
 
-void	ft_strcpy(char *dest, char *src, size_t len)
+void	gnl_strcpy(char *dest, char *src, size_t len)
 {
 	size_t	idx;
 
@@ -67,26 +67,26 @@ void	ft_strcpy(char *dest, char *src, size_t len)
 	}
 }
 
-char	*ft_gnl_strjoin(char *pre, char *pst)
+char	*gnl_strjoin(char *pre, char *pst)
 {
 	char	*join;
 	size_t	prelen;
 	size_t	pstlen;
 
-	prelen = ft_gnl_strlen(pre);
-	pstlen = ft_gnl_strlen(pst);
+	prelen = gnl_strlen(pre);
+	pstlen = gnl_strlen(pst);
 	join = (char *)malloc(prelen + pstlen + 1);
 	if (join == 0)
 		return (0);
-	ft_strcpy(join, pre, prelen);
-	ft_strcpy(join + prelen, pst, pstlen);
+	gnl_strcpy(join, pre, prelen);
+	gnl_strcpy(join + prelen, pst, pstlen);
 	*(join + prelen + pstlen) = '\0';
 	if (pre != 0)
 		free(pre);
 	return (join);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*gnl_strchr(const char *s, int c)
 {
 	size_t	idx;
 	size_t	len;
@@ -94,7 +94,7 @@ char	*ft_strchr(const char *s, int c)
 	if (s == 0)
 		return (0);
 	idx = 0;
-	len = ft_gnl_strlen(s);
+	len = gnl_strlen(s);
 	while (idx <= len)
 	{
 		if (*(s + idx) == (char)c)

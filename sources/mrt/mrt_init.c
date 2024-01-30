@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/29 10:38:08 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:04:36 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ t_mrt	*mrt_init(int argc, char **argv)
 	// mrt->cam.at = vec(0, 0, -1);
 	// mrt->cam.up = vec(0, 1, 0);
 	// mrt->cam.fov = 90;
-	mrt->cam.len = tan((mrt->cam.fov / 2) * (M_PI / 180)) * FOCAL_LEN * 2;
-	mrt->cam.horizontal = vec_cross(mrt->cam.at, mrt->cam.up);
-	mrt->cam.horizontal = vec_scale(vec_norm(mrt->cam.horizontal), mrt->cam.len);
-	mrt->cam.vertical = vec_cross(mrt->cam.at, mrt->cam.horizontal);
-	mrt->cam.vertical = vec_scale(vec_norm(mrt->cam.vertical), -mrt->cam.len);
+	mrt->cam.edge_len = tan((mrt->cam.fov / 2) * (M_PI / 180)) * FOCAL_LEN * 2;
+	mrt->cam.row_vec = vec_cross(mrt->cam.at, mrt->cam.up);
+	mrt->cam.row_vec = vec_scale(vec_norm(mrt->cam.row_vec), mrt->cam.edge_len);
+	mrt->cam.col_vec = vec_cross(mrt->cam.at, mrt->cam.row_vec);
+	mrt->cam.col_vec = vec_scale(vec_norm(mrt->cam.col_vec), -mrt->cam.edge_len);
 	mrt->cam.leftbottom = vec_add(mrt->cam.eye,
 			vec_scale(vec_norm(mrt->cam.at), FOCAL_LEN));
 	mrt->cam.leftbottom = vec_sub(mrt->cam.leftbottom,
-			vec_scale(mrt->cam.horizontal, 0.5));
+			vec_scale(mrt->cam.row_vec, 0.5));
 	mrt->cam.leftbottom = vec_sub(mrt->cam.leftbottom,
-			vec_scale(mrt->cam.vertical, 0.5));
+			vec_scale(mrt->cam.col_vec, 0.5));
 	// mrt->lit.origin = vec(-40, 40, 0);
 	// mrt->lit.bright = 0.8;
 	// mrt->lit.color = mrt_color(255, 255, 255);

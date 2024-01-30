@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 13:35:51 by jho               #+#    #+#             */
-/*   Updated: 2024/01/25 13:37:30 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:06:09 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_obj	*mrt_cylinder(t_vec center, t_vec axis, double diameter, double height)
 	cylinder = malloc(sizeof(t_obj));
 	if (cylinder == NULL)
 		ft_except("Malloc failed.", errno);
-	cylinder->type = CYLINDER;
+	cylinder->type = CY;
 	cylinder->origin = center;
 	cylinder->axis = axis;
 	cylinder->radius = diameter / 2;

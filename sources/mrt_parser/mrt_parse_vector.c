@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parse_vector.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:30:18 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/26 13:57:46 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:01:41 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ bool	mrt_parse_vector(t_vec *vec, char *token)
 	char	*tmp_token;
 	bool	b_parse_success;
 
-	first_coma = ft_str_first_chr(token, ',');
-	second_coma = ft_str_last_chr(token, ',');
+	first_coma = ft_strchr(token, ',');
+	second_coma = ft_strrchr(token, ',');
 	if (first_coma == second_coma)
 		return (false);
 	tmp_token = ft_substr(token, 0, first_coma - token + 1);

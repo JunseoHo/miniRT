@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 09:06:42 by jho               #+#    #+#             */
-/*   Updated: 2024/01/03 09:06:51 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 16:00:34 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ typedef struct s_fd_node
 }	t_fd_node;
 
 char	*get_next_line(int fd);
-size_t	ft_gnl_strlen(const char *s);
-void	ft_strcpy(char *dest, char *src, size_t len);
-char	*ft_gnl_strjoin(char *pre, char *pst);
-char	*ft_strchr(const char *s, int c);
-char	*mfree(char **p1, char *p2, t_fd_node **head, int fd);
-void	remove_node(t_fd_node **head, int fd);
+size_t	gnl_strlen(const char *s);
+void	gnl_strcpy(char *dest, char *src, size_t len);
+char	*gnl_strjoin(char *pre, char *pst);
+char	*gnl_strchr(const char *s, int c);
+char	*gnl_mfree(char **p1, char *p2, t_fd_node **head, int fd);
+void	gnl_remove_node(t_fd_node **head, int fd);
 #endif
