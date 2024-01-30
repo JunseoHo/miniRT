@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_color.c                                        :+:      :+:    :+:   */
+/*   mrt_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 05:54:03 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 16:16:59 by jho              ###   ########.fr       */
+/*   Created: 2024/01/21 00:15:43 by jho               #+#    #+#             */
+/*   Updated: 2024/01/30 19:27:47 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/vector.h"
-#include <stdio.h>
+#include "../../headers/mrt.h"
 
-int	vec_color(t_vec u)
+t_obj	*mrt_sphere(t_vec center, double diameter)
 {
-	int	color;
+	t_obj	*sp;
 
-	if (u.x > 1.0)
-		u.x = 1.0;
-	if (u.y > 1.0)
-		u.y = 1.0;
-	if (u.z > 1.0)
-		u.z = 1.0;
-	color = (int)(u.x * 255);
-	color <<= 8;
-	color |= (int)(u.y * 255);
-	color <<= 8;
-	color |= (int)(u.z * 255);
-	return (color);
+	sp = malloc(sizeof(t_obj));
+	if (sp == NULL)
+		ft_except("Malloc failed.", errno);
+	sp->type = SP;
+	sp->origin = center;
+	sp->radius = diameter / 2;
+	sp->albedo = mrt_color(255, 0, 0);
+	sp->next = NULL;
+	return (sp);
 }

@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 16:13:32 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 19:25:52 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "get_next_line.h"
 # include "mrt_parser.h"
 # include "scene.h"
-# define FOCAL_LEN 10.0
-# define T_MIN 1e-6
-# define T_MAX INFINITY
+# define FOCAL_LEN		10.0
+# define DIST_MIN		0.000001
+# define DIST_MAX		2147483647
 
 typedef struct s_ray
 {
@@ -31,8 +31,7 @@ typedef struct s_hit
 {
 	t_vec	origin;
 	t_vec	normal;
-	double	len;
-	t_bool	b_front;
+	double	dist;
 	t_vec	albedo;
 }	t_hit;
 

@@ -6,13 +6,13 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:46:22 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 00:47:09 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 19:28:26 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt.h"
 
-t_vec	mrt_ray_at(t_ray ray, double t)
+t_vec	mrt_ray_at(t_ray ray, double dist)
 {
-	return (vec_add(ray.origin, vec_scale(ray.dir, t)));
+	return (vec_add(ray.origin, vec_scale(ray.dir, dist)));
 }

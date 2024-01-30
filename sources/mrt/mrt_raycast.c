@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 03:30:32 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 16:08:37 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/30 18:46:06 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ t_vec	mrt_raycast(t_mrt *mrt, t_ray ray)
 	double	t_nearest;
 
 	objs = mrt->objs;
-	hit_nearest.len = INFINITY;
+	hit_nearest.dist = DIST_MAX;
 	while (objs != NULL)
 	{
-		if (mrt_hit(objs, ray, &hit) && hit.len < hit_nearest.len)
+		if (mrt_hit(objs, ray, &hit) && hit.dist < hit_nearest.dist)
 			hit_nearest = hit;
 		objs = objs->next;
 	}
-	if (hit_nearest.len != INFINITY)
+	if (hit_nearest.dist != DIST_MAX)
 		return (mrt_phong(mrt, ray, &hit_nearest));
 	return (mrt_color(0, 0, 0));
 }
