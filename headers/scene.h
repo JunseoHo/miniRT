@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:05:51 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 04:29:10 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/27 14:53:51 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <stdlib.h>
 # define SCENE_WIDTH 1000
 # define SCENE_HEIGHT 1000
+# define KEY_PRESS_EVENT	2
+# define KEY_CLICK_EXIT		17
+# define KEY_ESC			53
 
 typedef struct s_scene
 {

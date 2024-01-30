@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_str_first_chr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 14:40:19 by jho               #+#    #+#             */
-/*   Updated: 2024/01/27 14:22:00 by sejkim2          ###   ########.fr       */
+/*   Created: 2024/01/25 16:52:22 by sejkim2           #+#    #+#             */
+/*   Updated: 2024/01/25 17:06:37 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_str_first_chr(char *s, int c)
 {
-	t_mrt	*mrt;
-	t_scene	*scene;
+	char	*p;
+	size_t	i;
+	size_t	len;
 
-	mrt = mrt_init(argc, argv);
-	if (mrt == NULL)
-		ft_except("Error", 1);
-	scene = scene_init("miniRT");
-	mrt_raytrace(mrt, scene);
-	scene_show(scene);
-	mrt_destroy(mrt);
-	scene_destroy(scene);
+	p = (char *)s;
+	i = 0;
+	len = ft_strlen(s);
+	while (i <= len)
+	{
+		if (*(p + i) == (char)c)
+			return (p + i);
+		else
+			i++;
+	}
 	return (0);
 }

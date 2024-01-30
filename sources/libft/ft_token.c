@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_token.c                                        :+:      :+:    :+:   */
+/*   ft_token.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:11:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/20 23:30:58 by jho              ###   ########.fr       */
+/*   Updated: 2024/01/27 13:37:34 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ char	*ft_token(char *line, size_t target_index)
 	index = 0;
 	while (1)
 	{
+		while (ft_is_whitespace(line[begin]))
+			++begin;
+		end = begin;
 		while (!ft_is_whitespace(line[end]))
 			++end;
 		if (begin == end)
