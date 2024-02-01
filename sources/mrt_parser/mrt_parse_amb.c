@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 13:41:48 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/01 14:46:22 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/01 16:38:52 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ t_bool	mrt_parse_amb(t_amb *amb, char *line)
 	free(token);
 	token = ft_token(line, 2);
 	b_parse_success &= mrt_parse_color(&(amb->color), token);
-	// if (b_parse_success)
-	// 	amb->color = mrt_color(amb->color.x, amb->color.y, amb->color.z);
 	free(token);
 	amb->b_init = TRUE;
 	return (b_parse_success);

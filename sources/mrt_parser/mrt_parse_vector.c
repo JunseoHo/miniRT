@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:30:18 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/01 14:20:49 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/01 17:01:58 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_bool	mrt_parse_vector(t_vec *vec, char *token)
 	tmp_token = ft_substr(token, 0, first_coma - token + 1);
 	b_parse_success = mrt_parse_double(&vec->x, tmp_token, ',');
 	free(tmp_token);
-	tmp_token = ft_substr(token, first_coma - token + 1, second_coma - token + 1);
+	tmp_token = ft_substr(token, first_coma - token + 1, \
+	second_coma - token + 1);
 	b_parse_success &= mrt_parse_double(&vec->y, tmp_token, ',');
 	free(tmp_token);
 	tmp_token = ft_substr(token, second_coma - token + 1, ft_strlen(token));

@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:55:33 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/01 14:21:10 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/01 16:39:59 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_bool	mrt_parse_cylinder(t_obj **objs, char *line)
 	token = ft_token(line, 3);
 	b_parse_success &= mrt_parse_double(&(sphere->radius), token, '\0');
 	if (b_parse_success)
-		sphere->radius /= 2;	//diameter -> radius
+		sphere->radius /= 2;
 	free(token);
 	token = ft_token(line, 4);
 	b_parse_success &= mrt_parse_double(&(sphere->height), token, '\0');
