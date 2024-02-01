@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   mrt.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 21:09:37 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:26:28 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MRT_H
 # define MRT_H
-# include <stdio.h>
-# include <fcntl.h>
-# include "get_next_line.h"
 # include "mrt_parser.h"
 # include "scene.h"
 # define FOCAL_LEN		10.0

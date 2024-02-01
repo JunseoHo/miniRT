@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parse_plane.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:24:21 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/30 16:06:02 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:20:59 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
-bool	mrt_parse_plane(t_obj **objs, char *line)
+t_bool	mrt_parse_plane(t_obj **objs, char *line)
 {
 	t_obj	*plane;
 	char	*token;
-	bool	b_parse_success;
+	t_bool	b_parse_success;
 
 	plane = malloc(sizeof(t_obj));
 	if (plane == NULL)
@@ -33,5 +33,5 @@ bool	mrt_parse_plane(t_obj **objs, char *line)
 	b_parse_success = mrt_parse_color(&(plane->albedo), token);
 	free(token);
 	mrt_parse_add_obj(objs, plane);
-	return (true);
+	return (b_parse_success);
 }

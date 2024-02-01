@@ -1,6 +1,1 @@
-file extension check	-> o
 memory free -> manage for exit()
-decimal error -> 6자리로 커트 필요 -> o
-중복된 심볼, 오브젝트가 없는 경우 -> amb, cam에 대해서는 개수를 세는 변수 추가 -> o
-light -> list로 수정 필요
-parse -> 1.0000000000000001이 input일 때

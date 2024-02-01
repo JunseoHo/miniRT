@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_add_obj.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:20:39 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 00:33:05 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:21:39 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
 void	mrt_add_obj(t_mrt *mrt, t_obj *obj)
 {

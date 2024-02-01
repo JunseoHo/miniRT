@@ -1,0 +1,17 @@
+// mrt->amb.ratio = 0.2;
+// mrt->amb.color = mrt_color(255, 255, 255);
+// mrt->cam.eye = vec(0, 0, 0);
+// mrt->cam.at = vec(0, 0, -1);
+// mrt->cam.up = vec(0, 1, 0);
+// mrt->cam.fov = 90;
+// mrt->lit.origin = vec(-40, 40, 0);
+// mrt->lit.bright = 0.8;
+// mrt->lit.color = mrt_color(255, 255, 255);
+// mrt_add_obj(mrt, mrt_cylinder(vec(0, 0, -20.6), vec(0, 1, 0), 14.2, 21.42));
+// mrt_add_obj(mrt, mrt_sphere(vec(2, 0, -5.6), 1.6));
+// mrt->objs->albedo = mrt_color(0, 255, 255);
+// mrt_add_obj(mrt, mrt_sphere(vec(7, 0, -20.6), 12.6));
+// mrt_add_obj(mrt, mrt_sphere(vec(0, 0, -50.6), 12.6));
+// mrt->objs->next->next->albedo = mrt_color(0, 0, 255);
+// mrt_add_obj(mrt, mrt_plane(vec(0, -10, 0), vec(0, 1, 0)));
+// mrt->objs->next->next->next->albedo = mrt_color(60, 179, 113);

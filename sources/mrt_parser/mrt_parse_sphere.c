@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parse_sphere.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:03:39 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/30 16:05:58 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:20:56 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// pl 0.0,0.0,-10.0 0.0,1.0,0.0 0,0,255
-// cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255
+#include "../../headers/mrt_parser.h"
 
-#include "../../headers/mrt.h"
-
-bool	mrt_parse_sphere(t_obj **objs, char *line)
+t_bool	mrt_parse_sphere(t_obj **objs, char *line)
 {
 	t_obj	*sphere;
 	char	*token;
-	bool	b_parse_success;
+	t_bool	b_parse_success;
 
 	sphere = malloc(sizeof(t_obj));
 	if (sphere == NULL)
@@ -38,5 +35,5 @@ bool	mrt_parse_sphere(t_obj **objs, char *line)
 	b_parse_success &= mrt_parse_color(&(sphere->albedo), token);
 	free(token);
 	mrt_parse_add_obj(objs, sphere);
-	return (true);
+	return (b_parse_success);
 }

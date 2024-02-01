@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:15:43 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 19:27:47 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:20:42 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
 t_obj	*mrt_sphere(t_vec center, double diameter)
 {

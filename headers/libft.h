@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:26:14 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 16:01:41 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:26:01 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <stdio.h>
 # include <errno.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 typedef enum e_bool
 {
-	TRUE = 0,
-	FALSE = 1,
+	FALSE = 0,
+	TRUE = 1,
 }	t_bool;
 
 void	ft_except(char *msg, int stat);

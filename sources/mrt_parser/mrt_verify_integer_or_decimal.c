@@ -6,18 +6,18 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 14:24:23 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/26 13:14:37 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/01 16:29:11 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
 static	void	make_adjust_decimal_to_six_point(char **num, size_t	num_len)
 {
 	int		i;
 	int		decimal_point;
 	char	*adjust_num;
-	
+
 	i = 0;
 	while (i < num_len)
 	{
@@ -37,7 +37,7 @@ static	void	make_adjust_decimal_to_six_point(char **num, size_t	num_len)
 	free(adjust_num);
 }
 
-bool	verify_integer_or_decimal(char **num, char end)
+t_bool	verify_integer_or_decimal(char **num, char end)
 {
 	size_t		i;
 	int			decimal_flag;
@@ -46,6 +46,8 @@ bool	verify_integer_or_decimal(char **num, char end)
 	decimal_flag = 0;
 	if ((*num)[0] == '+' || (*num)[0] == '-')
 		i++;
+	if (!ft_isdigit((*num)[i]))
+		return (FALSE);
 	while ((*num)[i] && (*num)[i] != end)
 	{
 		if (ft_isdigit((*num)[i]) == 0)
@@ -53,11 +55,11 @@ bool	verify_integer_or_decimal(char **num, char end)
 			if (decimal_flag == 0 && (*num)[i] == '.')
 				decimal_flag = 1;
 			else
-				return (false);
+				return (FALSE);
 		}
 		i++;
 	}
 	if (decimal_flag == 1)
 		make_adjust_decimal_to_six_point(num, ft_strlen(*num));
-	return (true);
+	return (TRUE);
 }

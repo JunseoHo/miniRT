@@ -6,13 +6,13 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:45:41 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/25 14:24:58 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:21:25 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
-static	bool	mrt_verify_extension(char *filename)
+static	t_bool	mrt_verify_extension(char *filename)
 {
 	size_t	len;
 
@@ -23,14 +23,14 @@ static	bool	mrt_verify_extension(char *filename)
 		&& filename[len - 1] == 't');
 }
 
-bool	mrt_file_parse(t_mrt *mrt, int argc, char **argv)
+t_bool	mrt_file_parse(t_mrt *mrt, int argc, char **argv)
 {
 	int		fd;
 	char	*line;
-	bool	b_parse_success;
+	t_bool	b_parse_success;
 
 	if (argc != 2 || !mrt_verify_extension(argv[1]))
-		return (false);
+		return (FALSE);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		ft_except("File open error.", errno);

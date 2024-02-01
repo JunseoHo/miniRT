@@ -6,7 +6,7 @@
 #    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/01/27 13:42:32 by sejkim2          ###   ########.fr        #
+#    Updated: 2024/02/01 13:52:19 by sejkim2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,44 +26,43 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)libft/ft_substr.c \
 			$(SOURCES)libft/ft_token.c \
 			$(SOURCES)libft/ft_isdigit.c \
-			$(SOURCES)libft/ft_str_first_chr.c \
-			$(SOURCES)libft/ft_str_last_chr.c \
+			$(SOURCES)libft/ft_strchr.c \
+			$(SOURCES)libft/ft_strrchr.c \
 			$(SOURCES)main/main.c \
-			$(SOURCES)mrt/mrt_add_obj.c \
-			$(SOURCES)mrt/mrt_color.c \
-			$(SOURCES)mrt/mrt_cylinder.c \
-			$(SOURCES)mrt/mrt_destroy.c \
+			$(SOURCES)mrt_parser/mrt_add_obj.c \
+			$(SOURCES)mrt_parser/mrt_color.c \
+			$(SOURCES)mrt_parser/mrt_cylinder.c \
+			$(SOURCES)mrt_parser/mrt_destroy.c \
 			$(SOURCES)mrt/mrt_hit_cylinder.c \
 			$(SOURCES)mrt/mrt_hit_plane.c \
 			$(SOURCES)mrt/mrt_hit_sphere.c \
 			$(SOURCES)mrt/mrt_hit.c \
-			$(SOURCES)mrt/mrt_init.c \
-			$(SOURCES)mrt/mrt_file_parse.c \
-			$(SOURCES)mrt/mrt_parse_line.c \
-			$(SOURCES)mrt/mrt_parse_amb.c \
-			$(SOURCES)mrt/mrt_parse_double.c \
-			$(SOURCES)mrt/mrt_verify_integer_or_decimal.c \
-			$(SOURCES)mrt/mrt_parse_color.c \
-			$(SOURCES)mrt/mrt_parse_cam.c \
-			$(SOURCES)mrt/mrt_parse_vector.c \
-			$(SOURCES)mrt/mrt_parse_light.c \
-			$(SOURCES)mrt/mrt_parse_add_obj.c \
-			$(SOURCES)mrt/mrt_parse_sphere.c \
-			$(SOURCES)mrt/mrt_parse_plane.c \
-			$(SOURCES)mrt/mrt_parse_cylinder.c \
-			$(SOURCES)mrt/mrt_verify_value_range.c \
+			$(SOURCES)mrt_parser/mrt_init.c \
+			$(SOURCES)mrt_parser/mrt_file_parse.c \
+			$(SOURCES)mrt_parser/mrt_parse_line.c \
+			$(SOURCES)mrt_parser/mrt_parse_amb.c \
+			$(SOURCES)mrt_parser/mrt_parse_double.c \
+			$(SOURCES)mrt_parser/mrt_verify_integer_or_decimal.c \
+			$(SOURCES)mrt_parser/mrt_parse_color.c \
+			$(SOURCES)mrt_parser/mrt_parse_cam.c \
+			$(SOURCES)mrt_parser/mrt_parse_vector.c \
+			$(SOURCES)mrt_parser/mrt_parse_light.c \
+			$(SOURCES)mrt_parser/mrt_parse_add_obj.c \
+			$(SOURCES)mrt_parser/mrt_parse_sphere.c \
+			$(SOURCES)mrt_parser/mrt_parse_plane.c \
+			$(SOURCES)mrt_parser/mrt_parse_cylinder.c \
+			$(SOURCES)mrt_parser/mrt_verify_value_range.c \
 			$(SOURCES)mrt/mrt_phong.c \
-			$(SOURCES)mrt/mrt_plane.c \
+			$(SOURCES)mrt_parser/mrt_plane.c \
 			$(SOURCES)mrt/mrt_ray_at.c \
 			$(SOURCES)mrt/mrt_ray.c \
 			$(SOURCES)mrt/mrt_raycast.c \
 			$(SOURCES)mrt/mrt_raytrace.c \
-			$(SOURCES)mrt/mrt_sphere.c \
+			$(SOURCES)mrt_parser/mrt_sphere.c \
 			$(SOURCES)scene/scene_destroy.c \
 			$(SOURCES)scene/scene_show.c \
 			$(SOURCES)scene/scene_init.c \
 			$(SOURCES)vector/vec_add.c \
-			$(SOURCES)vector/vec_color.c \
 			$(SOURCES)vector/vec_cross.c \
 			$(SOURCES)vector/vec_dot.c \
 			$(SOURCES)vector/vec_len.c \

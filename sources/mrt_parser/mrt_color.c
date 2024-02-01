@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 00:01:59 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 05:50:29 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:21:37 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
 t_vec	mrt_color(int r, int g, int b)
 {

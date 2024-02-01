@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 13:35:51 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 16:06:09 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:21:31 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
 t_obj	*mrt_cylinder(t_vec center, t_vec axis, double diameter, double height)
 {

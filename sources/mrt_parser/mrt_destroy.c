@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:45:39 by jho               #+#    #+#             */
-/*   Updated: 2024/01/21 00:35:49 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:21:28 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
 t_mrt	*mrt_destroy(t_mrt *mrt)
 {

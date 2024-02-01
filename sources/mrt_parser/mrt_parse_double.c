@@ -6,21 +6,21 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 14:20:28 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/26 13:14:11 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:21:07 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
-bool	mrt_parse_double(double *d, char *token, char end)
+t_bool	mrt_parse_double(double *d, char *token, char end)
 {
 	int		sign;
 	double	decimal;
 
 	if (token == NULL)
-		return (false);
-	if (verify_integer_or_decimal(&token, end) == false)
-		return (false);
+		return (FALSE);
+	if (verify_integer_or_decimal(&token, end) == FALSE)
+		return (FALSE);
 	*d = 0;
 	sign = 1;
 	if (*token == '-')

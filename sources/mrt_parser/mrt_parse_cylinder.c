@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parse_cylinder.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:55:33 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/01/30 16:06:09 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:21:10 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../headers/mrt.h"
+#include "../../headers/mrt_parser.h"
 
-bool	mrt_parse_cylinder(t_obj **objs, char *line)
+t_bool	mrt_parse_cylinder(t_obj **objs, char *line)
 {
 	t_obj	*sphere;
 	char	*token;
-	bool	b_parse_success;
+	t_bool	b_parse_success;
 
 	sphere = malloc(sizeof(t_obj));
 	if (sphere == NULL)
@@ -41,5 +41,5 @@ bool	mrt_parse_cylinder(t_obj **objs, char *line)
 	b_parse_success &= mrt_parse_color(&(sphere->albedo), token);
 	free(token);
 	mrt_parse_add_obj(objs, sphere);
-	return (true);
+	return (b_parse_success);
 }

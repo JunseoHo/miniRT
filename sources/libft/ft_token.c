@@ -6,19 +6,19 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:11:41 by jho               #+#    #+#             */
-/*   Updated: 2024/01/27 13:37:34 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/01 13:38:21 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/libft.h"
 
-static bool	ft_is_whitespace(char c)
+static t_bool	ft_is_whitespace(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\n'
 		|| c == 'r' || c == '\0');
 }
 
-static bool	ft_is_endl(char c)
+static t_bool	ft_is_endl(char c)
 {
 	return (c == '\0' || c == '\n');
 }

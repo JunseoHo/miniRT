@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:09:53 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 20:57:40 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/01 14:26:25 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MRT_PARSER_H
 # define MRT_PARSER_H
 # include "libft.h"
+# include "get_next_line.h"
 # include "vector.h"
+# define FOCAL_LEN		10.0
 
 typedef enum e_obj_type
 {
@@ -44,7 +46,6 @@ typedef struct s_cam
 
 typedef struct s_lit
 {
-	t_bool			b_init;
 	t_vec			origin;
 	double			brightness;
 	t_vec			color;
@@ -78,11 +79,12 @@ t_bool	verify_integer_or_decimal(char **num, char end);
 t_bool	mrt_parse_color(t_vec *color, char *token);
 t_bool	mrt_parse_cam(t_cam *cam, char *line);
 t_bool	mrt_parse_vector(t_vec *vec, char *token);
-t_bool	mrt_parse_light(t_lit *lit, char *line);
+t_bool	mrt_parse_light(t_lit **lits, char *line);
 void	mrt_parse_add_obj(t_obj **objs, t_obj *obj);
 t_bool	mrt_parse_sphere(t_obj **objs, char *line);
 t_bool	mrt_parse_plane(t_obj **objs, char *line);
 t_bool	mrt_parse_cylinder(t_obj **objs, char *line);
 t_bool	verify_value_range(t_mrt *mrt);
+t_vec	mrt_color(int r, int g, int b);
 
 #endif
