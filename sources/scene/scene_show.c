@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:19:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/27 15:04:16 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/01 17:13:10 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static int	key_hook(int keycode, t_scene *scene)
 		close_win(scene);
 	return (0);
 }
-
 
 void	scene_show(t_scene *scene)
 {
