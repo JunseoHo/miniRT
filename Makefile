@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
+#    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/02/01 13:52:19 by sejkim2          ###   ########.fr        #
+#    Updated: 2024/02/02 17:11:07 by jho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,13 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt_parser/mrt_color.c \
 			$(SOURCES)mrt_parser/mrt_cylinder.c \
 			$(SOURCES)mrt_parser/mrt_destroy.c \
+			$(SOURCES)mrt/mrt_hit_cone.c \
 			$(SOURCES)mrt/mrt_hit_cylinder.c \
 			$(SOURCES)mrt/mrt_hit_plane.c \
 			$(SOURCES)mrt/mrt_hit_sphere.c \
 			$(SOURCES)mrt/mrt_hit.c \
 			$(SOURCES)mrt_parser/mrt_init.c \
+			$(SOURCES)mrt_parser/mrt_cone.c \
 			$(SOURCES)mrt_parser/mrt_file_parse.c \
 			$(SOURCES)mrt_parser/mrt_parse_line.c \
 			$(SOURCES)mrt_parser/mrt_parse_amb.c \

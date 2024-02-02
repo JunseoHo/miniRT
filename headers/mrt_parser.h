@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:09:53 by jho               #+#    #+#             */
-/*   Updated: 2024/02/01 14:26:25 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/02 16:35:06 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ typedef enum e_obj_type
 {
 	SP = 0,
 	PL = 1,
-	CY = 2
+	CY = 2,
+	CN = 3
 }	t_obj_type;
 
 typedef struct s_amb
@@ -86,5 +87,6 @@ t_bool	mrt_parse_plane(t_obj **objs, char *line);
 t_bool	mrt_parse_cylinder(t_obj **objs, char *line);
 t_bool	verify_value_range(t_mrt *mrt);
 t_vec	mrt_color(int r, int g, int b);
+t_obj	*mrt_cone(t_vec center, t_vec axis, double diameter, double height);
 
 #endif

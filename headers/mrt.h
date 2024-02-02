@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/02/01 14:26:28 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:07:37 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	mrt_add_obj(t_mrt *mrt, t_obj *obj);
 t_vec	mrt_color(int r, int g, int b);
 t_obj	*mrt_cylinder(t_vec center, t_vec axis, double diameter, double height);
 t_mrt	*mrt_destroy(t_mrt *mrt);
+t_bool	mrt_hit_cone(t_obj *cn, t_ray ray, t_hit *hit);
 t_bool	mrt_hit_cylinder(t_obj *sphere, t_ray ray, t_hit *hit);
 t_bool	mrt_hit_plane(t_obj *sphere, t_ray ray, t_hit *hit);
 t_bool	mrt_hit_sphere(t_obj *sphere, t_ray ray, t_hit *hit);
