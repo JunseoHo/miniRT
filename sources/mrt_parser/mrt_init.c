@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/02/02 17:12:33 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/02 17:56:40 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_mrt	*mrt_init(int argc, char **argv)
 	/*
 		Cone test code start
 	*/
-	t_obj	*cone = mrt_cone(vec(0, 0, -60), vec(0, 1, 0), 5, 10);
+	t_obj	*cone = mrt_cone(vec(0, -20, -40), vec_norm(vec(1, -1, 0)), 10, 20);
 	mrt_parse_add_obj(&mrt->objs, cone);
 	/* 
 		Cone test code end
