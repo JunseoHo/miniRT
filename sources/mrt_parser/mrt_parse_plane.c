@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:24:21 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/02 15:02:12 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/02 15:57:59 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_bool	mrt_parse_plane(t_obj **objs, char *line)
 	if (token == NULL)
 		return (FALSE);
 	b_parse_success &= mrt_parse_vector(&(plane->axis), token);
+	plane->axis = vec_norm(plane->axis);
 	free(token);
 	token = ft_token(line, 3);
 	if (token == NULL)

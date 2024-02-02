@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:55:33 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/02 15:01:47 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/02 15:58:47 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_bool	mrt_parse_cylinder(t_obj **objs, char *line)
 	if (token == NULL)
 		return (FALSE);
 	b_parse_success &= mrt_parse_vector(&(sphere->axis), token);
+	sphere->axis = vec_norm(sphere->axis);
 	free(token);
 	token = ft_token(line, 3);
 	if (token == NULL)
