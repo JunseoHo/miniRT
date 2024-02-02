@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_hit_plane.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 19:39:57 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 19:38:36 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/02 14:03:34 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_bool	mrt_hit_plane(t_obj *pl, t_ray ray, t_hit *hit)
 	denominator = vec_dot(pl->axis, ray.dir);
 	dist = numerator / denominator;
 	if (dist < 0)
+		return (FALSE);
+	if (dist < DIST_MIN || dist > DIST_MAX)
 		return (FALSE);
 	hit->dist = dist;
 	hit->origin = mrt_ray_at(ray, dist);
