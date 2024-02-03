@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:55:33 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/03 14:04:57 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/03 15:31:20 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ t_bool	mrt_parse_cone(t_obj **objs, char *line)
 
 	cone = init_cone();
 	if (mrt_parse_vector(&(cone->origin), line, 1) == FALSE)
-		return (FALSE);
+		return (free_obj(cone));
 	if (mrt_parse_vector(&(cone->axis), line, 2) == FALSE)
-		return (FALSE);
+		return (free_obj(cone));
 	cone->axis = vec_norm(cone->axis);
 	if (mrt_parse_double(&(cone->radius), line, '\0', 3) == FALSE)
-		return (FALSE);
+		return (free_obj(cone));
 	cone->radius /= 2;
 	if (mrt_parse_double(&(cone->height), line, '\0', 4) == FALSE)
-		return (FALSE);
+		return (free_obj(cone));
 	if (mrt_parse_color(&(cone->albedo), line, 5) == FALSE)
-		return (FALSE);
+		return (free_obj(cone));
 	mrt_parse_add_obj(objs, cone);
 	return (TRUE);
 }

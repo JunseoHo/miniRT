@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:09:53 by jho               #+#    #+#             */
-/*   Updated: 2024/02/03 13:53:03 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/03 15:27:41 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,7 @@ t_bool	verify_value_range(t_mrt *mrt);
 t_bool	mrt_parse_cone(t_obj **objs, char *line);
 t_vec	mrt_color(int r, int g, int b);
 t_obj	*mrt_cone(t_vec center, t_vec axis, double diameter, double height);
+t_bool	free_lit(t_lit *lit);
+t_bool	free_obj(t_obj *obj);
 
 #endif

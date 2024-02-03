@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/02/03 14:07:35 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/03 15:13:23 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,20 @@ t_mrt	*mrt_init(int argc, char **argv)
 	mrt->cam.b_init = FALSE;
 	mrt->lits = NULL;
 	if (mrt_file_parse(mrt, argc, argv) == FALSE)
+	{
+		free(mrt);
 		return (NULL);
+	}
 	if (verify_value_range(mrt) == FALSE)
+	{
+		free(mrt);
 		return (NULL);
+	}
 	if (check_count_amb_and_cam_and_lit(mrt) == FALSE)
+	{
+		free(mrt);
 		return (NULL);
+	}
 	/*
 		Cone test code start
 	*/

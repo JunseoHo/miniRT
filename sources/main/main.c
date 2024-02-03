@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:40:19 by jho               #+#    #+#             */
-/*   Updated: 2024/02/03 14:23:14 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/03 15:18:10 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,26 @@
 
 static	void	parse_test_print(t_mrt *mrt)
 {
+	t_obj *objs = mrt->objs;
+	t_lit *lits = mrt->lits;
 	printf("A : [%f] [%f %f %f]\n", mrt->amb.ratio, mrt->amb.color.x, mrt->amb.color.y, mrt->amb.color.z);
 	printf("C : [%f %f %f] [%f %f %f] [%f]\n", mrt->cam.eye.x, mrt->cam.eye.y, mrt->cam.eye.z, mrt->cam.at.x, mrt->cam.at.y, mrt->cam.at.z, mrt->cam.fov);
-	while (mrt->lits)
+	while (lits)
 	{
-		printf("L : [%f %f %f] [%f] [%f %f %f]\n", mrt->lits->origin.x, mrt->lits->origin.y, mrt->lits->origin.z, mrt->lits->brightness, mrt->lits->color.x, mrt->lits->color.y, mrt->lits->color.z);	
-		mrt->lits = mrt->lits->next;
+		printf("L : [%f %f %f] [%f] [%f %f %f]\n", lits->origin.x, lits->origin.y, lits->origin.z, lits->brightness, lits->color.x, lits->color.y, lits->color.z);	
+		lits = lits->next;
 	}
-	while (mrt->objs)
+	while (objs)
 	{
-		if (mrt->objs->type == SP)
-			printf("sp : [%f %f %f] [%f] [%f %f %f]\n", mrt->objs->origin.x, mrt->objs->origin.y, mrt->objs->origin.z, mrt->objs->radius, mrt->objs->albedo.x, mrt->objs->albedo.y, mrt->objs->albedo.z);
+		if (objs->type == SP)
+			printf("sp : [%f %f %f] [%f] [%f %f %f]\n", objs->origin.x, objs->origin.y, objs->origin.z, objs->radius, objs->albedo.x, objs->albedo.y, objs->albedo.z);
 		else if (mrt->objs->type == PL)
-			printf("pl : [%f %f %f] [%f %f %f] [%f %f %f]\n", mrt->objs->origin.x, mrt->objs->origin.y, mrt->objs->origin.z, mrt->objs->axis.x, mrt->objs->axis.y, mrt->objs->axis.z, mrt->objs->albedo.x, mrt->objs->albedo.y, mrt->objs->albedo.z);
+			printf("pl : [%f %f %f] [%f %f %f] [%f %f %f]\n", objs->origin.x, objs->origin.y, objs->origin.z, objs->axis.x, objs->axis.y, objs->axis.z, objs->albedo.x, objs->albedo.y, objs->albedo.z);
 		else if (mrt->objs->type == CY)
-			printf("cy : [%f %f %f] [%f %f %f] [%f] [%f] [%f %f %f]\n", mrt->objs->origin.x, mrt->objs->origin.y, mrt->objs->origin.z, mrt->objs->axis.x, mrt->objs->axis.y, mrt->objs->axis.z, mrt->objs->radius, mrt->objs->height, mrt->objs->albedo.x, mrt->objs->albedo.y, mrt->objs->albedo.z);	
+			printf("cy : [%f %f %f] [%f %f %f] [%f] [%f] [%f %f %f]\n", objs->origin.x, objs->origin.y, objs->origin.z, objs->axis.x, objs->axis.y, objs->axis.z, objs->radius, objs->height, objs->albedo.x, objs->albedo.y, objs->albedo.z);	
 		else if (mrt->objs->type == CN)
-			printf("cn : [%f %f %f] [%f %f %f] [%f] [%f] [%f %f %f]\n", mrt->objs->origin.x, mrt->objs->origin.y, mrt->objs->origin.z, mrt->objs->axis.x, mrt->objs->axis.y, mrt->objs->axis.z, mrt->objs->radius, mrt->objs->height, mrt->objs->albedo.x, mrt->objs->albedo.y, mrt->objs->albedo.z);	
-		mrt->objs = mrt->objs->next;
+			printf("cn : [%f %f %f] [%f %f %f] [%f] [%f] [%f %f %f]\n", objs->origin.x, objs->origin.y, objs->origin.z, objs->axis.x, objs->axis.y, objs->axis.z, objs->radius, objs->height, objs->albedo.x, objs->albedo.y, objs->albedo.z);	
+		objs = objs->next;
 	}
 	exit(1);
 }
@@ -46,7 +48,7 @@ int	main(int argc, char **argv)
 	t_mrt	*mrt;
 	t_scene	*scene;
 
-	// atexit(leaks);
+	atexit(leaks);
 	mrt = mrt_init(argc, argv);
 	if (mrt == NULL)
 		ft_except("Error", 1);

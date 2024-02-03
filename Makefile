@@ -6,7 +6,7 @@
 #    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/02/03 13:18:05 by sejkim2          ###   ########.fr        #
+#    Updated: 2024/02/03 15:26:37 by sejkim2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt_parser/mrt_init.c \
 			$(SOURCES)mrt_parser/mrt_cone.c \
 			$(SOURCES)mrt_parser/mrt_file_parse.c \
+			$(SOURCES)mrt_parser/mrt_free.c \
 			$(SOURCES)mrt_parser/mrt_parse_line.c \
 			$(SOURCES)mrt_parser/mrt_parse_amb.c \
 			$(SOURCES)mrt_parser/mrt_parse_double.c \
