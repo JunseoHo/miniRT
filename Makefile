@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jho <jho@student.42.fr>                    +#+  +:+       +#+         #
+#    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/02/02 17:11:07 by jho              ###   ########.fr        #
+#    Updated: 2024/02/03 13:18:05 by sejkim2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt_parser/mrt_parse_double.c \
 			$(SOURCES)mrt_parser/mrt_verify_integer_or_decimal.c \
 			$(SOURCES)mrt_parser/mrt_parse_color.c \
+			$(SOURCES)mrt_parser/mrt_parse_cone.c \
 			$(SOURCES)mrt_parser/mrt_parse_cam.c \
 			$(SOURCES)mrt_parser/mrt_parse_vector.c \
 			$(SOURCES)mrt_parser/mrt_parse_light.c \

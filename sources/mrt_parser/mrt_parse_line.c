@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:53:15 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/01 14:21:03 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/03 13:13:11 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_bool	mrt_parse_line(t_mrt *mrt, char *line)
 		b_parse_success = mrt_parse_plane(&(mrt->objs), line);
 	else if (token_len > 1 && token[0] == 'c' && token[1] == 'y')
 		b_parse_success = mrt_parse_cylinder(&(mrt->objs), line);
+	else if (token_len > 1 && token[0] == 'c' && token[1] == 'n')
+		b_parse_success = mrt_parse_cone(&(mrt->objs), line);
 	free(token);
 	return (b_parse_success);
 }

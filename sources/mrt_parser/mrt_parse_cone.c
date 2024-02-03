@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_parse_cylinder.c                               :+:      :+:    :+:   */
+/*   mrt_parse_cone.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:55:33 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/03 14:04:11 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/03 14:04:57 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt_parser.h"
 
-static	t_obj	*init_sphere(void)
+static	t_obj	*init_cone(void)
 {
-	t_obj	*sphere;
+	t_obj	*cone;
 
-	sphere = malloc(sizeof(t_obj));
-	if (sphere == NULL)
+	cone = malloc(sizeof(t_obj));
+	if (cone == NULL)
 		ft_except("Malloc failed.", errno);
-	sphere->type = CY;
-	sphere->next = NULL;
-	return (sphere);
+	cone->type = CN;
+	cone->next = NULL;
+	return (cone);
 }
 
-t_bool	mrt_parse_cylinder(t_obj **objs, char *line)
+t_bool	mrt_parse_cone(t_obj **objs, char *line)
 {
-	t_obj	*sphere;
+	t_obj	*cone;
 
-	sphere = init_sphere();
-	if (mrt_parse_vector(&(sphere->origin), line, 1) == FALSE)
+	cone = init_cone();
+	if (mrt_parse_vector(&(cone->origin), line, 1) == FALSE)
 		return (FALSE);
-	if (mrt_parse_vector(&(sphere->axis), line, 2) == FALSE)
+	if (mrt_parse_vector(&(cone->axis), line, 2) == FALSE)
 		return (FALSE);
-	sphere->axis = vec_norm(sphere->axis);
-	if (mrt_parse_double(&(sphere->radius), line, '\0', 3) == FALSE)
+	cone->axis = vec_norm(cone->axis);
+	if (mrt_parse_double(&(cone->radius), line, '\0', 3) == FALSE)
 		return (FALSE);
-	sphere->radius /= 2;
-	if (mrt_parse_double(&(sphere->height), line, '\0', 4) == FALSE)
+	cone->radius /= 2;
+	if (mrt_parse_double(&(cone->height), line, '\0', 4) == FALSE)
 		return (FALSE);
-	if (mrt_parse_color(&(sphere->albedo), line, 5) == FALSE)
+	if (mrt_parse_color(&(cone->albedo), line, 5) == FALSE)
 		return (FALSE);
-	mrt_parse_add_obj(objs, sphere);
+	mrt_parse_add_obj(objs, cone);
 	return (TRUE);
 }

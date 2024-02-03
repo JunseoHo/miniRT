@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:09:53 by jho               #+#    #+#             */
-/*   Updated: 2024/02/02 16:35:06 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/03 13:53:03 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,19 @@ typedef struct s_mrt
 t_bool	mrt_file_parse(t_mrt *mrt, int argc, char **argv);
 t_bool	mrt_parse_line(t_mrt *mrt, char *line);
 t_bool	mrt_parse_amb(t_amb *amb, char *line);
-t_bool	mrt_parse_double(double *d, char *token, char end);
+t_bool	mrt_parse_double(double	*d, char *line, char end, size_t target_index);
+t_bool	mrt_atod(double *d, char *token, char end);
 t_bool	verify_integer_or_decimal(char **num, char end);
-t_bool	mrt_parse_color(t_vec *color, char *token);
+t_bool	mrt_parse_color(t_vec *c, char *line, size_t target_index);
 t_bool	mrt_parse_cam(t_cam *cam, char *line);
-t_bool	mrt_parse_vector(t_vec *vec, char *token);
+t_bool	mrt_parse_vector(t_vec *v, char *line, size_t target_index);
 t_bool	mrt_parse_light(t_lit **lits, char *line);
 void	mrt_parse_add_obj(t_obj **objs, t_obj *obj);
 t_bool	mrt_parse_sphere(t_obj **objs, char *line);
 t_bool	mrt_parse_plane(t_obj **objs, char *line);
 t_bool	mrt_parse_cylinder(t_obj **objs, char *line);
 t_bool	verify_value_range(t_mrt *mrt);
+t_bool	mrt_parse_cone(t_obj **objs, char *line);
 t_vec	mrt_color(int r, int g, int b);
 t_obj	*mrt_cone(t_vec center, t_vec axis, double diameter, double height);
 

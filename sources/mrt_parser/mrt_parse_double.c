@@ -6,13 +6,13 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 14:20:28 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/01 17:10:33 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/03 13:51:26 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/mrt_parser.h"
 
-t_bool	mrt_parse_double(double *d, char *token, char end)
+t_bool	mrt_atod(double *d, char *token, char end)
 {
 	int		sign;
 	double	decimal;
@@ -39,4 +39,17 @@ t_bool	mrt_parse_double(double *d, char *token, char end)
 	}
 	*d *= sign;
 	return (*token == end);
+}
+
+t_bool	mrt_parse_double(double	*d, char *line, char end, size_t target_index)
+{
+	char	*token;
+	t_bool	b_parse_success;
+
+	token = ft_token(line, target_index);
+	if (token == NULL)
+		return (FALSE);
+	b_parse_success = mrt_atod(d, token, end);
+	free(token);
+	return (b_parse_success);
 }
