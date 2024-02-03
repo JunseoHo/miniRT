@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:30:18 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/03 13:53:10 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/03 14:29:03 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_bool	mrt_parse_vector(t_vec *v, char *line, size_t target_index)
 	char	*token;
 	t_bool	b_parse_success;
 
-	token = ft_token(line, 1);
+	token = ft_token(line, target_index);
 	b_parse_success = mrt_parse_v(v, token);
 	if (token == NULL)
 		return (FALSE);
