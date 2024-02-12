@@ -12,9 +12,27 @@
 
 #include "../../headers/mrt_parser.h"
 
+t_bool	free_obj(t_obj	*obj)
+{
+	free(obj);
+	return (FALSE);
+}
+
+void	free_objs(t_obj *objs)
+{
+	t_obj	*remove_obj;
+
+	while (objs != NULL)
+	{
+		remove_obj = objs;
+		objs = objs->next;
+		free_obj(remove_obj);
+	}
+}
+
 t_mrt	*mrt_destroy(t_mrt *mrt)
 {
-	/* Not implemented. */
+	free_objs(mrt->objs);
 	free(mrt);
 	return (NULL);
 }

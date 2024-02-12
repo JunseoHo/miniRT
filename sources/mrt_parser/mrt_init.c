@@ -14,7 +14,7 @@
 
 static	t_bool	check_count_amb_and_cam_and_lit(t_mrt *mrt)
 {
-	if (!(mrt->amb.b_init) || !(mrt->cam.b_init) || mrt->lits == NULL)
+	if (!(mrt->amb.b_init) || !(mrt->cam.b_init) || !(mrt->lit.b_init))
 		return (FALSE);
 	else
 		return (TRUE);
@@ -46,30 +46,13 @@ t_mrt	*mrt_init(int argc, char **argv)
 	mrt->objs = NULL;
 	mrt->amb.b_init = FALSE;
 	mrt->cam.b_init = FALSE;
-	mrt->lits = NULL;
+	mrt->lit.b_init = FALSE;
 	if (mrt_file_parse(mrt, argc, argv) == FALSE)
-	{
-		free(mrt);
-		return (NULL);
-	}
+		return (mrt_destroy(mrt));
 	if (verify_value_range(mrt) == FALSE)
-	{
-		free(mrt);
-		return (NULL);
-	}
+		return (mrt_destroy(mrt));
 	if (check_count_amb_and_cam_and_lit(mrt) == FALSE)
-	{
-		free(mrt);
-		return (NULL);
-	}
-	/*
-		Cone test code start
-	*/
-	// t_obj	*cone = mrt_cone(vec(0, -20, -40), vec_norm(vec(1, -1, 0)), 10, 20);
-	// mrt_parse_add_obj(&mrt->objs, cone);
-	/* 
-		Cone test code end
-	*/
+		return (mrt_destroy(mrt));
 	init_viewport(mrt);
 	return (mrt);
 }

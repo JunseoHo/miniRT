@@ -28,7 +28,7 @@ t_bool	mrt_parse_line(t_mrt *mrt, char *line)
 	else if (token[0] == 'C')
 		b_parse_success = mrt_parse_cam(&(mrt->cam), line);
 	else if (token[0] == 'L')
-		b_parse_success = mrt_parse_light(&(mrt->lits), line);
+		b_parse_success = mrt_parse_light(&(mrt->lit), line);
 	else if (token_len == 2 && token[0] == 's' && token[1] == 'p')
 		b_parse_success = mrt_parse_sphere(&(mrt->objs), line);
 	else if (token_len == 2 && token[0] == 'p' && token[1] == 'l')

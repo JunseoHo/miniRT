@@ -20,27 +20,6 @@ static	t_bool	verify_range(double value, double min_value, double max_value)
 		return (TRUE);
 }
 
-static	t_bool	verify_brightness(t_mrt *mrt)
-{
-	t_bool	b_parse_success;
-	t_lit	*lits;
-
-	lits = mrt->lits;
-	b_parse_success = TRUE;
-	if (lits == NULL)
-		return (FALSE);
-	while (1)
-	{
-		b_parse_success &= verify_range(lits->brightness, 0.0, 1.0);
-		if (b_parse_success == FALSE)
-			return (FALSE);
-		if (lits->next == NULL)
-			break ;
-		lits = lits->next;
-	}
-	return (b_parse_success);
-}
-
 static	t_bool	verify_objs_axis(t_mrt *mrt)
 {
 	t_bool	b_parse_success;
@@ -77,7 +56,7 @@ t_bool	verify_value_range(t_mrt *mrt)
 	b_parse_success &= verify_range(mrt->cam.at.y, -1, 1);
 	b_parse_success &= verify_range(mrt->cam.at.z, -1, 1);
 	b_parse_success &= verify_range(mrt->cam.fov, 0, 180);
-	b_parse_success &= verify_brightness(mrt);
+	b_parse_success &= verify_range(mrt->lit.brightness, 0.0, 1.0);
 	b_parse_success &= verify_objs_axis(mrt);
 	return (b_parse_success);
 }

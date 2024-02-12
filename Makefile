@@ -41,7 +41,6 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt_parser/mrt_init.c \
 			$(SOURCES)mrt_parser/mrt_cone.c \
 			$(SOURCES)mrt_parser/mrt_file_parse.c \
-			$(SOURCES)mrt_parser/mrt_free.c \
 			$(SOURCES)mrt_parser/mrt_parse_line.c \
 			$(SOURCES)mrt_parser/mrt_parse_amb.c \
 			$(SOURCES)mrt_parser/mrt_parse_double.c \

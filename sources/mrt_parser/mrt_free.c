@@ -12,14 +12,15 @@
 
 #include "../../headers/mrt_parser.h"
 
-t_bool	free_lit(t_lit *lit)
-{
-	free(lit);
-	return (FALSE);
-}
-
 t_bool	free_obj(t_obj *obj)
 {
-	free(obj);
+	t_obj	*remove_obj;
+
+	while (obj != NULL)
+	{
+		remove_obj = obj;
+		obj = obj->next;
+		free(remove_obj);
+	}
 	return (FALSE);
 }

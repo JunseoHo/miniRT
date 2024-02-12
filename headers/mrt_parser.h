@@ -47,10 +47,10 @@ typedef struct s_cam
 
 typedef struct s_lit
 {
+	t_bool			b_init;
 	t_vec			origin;
 	double			brightness;
 	t_vec			color;
-	struct s_lit	*next;
 }	t_lit;
 
 typedef struct s_obj
@@ -68,7 +68,7 @@ typedef struct s_mrt
 {
 	t_amb	amb;
 	t_cam	cam;
-	t_lit	*lits;
+	t_lit	lit;
 	t_obj	*objs;
 }	t_mrt;
 
@@ -81,7 +81,7 @@ t_bool	verify_integer_or_decimal(char **num, char end);
 t_bool	mrt_parse_color(t_vec *c, char *line, size_t target_index);
 t_bool	mrt_parse_cam(t_cam *cam, char *line);
 t_bool	mrt_parse_vector(t_vec *v, char *line, size_t target_index);
-t_bool	mrt_parse_light(t_lit **lits, char *line);
+t_bool	mrt_parse_light(t_lit *lit, char *line);
 void	mrt_parse_add_obj(t_obj **objs, t_obj *obj);
 t_bool	mrt_parse_sphere(t_obj **objs, char *line);
 t_bool	mrt_parse_plane(t_obj **objs, char *line);
@@ -90,7 +90,8 @@ t_bool	verify_value_range(t_mrt *mrt);
 t_bool	mrt_parse_cone(t_obj **objs, char *line);
 t_vec	mrt_color(int r, int g, int b);
 t_obj	*mrt_cone(t_vec center, t_vec axis, double diameter, double height);
-t_bool	free_lit(t_lit *lit);
-t_bool	free_obj(t_obj *obj);
+t_mrt	*mrt_destroy(t_mrt *mrt);
+t_bool	free_obj(t_obj	*obj);
+void	free_objs(t_obj *objs);
 
 #endif
