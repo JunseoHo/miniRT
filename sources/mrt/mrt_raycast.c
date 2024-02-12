@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_raycast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 03:30:32 by jho               #+#    #+#             */
-/*   Updated: 2024/02/12 16:14:36 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/12 16:26:03 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,21 @@ t_bool	mrt_hard_shadow(t_obj *objs, t_lit *lits, t_hit *hit)
 	t_ray	light_ray;
 	t_hit	dummy_hit;
 	t_bool	b_shadowed;
-
+	
 	while (lits != NULL)
 	{
 		b_shadowed = FALSE;
 		objs_cpy = objs;
 		light_dir = vec_norm(vec_sub(lits->origin, hit->origin));
 		light_ray = mrt_ray(hit->origin, light_dir);
+		if (vec_dot(light_dir, hit->normal) < 0)
+			return (FALSE);
 		while (objs_cpy != NULL)
 		{
-			if (objs_cpy != hit->obj)
+			if (mrt_hit(objs_cpy, light_ray, &dummy_hit) == TRUE)
 			{
-				if (mrt_hit(objs_cpy, light_ray, &dummy_hit) == TRUE)
-				{
-					b_shadowed = TRUE;
-					break ;
-				}
+				b_shadowed = TRUE;
+				break ;
 			}
 			objs_cpy = objs_cpy->next;
 		}
