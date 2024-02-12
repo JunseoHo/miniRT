@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_hit_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 04:05:04 by jho               #+#    #+#             */
-/*   Updated: 2024/01/30 19:38:05 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/12 15:09:25 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	mrt_hit_sphere_init(t_hit *hit, t_obj *sp, double *root, t_ray ray)
 	if (vec_dot(ray.dir, hit->normal) > 0)
 		hit->normal = vec_scale(hit->normal, -1);
 	hit->albedo = sp->albedo;
+	hit->obj = sp;
 }
 
 t_bool	mrt_hit_sphere(t_obj *sp, t_ray ray, t_hit *hit)

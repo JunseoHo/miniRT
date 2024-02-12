@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_hit_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:42:25 by jho               #+#    #+#             */
-/*   Updated: 2024/02/02 12:25:40 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/12 15:13:33 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static t_bool	mrt_hit_cylinder_top(t_obj *cy, t_ray ray, t_hit *hit)
 		{
 			hit->normal = vec_norm(vec_sub(hit->origin, cy->origin));
 			hit->albedo = cy->albedo;
+			hit->obj = cy;
 			return (TRUE);
 		}
 		return (FALSE);
@@ -43,6 +44,7 @@ static t_bool	mrt_hit_cylinder_bottom(t_obj *cy, t_ray ray, t_hit *hit)
 		{
 			hit->normal = vec_norm(vec_sub(hit->origin, cy->origin));
 			hit->albedo = cy->albedo;
+			hit->obj = cy;
 			return (TRUE);
 		}
 		return (FALSE);
@@ -84,6 +86,7 @@ static t_bool	mrt_hit_cylinder_side(t_obj *cy, t_ray ray, t_hit *hit)
 		return (FALSE);
 	hit->normal = vec_norm(vec_sub(hit->origin, cy->origin));
 	hit->albedo = cy->albedo;
+	hit->obj = cy;
 	return (TRUE);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_hit_cone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:33:24 by jho               #+#    #+#             */
-/*   Updated: 2024/02/02 17:52:56 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/12 15:13:57 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static t_bool	mrt_hit_cone_bottom(t_obj *cn, t_ray ray, t_hit *hit)
 		{
 			hit->normal = vec_norm(vec_sub(hit->origin, cn->origin));
 			hit->albedo = cn->albedo;
+			hit->obj = cn;
 			return (TRUE);
 		}
 		return (FALSE);
@@ -77,6 +78,7 @@ static t_bool	mrt_hit_cone_side(t_obj *cn, t_ray ray, t_hit *hit)
 		return (FALSE);
 	hit->normal = vec_norm(vec_sub(hit->origin, cn->origin));
 	hit->albedo = cn->albedo;
+	hit->obj = cn;
 	return (TRUE);
 }
 

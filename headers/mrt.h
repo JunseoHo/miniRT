@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/02/02 17:07:37 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/12 15:06:53 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_hit
 	t_vec	normal;
 	double	dist;
 	t_vec	albedo;
+	t_obj	*obj;
 }	t_hit;
 
 void	mrt_add_obj(t_mrt *mrt, t_obj *obj);
