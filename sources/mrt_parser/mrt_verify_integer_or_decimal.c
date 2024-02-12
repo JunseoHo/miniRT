@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 14:24:23 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/03 14:55:28 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/12 21:11:52 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ static	t_bool	make_adjust_decimal_to_six_point(char **num, size_t	num_len)
 			break ;
 		i++;
 	}
+	if (i > 7)
+		return (FALSE);
 	decimal_point = i;
 	while (i < num_len)
 	{
-		if (i > decimal_point + 6)
+		if (i > decimal_point + 7)
 			return (FALSE);
 		i++;
 	}
@@ -62,5 +64,5 @@ t_bool	verify_integer_or_decimal(char **num, char end)
 	}
 	if (decimal_flag == 1)
 		return (make_adjust_decimal_to_six_point(num, ft_strlen(*num)));
-	return (TRUE);
+	return (i < 7);
 }

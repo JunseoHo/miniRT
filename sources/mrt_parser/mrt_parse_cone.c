@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:55:33 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/03 15:31:20 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/12 19:09:13 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_bool	mrt_parse_cone(t_obj **objs, char *line)
 	if (mrt_parse_double(&(cone->height), line, '\0', 4) == FALSE)
 		return (free_obj(cone));
 	if (mrt_parse_color(&(cone->albedo), line, 5) == FALSE)
+		return (free_obj(cone));
+	if (cone->radius <= 0 || cone->height <= 0)
 		return (free_obj(cone));
 	mrt_parse_add_obj(objs, cone);
 	return (TRUE);

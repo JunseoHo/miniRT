@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:55:33 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/03 15:30:40 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/12 19:08:36 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_bool	mrt_parse_cylinder(t_obj **objs, char *line)
 	if (mrt_parse_double(&(cylinder->height), line, '\0', 4) == FALSE)
 		return (free_obj(cylinder));
 	if (mrt_parse_color(&(cylinder->albedo), line, 5) == FALSE)
+		return (free_obj(cylinder));
+	if (cylinder->radius <= 0 || cylinder->height <= 0)
 		return (free_obj(cylinder));
 	mrt_parse_add_obj(objs, cylinder);
 	return (TRUE);
