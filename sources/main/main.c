@@ -35,7 +35,7 @@
 
 void	leaks(void)
 {
-	system("leaks miniRT");
+	system("leaks miniRT | grep leaked");
 }
 
 int	main(int argc, char **argv)

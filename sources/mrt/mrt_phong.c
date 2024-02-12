@@ -55,9 +55,10 @@ t_vec	mrt_phong(t_mrt *mrt, t_ray ray, t_hit *hit)
 	t_vec	light_color;
 
 	light_color = vec(0, 0, 0);
-		light_color = vec_add(light_color, mrt_phong_diffuse(mrt->lit, ray, hit));
-		light_color = vec_add(light_color, mrt_phong_specular(mrt->lit, ray, hit));
+	light_color = vec_add(light_color, mrt_phong_diffuse(mrt->lit, ray, hit));
+	light_color = vec_add(light_color, mrt_phong_specular(mrt->lit, ray, hit));
 	light_color = vec_add(light_color, mrt_phong_ambient(&(mrt->amb)));
+	light_color = vec(light_color.x * mrt->lit.brightness, light_color.y * mrt->lit.brightness, light_color.z * mrt->lit.brightness);
 	return (vec(light_color.x * hit->albedo.x,
 			light_color.y * hit->albedo.y,
 			light_color.z * hit->albedo.z));

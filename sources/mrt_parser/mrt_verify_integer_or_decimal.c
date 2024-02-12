@@ -12,7 +12,7 @@
 
 #include "../../headers/mrt_parser.h"
 
-static	void	make_adjust_decimal_to_six_point(char **num, size_t	num_len)
+static	t_bool	make_adjust_decimal_to_six_point(char **num, size_t	num_len)
 {
 	int		i;
 	int		decimal_point;
@@ -29,12 +29,13 @@ static	void	make_adjust_decimal_to_six_point(char **num, size_t	num_len)
 	while (i < num_len)
 	{
 		if (i > decimal_point + 6)
-			break ;
+			return (FALSE);
 		i++;
 	}
 	adjust_num = ft_substr(*num, 0, i);
 	ft_strlcpy(*num, adjust_num, i + 1);
 	free(adjust_num);
+	return (TRUE);
 }
 
 t_bool	verify_integer_or_decimal(char **num, char end)
@@ -60,6 +61,6 @@ t_bool	verify_integer_or_decimal(char **num, char end)
 		i++;
 	}
 	if (decimal_flag == 1)
-		make_adjust_decimal_to_six_point(num, ft_strlen(*num));
+		return (make_adjust_decimal_to_six_point(num, ft_strlen(*num)));
 	return (TRUE);
 }
