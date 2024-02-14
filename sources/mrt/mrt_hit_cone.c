@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_hit_cone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:33:24 by jho               #+#    #+#             */
-/*   Updated: 2024/02/12 15:13:57 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:20:13 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ static t_bool	mrt_hit_cone_side(t_obj *cn, t_ray ray, t_hit *hit)
 {
 	double	coeff[3];
 	double	determinant;
+	t_vec	top;
+	t_vec	cp;
+	double	k;
 
 	mrt_init_coeff(coeff, cn, ray);
 	determinant = pow(coeff[1], 2) - (coeff[0] * coeff[2]);
@@ -83,7 +86,10 @@ static t_bool	mrt_hit_cone_side(t_obj *cn, t_ray ray, t_hit *hit)
 	hit->origin = mrt_ray_at(ray, hit->dist);
 	if (!mrt_hit_cone_check_height(cn, hit->origin))
 		return (FALSE);
-	hit->normal = vec_norm(vec_sub(hit->origin, cn->origin));
+	top = vec_add(cn->origin, vec_scale(cn->axis, 0.5 * cn->height));
+	cp = vec_sub(hit->origin, top);
+	k = pow(vec_len(cp), 2) / vec_dot(cp, vec_norm(vec_scale(cn->axis, -1)));
+	hit->normal = vec_norm(vec_sub(cp, vec_scale(vec_scale(cn->axis, -1), k)));
 	hit->albedo = cn->albedo;
 	hit->obj = cn;
 	return (TRUE);
