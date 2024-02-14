@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:42:25 by jho               #+#    #+#             */
-/*   Updated: 2024/02/14 14:08:41 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/14 19:58:24 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_bool	mrt_hit_cylinder_top(t_obj *cy, t_ray ray, t_hit *hit)
 	{
 		if (cy->radius > vec_len(vec_sub(hit->origin, pl.origin)))
 		{
-			hit->normal = vec_norm(vec_sub(hit->origin, cy->origin));
+			hit->normal = vec_norm(cy->axis);
 			hit->albedo = cy->albedo;
 			hit->obj = cy;
 			return (TRUE);
@@ -42,7 +42,7 @@ static t_bool	mrt_hit_cylinder_bottom(t_obj *cy, t_ray ray, t_hit *hit)
 	{
 		if (cy->radius > vec_len(vec_sub(hit->origin, pl.origin)))
 		{
-			hit->normal = vec_norm(vec_sub(hit->origin, cy->origin));
+			hit->normal = vec_norm(vec_scale(cy->axis, -1));
 			hit->albedo = cy->albedo;
 			hit->obj = cy;
 			return (TRUE);
@@ -56,9 +56,13 @@ static t_bool	mrt_hit_cylinder_check_height(t_obj *cy, t_vec intersect)
 {
 	t_vec	hypotenus;
 	double	height;
+	double	k;
 
 	hypotenus = vec_sub(intersect, cy->origin);
-	height = sqrt(pow(vec_len(hypotenus), 2) - pow(cy->radius, 2));
+	k = pow(vec_len(hypotenus), 2) - pow(cy->radius, 2);
+	if (k < 0)
+		return (TRUE);
+	height = sqrt(k);
 	return (height < cy->height);
 }
 
@@ -84,7 +88,9 @@ static t_bool	mrt_hit_cylinder_side(t_obj *cy, t_ray ray, t_hit *hit)
 	hit->origin = mrt_ray_at(ray, hit->dist);
 	if (!mrt_hit_cylinder_check_height(cy, hit->origin))
 		return (FALSE);
-	hit->normal = vec_norm(vec_sub(hit->origin, cy->origin));
+	ray_to_base = vec_sub(hit->origin, base);
+	hit->normal = vec_norm(vec_sub(ray_to_base,
+				vec_scale(cy->axis, vec_dot(ray_to_base, cy->axis))));
 	hit->albedo = cy->albedo;
 	hit->obj = cy;
 	return (TRUE);

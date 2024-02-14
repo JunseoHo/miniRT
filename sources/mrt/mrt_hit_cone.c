@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:33:24 by jho               #+#    #+#             */
-/*   Updated: 2024/02/14 17:20:13 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/14 18:07:38 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_bool	mrt_hit_cone_bottom(t_obj *cn, t_ray ray, t_hit *hit)
 	{
 		if (cn->radius > vec_len(vec_sub(hit->origin, pl.origin)))
 		{
-			hit->normal = vec_norm(vec_sub(hit->origin, cn->origin));
+			hit->normal = vec_norm(vec_scale(cn->axis, -1));
 			hit->albedo = cn->albedo;
 			hit->obj = cn;
 			return (TRUE);

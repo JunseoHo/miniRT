@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:38:28 by jho               #+#    #+#             */
-/*   Updated: 2024/02/12 16:18:08 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/14 19:16:29 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define DIST_MIN		0.000001
 # define DIST_MAX		2147483647
 # define KSN			16
-# define KS				0.6
+# define KS				0.8
 
 typedef struct s_ray
 {
