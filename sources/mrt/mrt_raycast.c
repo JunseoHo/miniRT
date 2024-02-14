@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 03:30:32 by jho               #+#    #+#             */
-/*   Updated: 2024/02/14 12:12:41 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/14 14:15:54 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_bool	mrt_hard_shadow(t_obj *objs, t_lit lit, t_hit *hit)
 		return (FALSE);
 	while (objs_cpy != NULL)
 	{
-		if (mrt_hit(objs_cpy, light_ray, &dummy_hit) == TRUE)
+		if ((objs_cpy != hit->obj && mrt_hit(objs_cpy, light_ray, &dummy_hit)) == TRUE)
 			return (TRUE);
 		objs_cpy = objs_cpy->next;
 	}
