@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_hit_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:42:25 by jho               #+#    #+#             */
-/*   Updated: 2024/02/12 15:13:33 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/14 12:13:03 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ static t_bool	mrt_hit_cylinder_side(t_obj *cy, t_ray ray, t_hit *hit)
 
 t_bool	mrt_hit_cylinder(t_obj *cy, t_ray ray, t_hit *hit)
 {
-	cy->axis = vec_norm(cy->axis);
 	if (mrt_hit_cylinder_side(cy, ray, hit))
 		return (TRUE);
+	return (FALSE);
 	if (mrt_hit_cylinder_top(cy, ray, hit))
 		return (TRUE);
 	return (mrt_hit_cylinder_bottom(cy, ray, hit));
