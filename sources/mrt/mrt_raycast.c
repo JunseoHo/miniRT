@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 03:30:32 by jho               #+#    #+#             */
-/*   Updated: 2024/02/14 14:15:54 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/14 14:48:54 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,24 @@ t_bool	mrt_hard_shadow(t_obj *objs, t_lit lit, t_hit *hit)
 	t_vec	light_dir;
 	t_ray	light_ray;
 	t_hit	dummy_hit;
+	double	light_dist;
 
 	objs_cpy = objs;
 	light_dir = vec_norm(vec_sub(lit.origin, hit->origin));
 	light_ray = mrt_ray(hit->origin, light_dir);
+	light_dist = sqrt(pow(hit->origin.x - lit.origin.x, 2)
+			+ pow(hit->origin.y - lit.origin.y, 2)
+			+ pow(hit->origin.z - lit.origin.z, 2));
 	if (vec_dot(light_dir, hit->normal) < 0)
 		return (FALSE);
 	while (objs_cpy != NULL)
 	{
-		if ((objs_cpy != hit->obj && mrt_hit(objs_cpy, light_ray, &dummy_hit)) == TRUE)
-			return (TRUE);
+		if ((objs_cpy != hit->obj)
+			&& (mrt_hit(objs_cpy, light_ray, &dummy_hit) == TRUE))
+		{
+			if (dummy_hit.dist > 0 && light_dist > dummy_hit.dist)
+				return (TRUE);
+		}
 		objs_cpy = objs_cpy->next;
 	}
 	return (FALSE);
@@ -50,9 +58,10 @@ t_vec	mrt_raycast(t_mrt *mrt, t_ray ray)
 	}
 	if (hit_nearest.dist == DIST_MAX)
 		return (vec(0, 0, 0));
-	if (mrt_hard_shadow(mrt->objs, mrt->lit, &hit_nearest))
+	if (mrt_hard_shadow(mrt->objs, mrt->lit, &hit_nearest) == TRUE)
 	{
 		light_color = vec_scale(mrt->amb.color, mrt->amb.ratio);
+		//return (vec(0, 0, 0));
 		return (vec(light_color.x * hit_nearest.albedo.x,
 				light_color.y * hit_nearest.albedo.y,
 				light_color.z * hit_nearest.albedo.z));
