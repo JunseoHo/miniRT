@@ -44,18 +44,17 @@ static t_bool	mrt_hit_cone_check_height(t_obj *cn, t_vec intersect)
 	hypotenus = vec_len(vec_sub(intersect, top));
 	dist_from_origin_to_top = vec_len(vec_sub(top, cn->origin));
 	dist_from_origin_to_intersect = vec_len(vec_sub(intersect, cn->origin));
-	if (dist_from_origin_to_top < dist_from_origin_to_intersect && vec_dot(cn->axis, vec_sub(intersect, cn->origin)) > 0)
+	if (dist_from_origin_to_top < dist_from_origin_to_intersect && \
+	vec_dot(cn->axis, vec_sub(intersect, cn->origin)) > 0)
 		return (FALSE);
 	return (sqrt(pow(cn->radius, 2) + pow(cn->height, 2)) > hypotenus);
 }
 
-static t_bool	mrt_hit_cone_side(t_obj *cn, t_ray ray, t_hit *hit)
+static	void	mrt_init_coeff(double coeff[3], t_obj *cn, t_ray ray)
 {
 	t_vec	top;
 	double	m;
 	t_vec	ray_to_top;
-	double	coeff[3];
-	double	determinant;
 
 	top = vec_add(cn->origin, vec_scale(cn->axis, cn->height * 0.5));
 	m = pow(cn->radius, 2) / pow(cn->height, 2);
@@ -69,6 +68,14 @@ static t_bool	mrt_hit_cone_side(t_obj *cn, t_ray ray, t_hit *hit)
 	coeff[2] = vec_dot(ray_to_top, ray_to_top)
 		- (m * pow(vec_dot(ray_to_top, cn->axis), 2))
 		- pow(vec_dot(ray_to_top, cn->axis), 2);
+}
+
+static t_bool	mrt_hit_cone_side(t_obj *cn, t_ray ray, t_hit *hit)
+{
+	double	coeff[3];
+	double	determinant;
+
+	mrt_init_coeff(coeff, cn, ray);
 	determinant = pow(coeff[1], 2) - (coeff[0] * coeff[2]);
 	if (determinant < 0)
 		return (FALSE);

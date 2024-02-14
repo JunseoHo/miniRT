@@ -61,7 +61,6 @@ t_vec	mrt_raycast(t_mrt *mrt, t_ray ray)
 	if (mrt_hard_shadow(mrt->objs, mrt->lit, &hit_nearest) == TRUE)
 	{
 		light_color = vec_scale(mrt->amb.color, mrt->amb.ratio);
-		//return (vec(0, 0, 0));
 		return (vec(light_color.x * hit_nearest.albedo.x,
 				light_color.y * hit_nearest.albedo.y,
 				light_color.z * hit_nearest.albedo.z));
