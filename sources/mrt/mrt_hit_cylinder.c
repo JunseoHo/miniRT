@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:42:25 by jho               #+#    #+#             */
-/*   Updated: 2024/02/14 19:58:24 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/14 20:07:05 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,20 @@ static t_bool	mrt_hit_cylinder_side(t_obj *cy, t_ray ray, t_hit *hit)
 {
 	t_vec	base;
 	t_vec	ray_to_base;
-	double	coeff[3];
-	double	determinant;
+	double	eqn[4];
 
 	base = vec_sub(cy->origin, vec_scale(cy->axis, 0.5 * cy->height));
 	ray_to_base = vec_sub(ray.origin, base);
-	coeff[0] = vec_dot(ray.dir, ray.dir) - pow(vec_dot(ray.dir, cy->axis), 2);
-	coeff[1] = vec_dot(ray.dir, ray_to_base)
+	eqn[0] = vec_dot(ray.dir, ray.dir) - pow(vec_dot(ray.dir, cy->axis), 2);
+	eqn[1] = vec_dot(ray.dir, ray_to_base)
 		- vec_dot(ray.dir, cy->axis) * vec_dot(ray_to_base, cy->axis);
-	coeff[2] = vec_dot(ray_to_base, ray_to_base)
+	eqn[2] = vec_dot(ray_to_base, ray_to_base)
 		- pow(vec_dot(ray_to_base, cy->axis), 2)
 		- pow(cy->radius, 2);
-	determinant = pow(coeff[1], 2) - (coeff[0] * coeff[2]);
-	if (determinant < 0)
+	eqn[3] = pow(eqn[1], 2) - (eqn[0] * eqn[2]);
+	if (eqn[3] < 0)
 		return (FALSE);
-	hit->dist = (-coeff[1] - sqrt(determinant)) / coeff[0];
+	hit->dist = (-eqn[1] - sqrt(eqn[3])) / eqn[0];
 	hit->origin = mrt_ray_at(ray, hit->dist);
 	if (!mrt_hit_cylinder_check_height(cy, hit->origin))
 		return (FALSE);
