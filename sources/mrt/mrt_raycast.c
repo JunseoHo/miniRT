@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_raycast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 03:30:32 by jho               #+#    #+#             */
-/*   Updated: 2024/02/13 20:38:01 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/14 11:51:06 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_vec	mrt_raycast(t_mrt *mrt, t_ray ray)
 	t_obj	*objs;
 	t_hit	hit;
 	t_hit	hit_nearest;
+	t_vec	light_color;
 
 	objs = mrt->objs;
 	hit_nearest.dist = DIST_MAX;
@@ -47,12 +48,14 @@ t_vec	mrt_raycast(t_mrt *mrt, t_ray ray)
 			hit_nearest = hit;
 		objs = objs->next;
 	}
-	t_vec color;
-	color = vec(0, 0, 0);
-	color = vec_add(color, vec_scale(mrt->amb.color, mrt->amb.ratio));
-	if (hit_nearest.dist == DIST_MAX
-		|| mrt_hard_shadow(mrt->objs, mrt->lit, &hit_nearest))
-		return (vec(hit_nearest.albedo.x * mrt->amb.ratio, hit_nearest.albedo.y * mrt->amb.ratio, hit_nearest.albedo.z * mrt->amb.ratio));
-		// return (mrt_color(0, 0, 0));
+	if (hit_nearest.dist == DIST_MAX)
+		return (vec(0, 0, 0));
+	if (mrt_hard_shadow(mrt->objs, mrt->lit, &hit_nearest))
+	{
+		light_color = vec_scale(mrt->amb.color, mrt->amb.ratio);
+		return (vec(light_color.x * hit_nearest.albedo.x,
+				light_color.y * hit_nearest.albedo.y,
+				light_color.z * hit_nearest.albedo.z));
+	}
 	return (mrt_phong(mrt, ray, &hit_nearest));
 }
