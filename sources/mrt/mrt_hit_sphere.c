@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 04:05:04 by jho               #+#    #+#             */
-/*   Updated: 2024/02/15 11:46:51 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/15 12:33:11 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	mrt_hit_sphere_coeff(t_obj *sp, t_ray ray, double *coeff)
 
 static void	mrt_hit_sphere_init(t_hit *hit, t_obj *sp, double *root, t_ray ray)
 {
+	if (root[0] < 0)
+		root[0] = root[1];
 	hit->dist = root[0];
 	hit->origin = mrt_ray_at(ray, root[0]);
 	hit->normal = vec_norm(vec_sub(hit->origin, sp->origin));
@@ -46,7 +48,7 @@ t_bool	mrt_hit_sphere(t_obj *sp, t_ray ray, t_hit *hit)
 	root[0] = (-coeff[1] - sqrt(discriminant)) / coeff[0];
 	root[1] = (-coeff[1] + sqrt(discriminant)) / coeff[0];
 	if ((root[0] < DIST_MIN || root[0] > DIST_MAX)
-		|| (root[1] < DIST_MIN || root[1] > DIST_MAX))
+		&& (root[1] < DIST_MIN || root[1] > DIST_MAX))
 		return (FALSE);
 	mrt_hit_sphere_init(hit, sp, root, ray);
 	return (TRUE);
