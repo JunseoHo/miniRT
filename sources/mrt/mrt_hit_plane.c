@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 19:39:57 by jho               #+#    #+#             */
-/*   Updated: 2024/02/15 11:58:28 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/15 12:39:25 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ t_bool	mrt_hit_plane(t_obj *pl, t_ray ray, t_hit *hit)
 	numerator = vec_dot(pl->axis, vec_sub(ray.origin, pl->origin)) * -1;
 	denominator = vec_dot(pl->axis, ray.dir);
 	dist = numerator / denominator;
-	if (dist < 0)
-		return (FALSE);
 	if (dist < DIST_MIN || dist > DIST_MAX)
 		return (FALSE);
 	hit->dist = dist;

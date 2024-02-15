@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:42:25 by jho               #+#    #+#             */
-/*   Updated: 2024/02/14 20:07:05 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/15 13:08:03 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static t_bool	mrt_hit_cylinder_top(t_obj *cy, t_ray ray, t_hit *hit)
 		if (cy->radius > vec_len(vec_sub(hit->origin, pl.origin)))
 		{
 			hit->normal = vec_norm(cy->axis);
+			if (vec_dot(ray.dir, hit->normal) > 0)
+				hit->normal = vec_scale(hit->normal, -1);
 			hit->albedo = cy->albedo;
 			hit->obj = cy;
 			return (TRUE);
@@ -43,6 +45,8 @@ static t_bool	mrt_hit_cylinder_bottom(t_obj *cy, t_ray ray, t_hit *hit)
 		if (cy->radius > vec_len(vec_sub(hit->origin, pl.origin)))
 		{
 			hit->normal = vec_norm(vec_scale(cy->axis, -1));
+			if (vec_dot(ray.dir, hit->normal) > 0)
+				hit->normal = vec_scale(hit->normal, -1);
 			hit->albedo = cy->albedo;
 			hit->obj = cy;
 			return (TRUE);
@@ -71,6 +75,7 @@ static t_bool	mrt_hit_cylinder_side(t_obj *cy, t_ray ray, t_hit *hit)
 	t_vec	base;
 	t_vec	ray_to_base;
 	double	eqn[4];
+	double	root[2];
 
 	base = vec_sub(cy->origin, vec_scale(cy->axis, 0.5 * cy->height));
 	ray_to_base = vec_sub(ray.origin, base);
@@ -83,13 +88,19 @@ static t_bool	mrt_hit_cylinder_side(t_obj *cy, t_ray ray, t_hit *hit)
 	eqn[3] = pow(eqn[1], 2) - (eqn[0] * eqn[2]);
 	if (eqn[3] < 0)
 		return (FALSE);
-	hit->dist = (-eqn[1] - sqrt(eqn[3])) / eqn[0];
+	root[0] = (-eqn[1] - sqrt(eqn[3])) / eqn[0];
+	root[1] = (-eqn[1] + sqrt(eqn[3])) / eqn[0];
+	if (root[0] < 0)
+		root[0] = root[1];
+	hit->dist = root[0];
 	hit->origin = mrt_ray_at(ray, hit->dist);
 	if (!mrt_hit_cylinder_check_height(cy, hit->origin))
 		return (FALSE);
 	ray_to_base = vec_sub(hit->origin, base);
 	hit->normal = vec_norm(vec_sub(ray_to_base,
 				vec_scale(cy->axis, vec_dot(ray_to_base, cy->axis))));
+	if (vec_dot(ray.dir, hit->normal) > 0)
+		hit->normal = vec_scale(hit->normal, -1);
 	hit->albedo = cy->albedo;
 	hit->obj = cy;
 	return (TRUE);
