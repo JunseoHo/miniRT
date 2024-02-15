@@ -12,17 +12,32 @@
 
 #include "../../headers/mrt_parser.h"
 
+static	t_bool	adjust_number(char **num, int i)
+{
+	char	*adjust_num;
+
+	adjust_num = ft_substr(*num, 0, i);
+	if (adjust_num == NULL)
+		return (FALSE);
+	ft_strlcpy(*num, adjust_num, i + 1);
+	free(adjust_num);
+	return (TRUE);
+}
+
 static	t_bool	make_adjust_decimal_to_six_point(char **num, size_t	num_len)
 {
 	int		i;
 	int		decimal_point;
-	char	*adjust_num;
 
 	i = 0;
 	while (i < num_len)
 	{
 		if ((*num)[i] == '.')
+		{
+			if (ft_isdigit((*num)[i + 1]) == FALSE)
+				return (FALSE);
 			break ;
+		}
 		i++;
 	}
 	if (i > 7)
@@ -34,10 +49,7 @@ static	t_bool	make_adjust_decimal_to_six_point(char **num, size_t	num_len)
 			return (FALSE);
 		i++;
 	}
-	adjust_num = ft_substr(*num, 0, i);
-	ft_strlcpy(*num, adjust_num, i + 1);
-	free(adjust_num);
-	return (TRUE);
+	return (adjust_number(num, i));
 }
 
 t_bool	verify_integer_or_decimal(char **num, char end)
