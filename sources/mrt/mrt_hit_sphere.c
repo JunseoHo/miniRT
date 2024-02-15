@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_hit_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 04:05:04 by jho               #+#    #+#             */
-/*   Updated: 2024/02/12 15:09:25 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/15 11:46:51 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_bool	mrt_hit_sphere(t_obj *sp, t_ray ray, t_hit *hit)
 	root[0] = (-coeff[1] - sqrt(discriminant)) / coeff[0];
 	root[1] = (-coeff[1] + sqrt(discriminant)) / coeff[0];
 	if ((root[0] < DIST_MIN || root[0] > DIST_MAX)
-		&& (root[1] < DIST_MIN || root[1] > DIST_MAX))
+		|| (root[1] < DIST_MIN || root[1] > DIST_MAX))
 		return (FALSE);
 	mrt_hit_sphere_init(hit, sp, root, ray);
 	return (TRUE);

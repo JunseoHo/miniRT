@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/02/03 15:13:23 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/15 11:42:53 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ static	t_bool	check_count_amb_and_cam_and_lit(t_mrt *mrt)
 
 static	void	init_viewport(t_mrt *mrt)
 {
+	if ((mrt->cam.at.x == 0 && mrt->cam.at.y == 1 && mrt->cam.at.z == 0)
+		|| (mrt->cam.at.x == 0 && mrt->cam.at.y == -1 && mrt->cam.at.z == 0))
+		mrt->cam.up = vec(0, 0, -1);
 	mrt->cam.edge_len = tan((mrt->cam.fov / 2) * (M_PI / 180)) * FOCAL_LEN * 2;
 	mrt->cam.row_vec = vec_cross(mrt->cam.at, mrt->cam.up);
 	mrt->cam.row_vec = vec_scale(vec_norm(mrt->cam.row_vec), mrt->cam.edge_len);
@@ -54,5 +57,6 @@ t_mrt	*mrt_init(int argc, char **argv)
 	if (check_count_amb_and_cam_and_lit(mrt) == FALSE)
 		return (mrt_destroy(mrt));
 	init_viewport(mrt);
+
 	return (mrt);
 }
