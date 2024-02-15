@@ -6,7 +6,7 @@
 /*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:39:41 by jho               #+#    #+#             */
-/*   Updated: 2024/02/15 11:42:53 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/15 12:08:11 by jho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,5 @@ t_mrt	*mrt_init(int argc, char **argv)
 	if (check_count_amb_and_cam_and_lit(mrt) == FALSE)
 		return (mrt_destroy(mrt));
 	init_viewport(mrt);
-
 	return (mrt);
 }
