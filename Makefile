@@ -6,7 +6,7 @@
 #    By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 08:54:04 by jho               #+#    #+#              #
-#    Updated: 2024/02/20 16:04:36 by sejkim2          ###   ########.fr        #
+#    Updated: 2024/02/20 16:15:41 by sejkim2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ MANDATORY_SRCS=$(SOURCES)get_next_line/get_next_line.c \
 			$(SOURCES)mrt_parser/mrt_destroy.c \
 			$(SOURCES)mrt/mrt_hit_cone.c \
 			$(SOURCES)mrt/mrt_hit_cylinder.c \
+			$(SOURCES)mrt/mrt_hit_cylinder_side.c \
 			$(SOURCES)mrt/mrt_hit_plane.c \
 			$(SOURCES)mrt/mrt_hit_sphere.c \
 			$(SOURCES)mrt/mrt_hit.c \
