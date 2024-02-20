@@ -6,7 +6,7 @@
 /*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 14:24:23 by sejkim2           #+#    #+#             */
-/*   Updated: 2024/02/12 21:11:52 by sejkim2          ###   ########.fr       */
+/*   Updated: 2024/02/20 16:04:53 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static	t_bool	adjust_number(char **num, int i)
 
 static	t_bool	make_adjust_decimal_to_six_point(char **num, size_t	num_len)
 {
-	int		i;
-	int		decimal_point;
+	size_t	i;
+	size_t	decimal_point;
 
 	i = 0;
 	while (i < num_len)

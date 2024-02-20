@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_phong.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 05:33:27 by jho               #+#    #+#             */
-/*   Updated: 2024/02/14 20:07:32 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/20 16:05:05 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_vec	mrt_phong_ambient(t_amb *amb)
 	return (vec_scale(amb->color, amb->ratio));
 }
 
-static t_vec	mrt_phong_diffuse(t_lit lit, t_ray ray, t_hit *hit)
+static t_vec	mrt_phong_diffuse(t_lit lit, t_hit *hit)
 {
 	t_vec	diffuse;
 	t_vec	light_dir;
@@ -55,7 +55,7 @@ t_vec	mrt_phong(t_mrt *mrt, t_ray ray, t_hit *hit)
 	t_vec	light_color;
 
 	light_color = mrt_phong_ambient(&(mrt->amb));
-	light_color = vec_add(light_color, mrt_phong_diffuse(mrt->lit, ray, hit));
+	light_color = vec_add(light_color, mrt_phong_diffuse(mrt->lit, hit));
 	light_color = vec(light_color.x * hit->albedo.x,
 			light_color.y * hit->albedo.y,
 			light_color.z * hit->albedo.z);

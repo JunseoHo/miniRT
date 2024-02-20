@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_hit_cone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jho <jho@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sejkim2 <sejkim2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:33:24 by jho               #+#    #+#             */
-/*   Updated: 2024/02/14 18:07:38 by jho              ###   ########.fr       */
+/*   Updated: 2024/02/20 16:04:41 by sejkim2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static t_bool	mrt_hit_cone_check_height(t_obj *cn, t_vec intersect)
 	double	hypotenus;
 	double	dist_from_origin_to_top;
 	double	dist_from_origin_to_intersect;
-	double	height;
 
 	top = vec_add(cn->origin, vec_scale(cn->axis, cn->height * 0.5));
 	hypotenus = vec_len(vec_sub(intersect, top));
